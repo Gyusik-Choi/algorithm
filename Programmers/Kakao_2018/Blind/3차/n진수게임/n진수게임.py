@@ -1,4 +1,6 @@
 def convert(num, base):
+    # num 은 숫자, base 는 진수
+    # 진수 변환 함수
     t = "0123456789ABCDEF"
     quotient, remainder = divmod(num, base)
     if quotient == 0:
