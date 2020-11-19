@@ -13,8 +13,7 @@ public class B_10872_another {
 		int N = Integer.parseInt(br.readLine());
 		HashMap <Integer, Integer> fac = new HashMap<>();
 		System.out.println(factorial(fac, N));
-		System.out.println(fac);
-		
+	
 	}
 	
 	public static int factorial(HashMap<Integer, Integer> fac, int n) {
