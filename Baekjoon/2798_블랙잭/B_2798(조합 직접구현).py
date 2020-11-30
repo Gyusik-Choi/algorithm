@@ -1,6 +1,7 @@
 def combination(k, n):
     if k == n:
         comb.append(lst[:])
+        return
 
     if not lst:
         idx = 0
