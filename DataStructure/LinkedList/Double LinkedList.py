@@ -52,13 +52,27 @@ class DList(object):
             cur = self.head
             self.head = Node(value, None, self.head)
             cur.prev = self.head
+        elif idx == self.size:
+            cur = self.tail
+            self.tail = Node(value, cur)
+            cur.next = self.tail
         else:
-            cur = self.head
-            i = 0
-            while i + 1 < idx:
-                cur = cur.next
-                i += 1
-            cur.next = Node(value, cur, cur.next)
+            if idx >= self.size // 2:
+                cur = self.head
+                i = 1
+                while i < idx:
+                    cur = cur.next
+                    i += 1
+                # 왼쪽의 cur.next 는 cur 노드의 next 부분(cur 노드)
+                # 오른쪽의 cur.next 는 cur.next 가 가리키는 노드(cur.next 노드)
+                cur.next = Node(value, cur, cur.next)
+            else:
+                cur = self.tail
+                i = self.size
+                while i > idx:
+                    cur = cur.prev
+                    i -= 1
+                cur.next = Node(value, cur, cur.next)
         # if 문에서 return 을 걸어야 idx 가 잘못 들어왔을 때 size 를 증가시키지 않는다.
         self.size += 1
 
