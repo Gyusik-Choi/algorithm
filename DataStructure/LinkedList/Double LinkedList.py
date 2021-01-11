@@ -38,6 +38,7 @@ class DList(object):
         else:
             tmp = self.tail
             self.tail = Node(value, tmp.prev)
+            self.tail.prev = tmp
             tmp.next = self.tail
         self.size += 1
 
