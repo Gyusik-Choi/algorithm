@@ -36,8 +36,7 @@ class Queue:
             self.rear = self.head
         else:
             tmp = self.rear
-            self.rear = Node(item, tmp.prev)
-            self.rear.prev = tmp
+            self.rear = Node(item, tmp)
             tmp.next = self.rear
 
     # self.head 가 가리키는 노드를 self.head.next 로 바꾼다
