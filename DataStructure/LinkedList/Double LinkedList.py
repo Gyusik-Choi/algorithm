@@ -36,11 +36,9 @@ class DList(object):
             self.head = Node(value)
             self.tail = self.head
         else:
-            cur = self.head
-            while cur.next is not None:
-                cur = cur.next
-            self.tail = Node(value, cur)
-            cur.next = self.tail
+            tmp = self.tail
+            self.tail = Node(value, tmp.prev)
+            tmp.next = self.tail
         self.size += 1
 
     def insert(self, value, idx):
