@@ -21,25 +21,6 @@ class DList(object):
         else:
             return True
 
-    def select_node(self, idx):
-        if idx > self.size:
-            print("Overflow: Index Error")
-            return None
-        if idx == 0:
-            return self.head
-        if idx == self.size:
-            return self.tail
-        if idx >= self.size // 2:
-            target = self.head
-            for _ in range(idx):
-                target = target.next
-            return target
-        else:
-            target = self.tail
-            for _ in range(self.size - idx):
-                target = target.prev
-            return target
-
     def append_left(self, value):
         if self.is_empty():
             self.head = Node(value)
