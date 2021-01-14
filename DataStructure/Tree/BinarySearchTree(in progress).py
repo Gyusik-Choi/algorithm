@@ -17,6 +17,8 @@ class BinarySearchTree:
         self.head = Node(None)
 
         self.pre_order_list = []
+        self.in_order_list = []
+        self.post_order_list = []
 
     def search(self, item):
         if self.head.val is None:
@@ -61,7 +63,7 @@ class BinarySearchTree:
 
     def remove(self, item):
         if self.head.val is None:
-            print ("there is no item: in BST", item)
+            print("there is no item: in BST", item)
         if self.head.val == item:
             # 1) Node to be removed has no children.
             if self.head.left is None and self.head.right is None:
@@ -74,15 +76,15 @@ class BinarySearchTree:
                 self.head = self.head.left
             # 4) Node to be removed has two children.
             else:
-                self.head.val = self.__most_left_val_from_right_node(self.head.right).val
-                self.__removeitem(self.head, self.head.right, self.head.val)
+                self.head.val = self.search_most_left_val_from_right_node(self.head.right).val
+                self.remove_node(self.head, self.head.right, self.head.val)
         else:
             if self.head.val > item:
-                self.__remove(self.head, self.head.left, item)
+                self.remove_node(self.head, self.head.left, item)
             else:
-                self.__remove(self.head, self.head.right, item)
+                self.remove_node(self.head, self.head.right, item)
 
-    def __remove(self, parent, cur, item):
+    def remove_node(self, parent, cur, item):
         if cur is None:
             print("There is no item: ", item)
         if cur.val == item:
@@ -106,32 +108,21 @@ class BinarySearchTree:
                     parent.right = cur.left
             # 4) Node to be removed has two children.
             else:
-                cur.val = self.__most_left_val_from_right_node(cur.right).val
-                self.__removeitem(cur, cur.right, cur.val)
+                cur.val = self.search_most_left_val_from_right_node(cur.right).val
+                self.remove_node(cur, cur.right, cur.val)
         else:
             if cur.val > item:
-                self.__remove(cur, cur.left, item)
+                self.remove_node(cur, cur.left, item)
             else:
-                self.__remove(cur, cur.right, item)
+                self.remove_node(cur, cur.right, item)
 
-    def __removeitem(self, parent, cur, item):
-        if cur.val == item:
-            if parent.left == cur:
-                parent.left = None
-            else:
-                parent.right = None
-        else:
-            if cur.val > item:
-                self.__removeitem(cur, cur.left, item)
-            else:
-                self.__removeitem(cur, cur.right, item)
-
-    def __most_left_val_from_right_node(self, cur):
+    def search_most_left_val_from_right_node(self, cur):
         if cur.left is None:
             return cur
         else:
-            return self.__most_left_val_from_right_node(cur.left)
+            return self.search_most_left_val_from_right_node(cur.left)
 
+    # 전위순회
     def pre_order_traverse(self):
         if self.head is not None:
             self.pre_order(self.head)
@@ -139,24 +130,56 @@ class BinarySearchTree:
     def pre_order(self, cur):
         self.pre_order_list.append(cur.val)
         print(cur.val)
+
         if cur.left is not None:
             self.pre_order(cur.left)
         if cur.right is not None:
             self.pre_order(cur.right)
 
+    # 중위순회
+    def in_order_traverse(self):
+        if self.head is not None:
+            self.in_order(self.head)
+
+    def in_order(self, cur):
+        if cur.left is not None:
+            self.in_order(cur.left)
+
+        self.in_order_list.append(cur.val)
+        print(cur.val)
+
+        if cur.right is not None:
+            self.in_order(cur.right)
+
+    # 후위순회
+    def post_order_traverse(self):
+        if self.head is not None:
+            self.post_order(self.head)
+
+    def post_order(self, cur):
+        if cur.left is not None:
+            self.post_order(cur.left)
+
+        if cur.right is not None:
+            self.post_order(cur.right)
+
+        self.post_order_list.append(cur.val)
+        print(cur.val)
+
 
 bt = BinarySearchTree()
 bt.add(5)
-bt.add(3)
-bt.add(4)
-bt.add(2)
-bt.add(6)
-bt.add(8)
+bt.add(1)
+bt.add(10)
 bt.add(7)
+bt.add(6)
+bt.add(9)
+bt.add(15)
+bt.add(12)
+bt.add(17)
 bt.pre_order_traverse()
-bt.remove(7)
+bt.remove(10)
 bt.pre_order_traverse()
-
 
 # 참고
 # https://github.com/minsuk-heo/problemsolving/blob/master/data_structure/BinaryTree.py
