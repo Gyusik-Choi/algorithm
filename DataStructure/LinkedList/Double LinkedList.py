@@ -86,12 +86,26 @@ class DList(object):
         elif idx == 0:
             self.head = self.head.next
         else:
-            cur = self.head
-            i = 0
-            while i + 1 < idx:
-                cur = cur.next
-                i += 1
-            cur.next = cur.next.next
+            if (self.size - 1) // 2 < idx:
+                cur = self.tail
+                i = self.size - 1
+                while i > idx:
+                    cur = cur.prev
+                    i -= 1
+                prev_node = cur.prev
+                next_node = cur.next
+                cur.prev.next = next_node
+                next_node.prev = prev_node
+            else:
+                cur = self.head
+                i = 0
+                while i < idx:
+                    cur = cur.next
+                    i += 1
+                prev_node = cur.prev
+                next_node = cur.next
+                cur.prev.next = next_node
+                next_node.prev = prev_node
         self.size -= 1
 
     def print_list(self):
