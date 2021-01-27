@@ -43,7 +43,10 @@ class Queue:
     # 기존의 self.head 에 해당하는 노드가 연결고리에서 빠진다
     def de_queue(self):
         if not self.is_empty():
+            tmp = self.head
             self.head = self.head.next
+            self.head.prev = None
+            tmp.next = None
         else:
             print("queue is empty!")
     
@@ -71,7 +74,7 @@ q.en_queue(2)
 q.en_queue(3)
 q.de_queue()
 q.print_list()
-q.en_queue(3)
+q.en_queue(4)
 q.print_list()
 q.peek()
 print(q)
