@@ -68,7 +68,7 @@ public class B_2580_2 {
 	
 	private static ArrayList<int[]> empty_arr = new ArrayList<int[]>();
 	
-	private static int[][] arr = new int[9][9];;
+	private static int[][] arr = new int[9][9];
 	
 	public static void main(String[] args) throws IOException {
 		
