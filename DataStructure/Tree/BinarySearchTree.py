@@ -90,22 +90,13 @@ class BinarySearchTree:
         if cur.val == item:
             # 1) Node to be removed has no children.
             if cur.left is None and cur.right is None:
-                if parent.left == cur:
-                    parent.left = None
-                else:
-                    parent.right = None
+                cur = None
             # 2) Node to be removed has one child.
             elif cur.left is None and cur.right is not None:
-                if parent.left == cur:
-                    parent.left = cur.right
-                else:
-                    parent.right = cur.right
+                cur = cur.right
             # 3) Node to be removed has one child.
             elif cur.left is not None and cur.right is None:
-                if parent.left == cur:
-                    parent.left = cur.left
-                else:
-                    parent.right = cur.left
+                cur = cur.left
             # 4) Node to be removed has two children.
             else:
                 cur.val = self.search_most_left_val_from_right_node(cur.right).val
