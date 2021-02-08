@@ -35,6 +35,12 @@ class MaxHeap:
             self.data[i], self.data[parent] = self.data[parent], self.data[i]
             self.max_heapify(parent)
 
+    def __str__(self):
+        lst = []
+        for node in self.arr:
+            lst.append(str(node))
+        return ' '.join(lst)
+
 
 mh = MaxHeap()
 mh.insert(1)
@@ -48,6 +54,7 @@ mh.insert(8)
 mh.insert(9)
 mh.insert(10)
 print(mh.remove())
+print(mh)
 
 
 # 참고
