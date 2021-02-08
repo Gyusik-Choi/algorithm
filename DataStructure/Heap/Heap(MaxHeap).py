@@ -6,7 +6,7 @@ class MaxHeap:
         self.data.append(item)
         i = len(self.data) - 1
         while i > 1:
-            if self.data[i // 2] > self.data[i]:
+            if self.data[i // 2] < self.data[i]:
                 self.data[i // 2], self.data[i] = self.data[i], self.data[i // 2]
                 i = i // 2
             else:
