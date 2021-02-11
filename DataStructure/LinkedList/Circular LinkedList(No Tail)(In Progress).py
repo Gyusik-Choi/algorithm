@@ -11,17 +11,52 @@ class CircularLinkedList:
         self.size = 0
 
     def is_empty(self):
-        pass
+        if self.size == 0:
+            return True
+        return False
 
     def append(self, item):
-        pass
+        if self.is_empty():
+            self.head = Node(item)
+            self.head.next = self.head
+        else:
+            cur = self.head
+            while cur.next is not self.head:
+                cur = cur.next
+            cur.next = Node(item)
+            cur.next.next = self.head
+        self.size += 1
 
     def append_first(self, item):
-        pass
+        if self.is_empty():
+            self.head = Node(item)
+        else:
+            cur = self.head
+            self.head = Node(item)
+            self.head.next = cur
+            cur.next = self.head
+        self.size += 1
 
     def insert(self, item, idx):
+        if idx > self.size:
+            print("Wrong Index")
+            return
+
+        if idx == 0:
+            if self.is_empty():
+                self.head = Node(item)
+                self.head.next = self.head
+            else:
+                cur = self.head
+                cur2 = self.head
+                self.head = Node(item)
+                self.head.next = cur
+                while cur2.next is not cur:
+                    cur2 = cur2.next
+                cur2.next = self.head
+        else:
+            pass
         self.size += 1
-        pass
 
     def remove(self, item):
         self.size -= 1
@@ -32,7 +67,10 @@ class CircularLinkedList:
 
 
 cll = CircularLinkedList()
-cll.print_list()
+cll.append(3)
+cll.append_first(2)
+cll.insert(1, 0)
+
 
 # 참고
 # https://comdoc.tistory.com/entry/%EC%9B%90%ED%98%95-%EC%97%B0%EA%B2%B0-%EB%A6%AC%EC%8A%A4%ED%8A%B8Circular-linked-list-ADT-%ED%8C%8C%EC%9D%B4%EC%8D%AC
