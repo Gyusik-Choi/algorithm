@@ -71,7 +71,6 @@ cll.append(3)
 cll.append_first(2)
 cll.insert(1, 0)
 
-
 # 참고
 # https://comdoc.tistory.com/entry/%EC%9B%90%ED%98%95-%EC%97%B0%EA%B2%B0-%EB%A6%AC%EC%8A%A4%ED%8A%B8Circular-linked-list-ADT-%ED%8C%8C%EC%9D%B4%EC%8D%AC
 # http://cis.cju.ac.kr/wp-content/lecture-materials/computer-algorithms/Chapter%2005%20%EC%97%B0%EA%B2%B0%20%EB%A6%AC%EC%8A%A4%ED%8A%B8(Linked%20List)%203.pdf
