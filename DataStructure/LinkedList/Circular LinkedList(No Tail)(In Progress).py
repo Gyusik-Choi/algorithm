@@ -55,7 +55,14 @@ class CircularLinkedList:
                     cur2 = cur2.next
                 cur2.next = self.head
         else:
-            pass
+            cur = self.head
+            i = 1
+            while idx > i:
+                cur = cur.next
+                i += 1
+            original_cur_next = cur.next
+            cur.next = Node(item)
+            cur.next.next = original_cur_next
         self.size += 1
 
     def remove(self, item):
@@ -70,6 +77,8 @@ cll = CircularLinkedList()
 cll.append(3)
 cll.append_first(2)
 cll.insert(1, 0)
+cll.insert(4, 3)
+cll.append(5)
 
 # 참고
 # https://comdoc.tistory.com/entry/%EC%9B%90%ED%98%95-%EC%97%B0%EA%B2%B0-%EB%A6%AC%EC%8A%A4%ED%8A%B8Circular-linked-list-ADT-%ED%8C%8C%EC%9D%B4%EC%8D%AC
