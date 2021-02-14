@@ -65,9 +65,19 @@ class CircularLinkedList:
             cur.next.next = original_cur_next
         self.size += 1
 
-    def remove(self, item):
+    def remove_by_index(self, idx):
+        if idx >= self.size:
+            print("Wrong Index")
+            return
+
+        if idx == 0:
+            pass
+        
         self.size -= 1
         pass
+
+    def remove_by_item(self, item):
+        self.size -= 1
 
     def print_list(self):
         pass
