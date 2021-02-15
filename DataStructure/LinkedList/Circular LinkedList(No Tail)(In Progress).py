@@ -72,13 +72,16 @@ class CircularLinkedList:
             return
 
         if idx == 0:
-            cur = self.head
-            self.head = self.head.next
+            if self.size == 1:
+                self.head = None
+            else:
+                cur = self.head
+                cur2 = self.head
+                self.head = self.head.next
 
-            cur2 = self.head
-            while cur2.next is not cur:
-                cur2 = cur2.next
-            cur2.next = self.head
+                while cur2.next is not cur:
+                    cur2 = cur2.next
+                cur2.next = self.head
         else:
             cur = self.head
             i = 1
@@ -87,13 +90,39 @@ class CircularLinkedList:
                 i += 1
             cur.next = cur.next.next
         self.size -= 1
-        pass
 
     def remove_by_item(self, item):
+        if self.is_empty():
+            print("Nothing to remove")
+            return
+
+        if self.head.val == item:
+            if self.size == 1:
+                self.head = None
+            else:
+                cur = self.head
+                cur2 = self.head
+                self.head = self.head.next
+
+                while cur2.next is not cur:
+                    cur2 = cur2.next
+                cur2.next = cur2.next.next
+        else:
+            cur = self.head
+            while cur.next is not None:
+                if cur.next.val == item:
+                    cur.next = cur.next.next
+                else:
+                    cur = cur.next
         self.size -= 1
 
     def print_list(self):
-        pass
+        cur = self.head
+        idx = self.size
+        while idx > 0:
+            print(cur.val)
+            cur = cur.next
+            idx -= 1
 
 
 cll = CircularLinkedList()
@@ -101,6 +130,7 @@ cll.append(3)
 cll.append_first(2)
 cll.append(1)
 cll.remove_by_index(2)
+cll.print_list()
 
 # 참고
 # https://comdoc.tistory.com/entry/%EC%9B%90%ED%98%95-%EC%97%B0%EA%B2%B0-%EB%A6%AC%EC%8A%A4%ED%8A%B8Circular-linked-list-ADT-%ED%8C%8C%EC%9D%B4%EC%8D%AC
