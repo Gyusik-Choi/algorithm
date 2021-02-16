@@ -43,6 +43,12 @@ heapq.heappush(heap, (1, 'A'))
 
 
 
+![비교](비교.PNG)
+
+최대힙을 직접 구현해서 풀이를 해보았을 때, 메모리는 줄었으나 시간은 3배 가까이 더 걸렸다.
+
+
+
 참고
 
 https://www.daleseo.com/python-heapq/
