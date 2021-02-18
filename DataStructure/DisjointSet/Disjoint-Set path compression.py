@@ -6,7 +6,8 @@ def find_set(x):
     if p[x] == x:
         return x
     else:
-        return find_set(p[x])
+        p[x] = find_set(p[x])
+        return p[x]
 
 
 def union(x, y):
@@ -14,7 +15,7 @@ def union(x, y):
     p[find_set(y)] = find_set(x)
 
 
-N = 6
+N = 8
 p = [0] * (N + 1)
 for i in range(1, N + 1):
     make_set(i)
@@ -22,5 +23,8 @@ for i in range(1, N + 1):
 union(1, 3)
 union(2, 3)
 union(5, 6)
+union(6, 8)
+union(1, 5)
+union(6, 7)
 print(p)
-print(find_set(6))
+# [0, 2, 2, 1, 4, 2, 2, 2, 5]
