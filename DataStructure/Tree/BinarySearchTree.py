@@ -90,7 +90,10 @@ class BinarySearchTree:
         if cur.val == item:
             # 1) Node to be removed has no children.
             if cur.left is None and cur.right is None:
-                cur = None
+                if parent.left == cur:
+                    parent.left = None
+                else:
+                    parent.right = None
             # 2) Node to be removed has one child.
             elif cur.left is None and cur.right is not None:
                 cur = cur.right
