@@ -90,6 +90,10 @@ class BinarySearchTree:
         if cur.val == item:
             # 1) Node to be removed has no children.
             if cur.left is None and cur.right is None:
+                # 해당하는 cur 를 없애려면 연결리스트로 연결됐기 때문에 cur 에 직접 None 을 넣는게 아니라 연결고리를 끊어야 한다.
+                # cur 를 가리키는 상위 node 를 찾아서
+                # cur 이 상위 노드의 left 인지 right 인지 확인하고
+                # 거기에 None 을 넣어줘야 한다.
                 if parent.left == cur:
                     parent.left = None
                 else:
