@@ -1,6 +1,3 @@
-import math
-
-
 def make_tree(n):
     global cnt
     if n <= N:
