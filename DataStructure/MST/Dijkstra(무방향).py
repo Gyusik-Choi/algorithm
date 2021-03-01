@@ -16,6 +16,7 @@ adj = {i: [] for i in range(V)}
 for i in range(E):
     s, e, v = map(int, input().split())
     adj[s].append([e, v])
+    adj[e].append([s, v])
 
 INF = float('inf')
 key = [INF] * V
