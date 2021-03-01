@@ -19,32 +19,29 @@ for i in range(E):
     adj[e].append([s, v])
 
 INF = float('inf')
-key = [INF] * V
-p = [-1] * V
-mst = [False] * V
-key[0] = 0
+distance = [INF] * V
+selected = [False] * V
+distance[0] = 0
 cnt = 0
 while cnt < V:
     min_num = INF
     u = -1
     for i in range(V):
-        if not mst[i] and key[i] < min_num:
-            min_num = key[i]
+        if not selected[i] and distance[i] < min_num:
+            min_num = distance[i]
             u = i
 
-    mst[u] = True
+    selected[u] = True
     for j in adj[u]:
         end = j[0]
         value = j[1]
-        if not mst[end] and key[end] > value + min_num:
-            key[end] = value + min_num
-            p[end] = u
+        if not selected[end] and distance[end] > value + min_num:
+            distance[end] = value + min_num
     cnt += 1
 
 
-print(key)
-print(p)
-print(mst)
+print(distance)
+print(selected)
 
 # 참고
 # https://m.blog.naver.com/PostView.nhn?blogId=ssarang8649&logNo=220992988177&proxyReferer=https:%2F%2Fwww.google.com%2F
