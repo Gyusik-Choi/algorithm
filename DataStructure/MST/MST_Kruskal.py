@@ -54,3 +54,5 @@ print(rank)
 print(mst)
 print(result)
 
+# 참고
+# https://m.blog.naver.com/ssarang8649/221038259400

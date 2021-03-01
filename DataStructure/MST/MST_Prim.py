@@ -1,3 +1,7 @@
+# 최소신장트리(프림, 크루스칼 등)과 다익스트라 차이
+# 최소신장트리는 모든 노드들을 연결하는 비용을 따진다
+# 다익스트라는 두 노드 간의 비용을 따진다
+
 # 입력값
 # 7 11
 # 0 5 60
@@ -50,3 +54,7 @@ while cnt < V:
 print(key)
 print(p)
 print(sums)
+
+# 참고
+# https://m.blog.naver.com/PostView.nhn?blogId=ssarang8649&logNo=220992988177&proxyReferer=https:%2F%2Fwww.google.com%2F
+# https://coding-insider.tistory.com/entry/Prim-vs-Dijkstra-%ED%94%84%EB%A6%BC-%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EB%B9%84%EA%B5%90
