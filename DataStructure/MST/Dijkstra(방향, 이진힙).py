@@ -21,29 +21,26 @@ for i in range(E):
     adj[s].append([e, v])
 
 INF = float('inf')
-key = [INF] * V
-p = [-1] * V
-mst = [False] * V
-key[0] = 0
-cnt = 0
-pq = []
-heapq.heappush(pq, (0, 0))
-while pq:
-    key_val, idx = heapq.heappop(pq)
-    if mst[idx]:
-        continue
-    mst[idx] = True
-    for j in adj[idx]:
-        end = j[0]
-        value = j[1]
-        if not mst[end] and key[end] > value + key_val:
-            key[end] = value + key_val
-            p[end] = idx
-            heapq.heappush(pq, (key[end], end))
+distance = [INF] * V
+selected = [False] * V
 
-print(key)
-print(p)
-print(mst)
+distance[0] = 0
+heap = []
+heapq.heappush(heap, (0, 0))
+
+while heap:
+    # 가중치 가장 작은 노드 찾기
+    start_value, start = heapq.heappop(heap)
+    if selected[start]:
+        continue
+    selected[start] = True
+    # 인접 노드들의 최소거리 업데이트
+    for end, value in adj[start]:
+        if not selected[end] and distance[end] > distance[start] + value:
+            distance[end] = distance[start] + value
+            heapq.heappush(heap, (distance[end], end))
+
+print(distance)
 
 # 참고
 # https://m.blog.naver.com/PostView.nhn?blogId=ssarang8649&logNo=220992988177&proxyReferer=https:%2F%2Fwww.google.com%2F

@@ -21,27 +21,28 @@ for i in range(E):
 INF = float('inf')
 distance = [INF] * V
 selected = [False] * V
+
 distance[0] = 0
 cnt = 0
 while cnt < V:
-    min_num = INF
-    u = -1
-    for i in range(V):
-        if not selected[i] and distance[i] < min_num:
-            min_num = distance[i]
-            u = i
+    min_value = INF
+    min_vertex = -1
 
-    selected[u] = True
-    for j in adj[u]:
-        end = j[0]
-        value = j[1]
-        if not selected[end] and distance[end] > value + min_num:
-            distance[end] = value + min_num
+    # 가중치 가장 작은 노드 찾기
+    for j in range(V):
+        if not selected[j] and min_value > distance[j]:
+            min_value = distance[j]
+            min_vertex = j
+
+    # 인접 노드들의 최소거리 업데이트
+    for end, value in adj[min_vertex]:
+        if not selected[end] and distance[end] > distance[min_vertex] + value:
+            distance[end] = distance[min_vertex] + value
+
+    selected[min_vertex] = True
     cnt += 1
 
-
 print(distance)
-print(selected)
 
 # 참고
 # https://m.blog.naver.com/PostView.nhn?blogId=ssarang8649&logNo=220992988177&proxyReferer=https:%2F%2Fwww.google.com%2F
