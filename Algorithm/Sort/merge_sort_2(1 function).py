@@ -18,11 +18,15 @@ def merge_sort(low, high):
     while l < mid:
         temp.append(arr[l])
         l += 1
+
     while h < high:
         temp.append(arr[h])
         h += 1
-    for i in range(low, high):
-        arr[i] = temp[i - low]
+
+    t = 0
+    while t < len(temp):
+        arr[low + t] = temp[t]
+        t += 1
 
 
 arr = [2, 1, 5, 3, 4]
