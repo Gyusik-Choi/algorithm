@@ -11,6 +11,8 @@ class CircularQueue:
         return self.front == self.end
 
     def is_full(self):
+        # rear 는 항상 front 보다 앞에 있거나 같다
+        # index 는 원형이라 더 작을 수 있지만 rear 를 넘어서 front 가 갈 수는 없다.
         return self.front == (self.end + 1) % MAX_QSIZE
 
     def clear(self):
