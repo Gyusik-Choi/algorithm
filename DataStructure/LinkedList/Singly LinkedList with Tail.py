@@ -4,8 +4,8 @@
 # 단순 연결리스트 구조는 하나씩 줄을 매달아 세우듯이 첫번째가 두번째를 가리키고, 두번째가 세번째를 가리키면서 이어진다.
 # 맨 끝의 요소를 찾으려면 처음부터 끝까지 가야한다.
 # 단순 연결리스트에서 탐색의 시간을 조금이나마 높이고자 맨 마지막에 tail 을 사용해서 맨 마지막 요소를 가리키도록 한다.
-# 이중 연결리스트가 아니기 때문에 tail 은 tail 앞의 요소를 가리키지 않고 단지 tail 이 어떤 요소인지 가리키고만 있는다.
 # 맨 마지막 요소를 찾을 때 빠르게 찾을 수 있다.
+# 이중 연결리스트가 아니기 때문에 tail 은 tail 앞의 요소를 가리키지 않고 단지 tail 이 어떤 요소인지 가리키고만 있는다.
 
 
 class Node:
@@ -34,20 +34,13 @@ class SinglyLinkedList:
             self.tail = self.head
 
         # append 는 맨 뒤에 요소를 삽입하므로 따로 탐색과정 없이 바로 tail 에서 추가하면 된다.
-        # 단 요소가 1개 일때 tail 에 삽입하면 head 와의 관계가 끊긴다.
-        # 이때는 head 의 next 로 넣고 tail 이 이를 가리키도록 한다.
+        # 이전에는 요소가 1개 일때와 요소가 2개 이상일때를 구분했지만 그럴 필요가 굳이 없었다.
+        # 1개 일때는 tail 에 넣으면 head 와의 관계가 끊긴다고 생각했으나 그렇지 않다.
+        # 왜냐하면 head 와 tail 이 같은 요소를 바라보고 있기 때문에 상관 없다.
         else:
-            # 요소 1개
-            if self.head == self.tail:
-                self.head.next = Node(item)
-                self.tail = self.head.next
-            # 요소 여러개
-            else:
-                cur = self.tail
-                cur.next = Node(item)
-                # self.tail 이 새로운 마지막 요소를 가리키도록 한다.
-                self.tail = cur.next
-
+            cur = self.tail
+            self.tail = Node(item)
+            cur.next = self.tail
         self.size += 1
 
     def append_first(self, item):
@@ -76,25 +69,20 @@ class SinglyLinkedList:
                 self.head.next = cur
         # 맨 뒤에 insert
         elif idx == self.size:
-            # 요소 1개
-            if self.head == self.tail:
-                self.head.next = Node(item)
-                self.tail = self.head.next
-            # 요소 여러개
-            else:
-                cur = self.tail
-                cur.next = Node(item)
-                self.tail = cur.next
+            cur = self.tail
+            self.tail = Node(item)
+            cur.next = self.tail
+
         # 맨 앞도 맨 뒤도 아닌 어딘가
         else:
-            i = idx
             cur = self.head
+            i = idx
             while i > 1:
                 cur = cur.next
                 i -= 1
-            original_next = cur.next
+            origin_node = cur.next
             cur.next = Node(item)
-            cur.next.next = original_next
+            cur.next.next = origin_node
 
         self.size += 1
 
@@ -114,6 +102,7 @@ class SinglyLinkedList:
             # 아래의 while 문의 조건을 cur.next.next 가 아니라 cur.next 로 하게 되면 cur 이 맨 마지막 노드를 가리키게 된다
             # 그러면 맨 마지막 노드를 지우기 어렵다. 맨 마지막 노드의 앞 노드에 cur 가 오도록 하면
             # 이 노드의 next 를 None 으로 해서 맨 마지막 노드를 지울 수 있다.
+            # 여기서 cur.next.next 는 cur 의 다음 요소의 next 의 값자체를 의미한다
             while cur.next.next is not None:
                 cur = cur.next
             cur.next = None
@@ -129,26 +118,22 @@ class SinglyLinkedList:
         if self.head.val == item:
             # 요소가 1개
             if self.head == self.tail:
-                self.head = self.head.next
-                self.tail = self.head.next
+                self.head = None
+                self.tail = self.head
             # 요소가 여러개
             else:
                 self.head = self.head.next
         else:
             cur = self.head
             # 지울 대상 요소의 앞 요소에 cur 가 오도록 한다
-            while cur.next.val == item:
+            while cur.next.val != item:
                 cur = cur.next
             # 지울 대상의 next 요소가 지울 대상 앞의 요소인 cur 의 next 로 연결되게 한다
             # 지울 대상은 자연스럽게 연결고리에서 빠진다
-            # 단 지울 대상이 tail 이면 그냥 지우면 안 되고 tail 이 지울 대상의 앞 요소를 가리키도록 해야 한다
-            if cur.next == self.tail:
-                next_node = cur.next.next
-                cur.next = next_node
-                self.tail = cur.next
-            else:
-                next_node = cur.next.next
-                cur.next = next_node
+            cur.next = cur.next.next
+            # 단 지워진 대상이 tail 이 가리키던 노드였으면 tail 이 지운 대상의 앞 요소를 가리키도록 해야 한다
+            if cur.next is None:
+                self.tail = cur
         self.size -= 1
 
     def remove_by_index(self, idx):
@@ -159,8 +144,8 @@ class SinglyLinkedList:
         if idx == 0:
             # 요소가 1개
             if self.head == self.tail:
-                self.head = self.head.next
-                self.tail = self.head.next
+                self.head = None
+                self.tail = self.head
             else:
                 self.head = self.head.next
         else:
@@ -169,14 +154,10 @@ class SinglyLinkedList:
             while i > 1:
                 cur = cur.next
                 i -= 1
-            if cur.next == self.tail:
-                next_node = cur.next.next
-                cur.next = next_node
-                self.tail = cur.next
-            else:
-                next_node = cur.next.next
-                cur.next = next_node
-        self.size -= 1
+            cur.next = cur.next.next
+            if cur.next is None:
+                self.tail = cur
+            self.size -= 1
 
     def reverse(self):
         cur = self.head
@@ -192,8 +173,9 @@ class SinglyLinkedList:
     def print_list(self):
         cur = self.head
         while cur:
-            print(cur.val)
+            print(cur.val, end=" ")
             cur = cur.next
+        print()
 
     def __str__(self):
         lst = "["
@@ -210,8 +192,11 @@ ll = SinglyLinkedList()
 ll.append(1)
 ll.append(2)
 ll.append(3)
+ll.append(4)
+ll.remove_by_item(4)
+print(ll)
 ll.reverse()
-ll.remove_by_index(2)
+ll.remove_by_index(1)
 ll.print_list()
 print(ll)
 
