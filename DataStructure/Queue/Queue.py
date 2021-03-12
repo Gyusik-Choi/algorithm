@@ -10,6 +10,7 @@ class Node:
 
 class Queue:
     def __init__(self):
+        # head 에서 삭제, rear 에서 삽입이 발생
         self.head = Node(None)
         self.rear = Node(None, self.head)
         self.head.next = self.rear

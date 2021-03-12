@@ -5,6 +5,8 @@ class Node:
 
 
 class Stack:
+    # queue 에서는 head 에서 삭제, rear 에서 삽입이 일어나서 head 와 rear 둘다 사용했다면
+    # stack 에서는 head 를 계속해서 추가되는 노드로 갱신해주고 head 에서 삭제가 일어나게 할 것이라 head 로만 구성했다
     def __init__(self):
         self.head = None
 
