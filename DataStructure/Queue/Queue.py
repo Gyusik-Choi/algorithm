@@ -43,13 +43,21 @@ class Queue:
     # self.head 가 가리키는 노드를 self.head.next 로 바꾼다
     # 기존의 self.head 에 해당하는 노드가 연결고리에서 빠진다
     def de_queue(self):
-        if not self.is_empty():
-            tmp = self.head
-            self.head = self.head.next
-            self.head.prev = None
-            tmp.next = None
-        else:
+        if self.is_empty():
             print("queue is empty!")
+            return False
+        else:
+            # 이중 연결리스트 형태라 요소가 1개 일때와 요소가 2개 이상일때로 구분했다.
+            # 요소가 1개 일때는 삭제시에 rear 도 아무것도 가리키지 않게 해야한다.
+            if self.head.val == self.rear.val:
+                self.head = self.head.next
+                self.rear = self.head
+            # 요소가 2개 이상일 때
+            # head 를 head 의 다음 요소로 옮긴 후에
+            # 새로운 head 가 기존에 가리키던 prev 를 끊어서 기존의 head 를 더 이상 가리키지 않도록 한다.
+            else:
+                self.head = self.head.next
+                self.head.prev = None
     
     # 맨 앞의 노드
     def peek(self):
