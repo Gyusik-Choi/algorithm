@@ -8,7 +8,6 @@ for i in range(E):
     adj[s].append([e, v])
     adj[e].append([s, v])
 
-INF = float('inf')
 p = [-1] * V
 mst = [False] * V
 
