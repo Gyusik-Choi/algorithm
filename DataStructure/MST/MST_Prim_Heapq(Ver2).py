@@ -8,11 +8,13 @@ for i in range(E):
     adj[s].append([e, v])
     adj[e].append([s, v])
 
+INF = float('inf')
+key = [INF] * V
 p = [-1] * V
 mst = [False] * V
 
+key[0] = 0
 heap = []
-# heapq 모듈을 사용할거라 앞서 mst_prim 에서 추가한 key = [INF] * V 가 필요없다
 # 가중치를 기준으로 최소값을 찾아낼 거라 (v, e) 튜플의 앞 요소가 가중치, 뒤가 출발점이다
 heapq.heappush(heap, (0, 0))
 
