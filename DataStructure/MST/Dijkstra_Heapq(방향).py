@@ -38,6 +38,8 @@ while heap:
     for end, value in adj[start]:
         if not selected[end] and distance[end] > distance[start] + value:
             distance[end] = distance[start] + value
+            # (거리, 도착점)의 거리를 넣을 때 value 를 넣지 않도록 주의(Prim 과 혼동하지 말 것)
+            # 거리에는 업데이트된 거리 값을 넣어줘야 한다
             heapq.heappush(heap, (distance[end], end))
 
 print(distance)

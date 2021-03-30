@@ -27,11 +27,12 @@ while heap:
     mst[start] = True
     sums += value
     for end, val in adj[start]:
-        if not mst[end]:
-            heapq.heappush(heap, [val, end])
+        if not mst[end] and key[end] > val:
+            key[end] = val
             p[end] = start
+            heapq.heappush(heap, [val, end])
 
-
+print(key)
 print(p)
 print(mst)
 print(sums)
