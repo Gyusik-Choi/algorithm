@@ -57,22 +57,30 @@ class DList(object):
             self.tail = Node(value, cur)
             cur.next = self.tail
         else:
-            if idx >= self.size // 2:
+            # head 에서 더 가까운 경우
+            if self.size // 2 >= idx:
                 cur = self.head
                 i = 1
                 while i < idx:
                     cur = cur.next
                     i += 1
+                # 기존의 cur.next
+                original_cur_next = cur.next
                 # 왼쪽의 cur.next 는 cur 노드의 next 부분(cur 노드)
                 # 오른쪽의 cur.next 는 cur.next 가 가리키는 노드(cur.next 노드)
                 cur.next = Node(value, cur, cur.next)
+                # 기존의 cur.next 가 새로운 요소를 prev 로 가리키도록 해야 한다
+                original_cur_next.prev = cur.next
+            # tail 에서 더 가까운 경우
             else:
                 cur = self.tail
-                i = self.size
-                while i > idx:
+                i = self.size - 1
+                while idx < i:
                     cur = cur.prev
                     i -= 1
-                cur.next = Node(value, cur, cur.next)
+                original_cur_prev = cur.prev
+                cur.prev = Node(value, cur.prev, cur)
+                original_cur_prev.next = cur.prev
         # if 문에서 return 을 걸어야 idx 가 잘못 들어왔을 때 size 를 증가시키지 않는다.
         self.size += 1
 
