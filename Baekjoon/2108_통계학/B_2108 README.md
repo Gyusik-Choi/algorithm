@@ -2,6 +2,8 @@
 
 ## 2108
 
+### 파이썬
+
 input으로 입력 받으면 시간초과가 발생한다.
 
 sys.stdin.readline()으로 입력 받아서 시간초과를 해결했다.
@@ -36,6 +38,8 @@ b = sorted(a.items())
 
 <br>
 
+### 자바스크립트
+
 자바스크립트를 풀면서 TypeError가 발생했다. 원인은 const로 input 변수를 선언한 후에 동일한 이름의 변수를 재선언했기 때문이다.
 
 예를 들면
@@ -48,3 +52,4 @@ a = 2
 
 이렇게 const 로 선언한 변수는 재선언하려고 하면 오류가 발생한다. const 사용에 주의해야겠다.
 
+https://github.com/Gyusik-Choi/Algorithm/blob/master/WeirdJavascript/const.md
