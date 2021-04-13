@@ -13,12 +13,12 @@ def find_set(x):
 def union(x, y):
     px = find_set(x)
     py = find_set(y)
-    if rank[px] > rank[py]:
+    if rank[px] >= rank[py]:
         p[py] = px
-    else:
-        p[px] = py
         if rank[px] == rank[py]:
             rank[py] += 1
+    else:
+        p[px] = py
 
 
 N = 8

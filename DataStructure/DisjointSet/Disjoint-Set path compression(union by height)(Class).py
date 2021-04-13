@@ -3,7 +3,7 @@ class DisjointSet:
         self.size = n
         self.p = [0] * (n + 1)
         self.rank = [0] * (n + 1)
-        for i in range(n + 1):
+        for i in range(1, n + 1):
             self.make_set(i)
 
     def make_set(self, x):
@@ -13,17 +13,18 @@ class DisjointSet:
         if self.p[x] == x:
             return x
         self.p[x] = self.find_set(self.p[x])
+        return self.p[x]
 
     def union(self, x, y):
-        px = self.find_set(self.p[x])
-        py = self.find_set(self.p[y])
+        px = self.find_set(x)
+        py = self.find_set(y)
 
-        if self.rank[px] > self.rank[py]:
+        if self.rank[px] >= self.rank[py]:
             self.p[py] = px
-        else:
-            self.p[px] = py
             if self.rank[px] == self.rank[py]:
                 self.rank[py] += 1
+        else:
+            self.p[px] = py
 
     def __str__(self):
         disjoint_p = "["
