@@ -9,6 +9,9 @@ dp[1] = wine[1]
 if n > 1:
     dp[2] = max(wine[1], wine[1] + wine[2])
     if n > 2:
+        # wine[1] + wine[2] 이 조건도 있어야 한다
+        # 이 조건을 생각안해서 계속 오답이 났다
+        # 3번째 잔까지의 최대값이 1번째 잔과 2번째 잔의 합일수도 있기 때문이다
         dp[3] = max(wine[1] + wine[2], wine[1] + wine[3], wine[2] + wine[3])
         if n > 3:
             for i in range(4, n + 1):
