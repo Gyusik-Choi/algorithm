@@ -7,7 +7,11 @@ def binary_search(start, end, target):
         start = mid + 1
         return binary_search(start, end, target)
     else:
+        if lis[mid] == target:
+            return mid
         end = mid
+        # end = mid - 1을 하면 안 된다.
+        # start 가 0이고 end 가 1이었을때는 mid 가 0이라서 end 를 mid - 1로 하면 인덱스가 맞지 않게 된다.
         return binary_search(start, end, target)
 
 
