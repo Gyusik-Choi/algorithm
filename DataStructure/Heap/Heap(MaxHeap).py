@@ -29,7 +29,7 @@ class MaxHeap:
             parent = left_child
 
         if right_child < len(self.data) and self.data[parent] < self.data[right_child]:
-            smallest = right_child
+            parent = right_child
 
         if parent != i:
             self.data[i], self.data[parent] = self.data[parent], self.data[i]
@@ -37,7 +37,7 @@ class MaxHeap:
 
     def __str__(self):
         lst = []
-        for node in self.arr:
+        for node in self.data:
             lst.append(str(node))
         return ' '.join(lst)
 
@@ -55,7 +55,6 @@ mh.insert(9)
 mh.insert(10)
 print(mh.remove())
 print(mh)
-
 
 # 참고
 # https://m.blog.naver.com/PostView.nhn?blogId=leeinje66&logNo=221622360256&proxyReferer=https:%2F%2Fwww.google.com%2F

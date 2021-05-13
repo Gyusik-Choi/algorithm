@@ -55,3 +55,7 @@ mh.insert(8)
 mh.insert(9)
 mh.insert(10)
 print(mh)
+
+# 참고
+# https://m.blog.naver.com/PostView.nhn?blogId=leeinje66&logNo=221622360256&proxyReferer=https:%2F%2Fwww.google.com%2F
+# https://yabmoons.tistory.com/374
