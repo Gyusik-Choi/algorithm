@@ -2,13 +2,13 @@ const mergeSort = function(low, high) {
     if (high - low < 1) {
         return
     } else {
-        mid = Math.floor((low + high) / 2)
+        const mid = Math.floor((low + high) / 2)
         mergeSort(low, mid)
         mergeSort(mid + 1, high)
         
-        mergedArr = []
-        l = low
-        m = mid + 1
+        let mergedArr = []
+        let l = low
+        let m = mid + 1
         while (l <= mid && m <= high) {
             if (arr[l] < arr[m]) {
                 mergedArr.push(arr[l])
