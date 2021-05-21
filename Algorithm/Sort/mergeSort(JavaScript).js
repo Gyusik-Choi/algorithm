@@ -1,3 +1,9 @@
+// 정말 주의할점은 변수에 var, let, const 등의 선언을 하지 않으면
+// node 환경에서는 global에 포함된다
+// 함수 안의 스코프에 포함되는게 아니라 
+// 전역에 포함돼서 재귀의 상황에 맞춰서 값이 변화하지 않고
+// 전역에 선언한 것에 맞춰서 정해진다
+
 const mergeSort = function(low, high) {
     if (high - low < 1) {
         return
