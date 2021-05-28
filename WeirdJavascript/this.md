@@ -27,7 +27,7 @@ obj1.outer.inner() // Object (-> outer)
 - 메소드는 객체 안의 함수다
   - 메소드를 함수가 아닌 메소드로 호출하려면 해당하는 객체를 명시하고 함수를 호출해야 한다
 
-
+<br>
 
 ```javascript
 const obj1 = {
@@ -44,7 +44,7 @@ obj1.outer()
 
 outer 프로퍼티 inner 함수의 this는 전역객체를 바라본다.
 
-
+<br>
 
 ```javascript
 const obj1 = {
@@ -62,7 +62,7 @@ obj1.outer()
 
 inner함수의 this가 obj1을 바라보도록 하기 위해서 outer 메소드 안에서 self 변수에 obj1을 바라보고 있는 this를 넣어준다. self를 통해서 inner 함수에서도 this가 obj1을 바라볼 수 있다.
 
-
+<br>
 
 ```javascript
 const func = function() {
@@ -80,7 +80,7 @@ call 메소드를 통해 func가 바라보는 this의 대상을 바꿔줄 수 �
 
 call 메소드를 통해 func가 바라보는 this를 obj1 객체로 바꿔준다.
 
-
+<br>
 
 ```javascript
 const obj = {
@@ -97,7 +97,7 @@ obj.outer()
 
 화살표 함수(arrow function)는 자신의 스코프 체인에서 가장 가까운 this를 바라보게 된다
 
-
+<br>
 
 ```javascript
 const car = {
@@ -119,7 +119,7 @@ run 메소드에서는 this가 car를 바라보고 있고 self 변수에 담아�
 
 self를 통해 car의 프로퍼티에 접근할 수 있다.
 
-
+<br>
 
 ```javascript
 const car = {
