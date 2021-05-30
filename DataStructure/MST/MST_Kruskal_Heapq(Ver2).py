@@ -26,6 +26,7 @@ V, E = map(int, input().split())
 adj = []
 for i in range(E):
     s, e, v = map(int, input().split())
+    # 최소 가중치를 기준으로 heap 이 정렬되도록 v를 맨 앞에 넣어준다
     adj.append((v, s, e))
 heap = []
 for item in adj:
@@ -39,17 +40,17 @@ for i in range(V):
     make_set(i)
 
 sums = 0
+mst = []
 while heap:
     value, start, end = heapq.heappop(heap)
     if find_set(start) == find_set(end):
         continue
     sums += value
+    mst.append([start, end])
     union(start, end)
-    cnt += 1
-    if cnt == V - 1:
-        break
 
 print(sums)
+print(mst)
 
 # 참고
 # https://blog.naver.com/ssarang8649/221038259400
