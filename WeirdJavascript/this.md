@@ -141,7 +141,24 @@ car.run()
 변수에 this를 담는 방식 외에도 apply, call, bind를 통해서 this를 메소드의 내부 함수에서도 car 객체를 바라보게 할 수 있다.
 
 <br>
+```javascript
+const Func = function() {
+    console.log(this) // Func {}
+}
 
+const funcChild = new Func()
+
+const func = function() {
+    console.log(this) // Window {~~~}
+}
+
+func()
+```
+
+생성자 함수를 new 연산자와 호출해서 인스턴스를 생성하면 this는 해당 생성자 함수를 나타낸다.
+
+생성자 함수가 아닌 일반 함수를 호출하면 this는 전역객체를 나타낸다.
+<br>
 참고
 
 코어자바스크립트
