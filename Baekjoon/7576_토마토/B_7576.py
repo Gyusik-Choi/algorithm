@@ -38,3 +38,6 @@ for i in range(N):
 
 days = bfs(d)
 print(days)
+
+# 참고
+# https://hwiyong.tistory.com/389
