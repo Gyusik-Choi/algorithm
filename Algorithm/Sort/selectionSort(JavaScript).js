@@ -4,7 +4,7 @@ const changeItems = function(i, minIdx) {
     arr[minIdx] = temp
 }
 
-const insertionSort = function(arr) {
+const selectionSort = function(arr) {
     for (let i = 0; i < arr.length - 1; i++) {
         let minIdx = i
         for (let j = i + 1; j < arr.length; j++) {
