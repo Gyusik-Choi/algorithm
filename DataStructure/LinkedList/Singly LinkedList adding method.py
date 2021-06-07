@@ -49,58 +49,62 @@ class LinkedList:
     def insert(self, item, idx):
         if idx > self.size:
             print("Wrong Index")
-        else:
-            if self.is_empty():
-                self.head = Node(item)
-            else:
-                if idx == 0:
-                    self.head = Node(item, self.head)
-                else:
-                    cur = self.head
-                    i = 0
-                    while i + 1 < idx:
-                        cur = cur.next
-                        i += 1
-                    cur.next = Node(item, cur.next)
-        self.size += 1
+            return
 
-    def delete(self, idx):
-        if idx >= self.size:
-            print("Wrong Index")
-        elif self.is_empty():
-            print("Empty")
+        if self.is_empty():
+            self.head = Node(item)
         else:
             if idx == 0:
-                self.head = self.head.next
+                self.head = Node(item, self.head)
             else:
                 cur = self.head
                 i = 0
                 while i + 1 < idx:
                     cur = cur.next
                     i += 1
-                cur.next = cur.next.next
-            self.size -= 1
+                cur.next = Node(item, cur.next)
+        self.size += 1
 
-    def remove(self, item):
-        if self.head.val == item:
+    def delete(self, idx):
+        if idx >= self.size:
+            print("Wrong Index")
+            return
+
+        if self.is_empty():
+            print("Empty")
+            return
+
+        if idx == 0:
             self.head = self.head.next
         else:
             cur = self.head
-            while cur.next is not None:
-                if cur.next.val == item:
-                    cur.next = cur.next.next
-                else:
-                    cur = cur.next
+            i = 0
+            while i + 1 < idx:
+                cur = cur.next
+                i += 1
+            cur.next = cur.next.next
         self.size -= 1
+
+    # def remove(self, item):
+    #     if self.head.val == item:
+    #         self.head = self.head.next
+    #     else:
+    #         cur = self.head
+    #         while cur.next is not None:
+    #             if cur.next.val == item:
+    #                 cur.next = cur.next.next
+    #             else:
+    #                 cur = cur.next
+    #     self.size -= 1
 
     def reverse(self):
         cur = self.head
         prev = None
         while cur:
-            next = cur.next
+            nex = cur.next
             cur.next = prev
             prev = cur
-            cur = next
+            cur = nex
         self.head = prev
 
 
