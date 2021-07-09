@@ -67,7 +67,10 @@ class BinarySearchTree:
         if self.head.val == item:
             # 1) Node to be removed has no children.
             if self.head.left is None and self.head.right is None:
-                self.head = None
+                # self.head = None
+                # 위와 같이 하면 안 된다.
+                # self.head 를 구성하는 val, left_child, right_child 프로퍼티가 모두 없어지기 때문에 다시 add 를 할 수 없게 된다.
+                self.head = Node(None)
             # 2) Node to be removed has one child.
             elif self.head.left is None and self.head.right is not None:
                 self.head = self.head.right
