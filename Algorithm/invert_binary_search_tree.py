@@ -38,6 +38,7 @@ class BinarySearchTree:
     def do_invert_binary_search_tree(self, cur):
         if cur:
             cur.left_child, cur.right_child = self.do_invert_binary_search_tree(cur.right_child), self.do_invert_binary_search_tree(cur.left_child)
+            return cur
 
 
 bt = BinarySearchTree()
