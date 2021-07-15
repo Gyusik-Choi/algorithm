@@ -37,4 +37,5 @@ for _ in range(T):
             for i in range(category_cnt):
                 answer *= per_category_cnt[i] + 1
             answer -= 1
+
         sys.stdout.write(str(answer) + "\n")
