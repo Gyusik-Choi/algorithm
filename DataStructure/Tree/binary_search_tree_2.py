@@ -205,3 +205,4 @@ bt.pre_order()
 # https://yaboong.github.io/data-structures/2018/02/12/binary-search-tree/ (중복에 관한 내용)
 # https://ratsgo.github.io/data%20structure&algorithm/2017/10/22/bst/
 # https://github.com/minsuk-heo/problemsolving/blob/master/data_structure/BinaryTree.py
+# https://hongku.tistory.com/160
