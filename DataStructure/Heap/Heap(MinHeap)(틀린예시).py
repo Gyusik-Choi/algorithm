@@ -39,7 +39,7 @@ class MinHeap:
             parent = right_child
 
         if idx != parent:
-            self.arr[idx], self.arr[parent] = self.arr[parent]. self.arr[idx]
+            self.arr[idx], self.arr[parent] = self.arr[parent], self.arr[idx]
             self.min_heapify(parent)
 
     def __str__(self):
