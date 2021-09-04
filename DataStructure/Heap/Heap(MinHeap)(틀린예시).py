@@ -61,6 +61,17 @@ mh.insert(3)
 mh.insert(2)
 mh.insert(1)
 print(mh)
+print(mh.remove())
+print(mh.remove())
+print(mh.remove())
+print(mh.remove())
+print(mh.remove())
+print(mh.remove())
+print(mh.remove())
+print(mh.remove())
+print(mh.remove())
+print(mh.remove())
+print(mh)
 
 # 참고
 # https://m.blog.naver.com/PostView.nhn?blogId=leeinje66&logNo=221622360256&proxyReferer=https:%2F%2Fwww.google.com%2F
