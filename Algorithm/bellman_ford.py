@@ -48,6 +48,7 @@ else:
     print(bf)
 
 # 참고
+# https://www.youtube.com/watch?v=Ppimbaxm8d8
 # https://yabmoons.tistory.com/365
 # https://ratsgo.github.io/data%20structure&algorithm/2017/11/27/bellmanford/
 # https://ssungkang.tistory.com/entry/Algorithm-%EB%B2%A8%EB%A7%8C%ED%8F%AC%EB%93%9CBellman-Ford-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
