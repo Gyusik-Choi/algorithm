@@ -4,38 +4,43 @@ import sys
 def bellman_ford():
     for i in range(N - 1):
         for j in range(M):
-            start = bus_route[j][0]
-            end = bus_route[j][1]
-            time = bus_route[j][2]
-            if bf[start - 1] != INF and bf[end - 1] > bf[start - 1] + time:
-                bf[end - 1] = bf[start - 1] + time
+            start = routes[j][0]
+            end = routes[j][1]
+            value = routes[j][2]
 
-    # 음의 순환 검사
+            if distance[start] != INF and distance[end] > distance[start] + value:
+                distance[end] = distance[start] + value
+
     for i in range(1):
         for j in range(M):
-            start = bus_route[j][0]
-            end = bus_route[j][1]
-            time = bus_route[j][2]
-            if bf[start - 1] != INF and bf[end - 1] > bf[start - 1] + time:
-                return -1
+            start = routes[j][0]
+            end = routes[j][1]
+            value = routes[j][2]
+
+            if distance[start] != INF and distance[end] > distance[start] + value:
+                return False
+
+    return True
 
 
+# 정점, 간선
 N, M = map(int, sys.stdin.readline().split())
-bus_route = []
+routes = []
 for _ in range(M):
     A, B, C = map(int, sys.stdin.readline().split())
-    bus_route.append([A, B, C])
+    routes.append([A, B, C])
 
 INF = float('inf')
-bf = [INF] * N
-bf[0] = 0
-
+distance = [INF] * (N + 1)
+distance[1] = 0
 answer = bellman_ford()
-if answer == -1:
+
+if not answer:
     sys.stdout.write(str(-1) + "\n")
 else:
-    for i in range(1, N):
-        if bf[i] == INF:
+    for k in range(2, N + 1):
+        # 갈 수 없는 루트도 존재할 수 있다
+        if distance[k] == INF:
             sys.stdout.write(str(-1) + "\n")
         else:
-            sys.stdout.write(str(bf[i]) + "\n")
+            sys.stdout.write(str(distance[k]) + "\n")
