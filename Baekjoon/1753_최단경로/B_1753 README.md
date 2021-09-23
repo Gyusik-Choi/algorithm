@@ -10,3 +10,12 @@
 
 <br>
 
+자바스크립트로 풀이했을때 typeError가 계속해서 발생했다. 원인은 smallestIdx 기본값으로 설정한 -1이 갱신되지 못하고 routes[smallestIdx].length를 조회하게 되는 경우가 발생했다. 그래프에서 갈 수 없는 정점만 남았을때 smallestIdx는 갱신되지 못하는데 이 부분을 간과했다.
+
+그리고 selected[smallestIdx] = true 에서 걸리지 않은 이유는 너무나 자유로운 자바스크립트가
+
+```
+[ false, false, false, true, '-1': true ]
+```
+
+이렇게 배열을 변형시켜 버리기 때문에 여기서는 에러가 발생하지 않았다.
