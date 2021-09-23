@@ -11,6 +11,8 @@ class MinHeap:
             if self.arr[idx // 2] > self.arr[idx]:
                 self.arr[idx // 2], self.arr[idx] = self.arr[idx], self.arr[idx // 2]
                 idx //= 2
+            else:
+                break
 
     def remove(self):
         self.arr[1], self.arr[-1] = self.arr[-1], self.arr[1]
