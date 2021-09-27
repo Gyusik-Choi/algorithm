@@ -1,4 +1,4 @@
-const dijkstra = function(departure, ways) {
+const dijkstra = function(n, departure, ways) {
     let distance = new Array(n + 1).fill(Infinity)
     let selected = new Array(n + 1).fill(false)
 
@@ -48,7 +48,7 @@ const T = parseInt(input[0])
 // s -> 교차로1 -> 교차로2 -> 목적지
 // s -> 교차로2 -> 교차로1 -> 목적지
 
-// s 기준 다익스트라를 통해 구한 목적지까지의 거리와 같거나 더 가까워야 가능한 후보로 인정
+// s 기준 다익스트라를 통해 구한 목적지까지의 거리와 같아야 가능한 후보로 인정
 
 // 총 다익스트라 3회
 // => s로 다익스트라 한번돌기
@@ -58,8 +58,8 @@ const T = parseInt(input[0])
 // 입력부터 쉽지 않다...
 // 파이썬이라면 훨씬 편하게 입력 받았을텐데...
 // 입력만 70줄이 넘는다
+let start = null
 for (let i = 0; i < T; i++) {
-    let start = null
 
     let nmt = null
     let n = null
@@ -103,9 +103,9 @@ for (let i = 0; i < T; i++) {
             candidates.push(candidate)
         }
 
-        const ds = dijkstra(s, routes)
-        const dg = dijkstra(g, routes)
-        const dh = dijkstra(h, routes)
+        const ds = dijkstra(n, s, routes)
+        const dg = dijkstra(n, g, routes)
+        const dh = dijkstra(n, h, routes)
 
         let answer = []
         candidates.forEach((candidate) => {
@@ -113,12 +113,13 @@ for (let i = 0; i < T; i++) {
             const second = ds[h] + dh[g] + dg[candidate]
 
             const smallerDistanceValue = Math.min(first, second)
-            if (smallerDistanceValue != Infinity && smallerDistanceValue < ds[candidate]) {
-                answer.push(smallerDistanceValue)
+            if (smallerDistanceValue != Infinity && smallerDistanceValue === ds[candidate]) {
+                answer.push(candidate)
             }
         })
-
+        
         start += 3 + m + t
+        console.log(answer.sort((a, b) => a - b).join(' '))
     // 테스트케이스 두번째부터
     } else {
         nmt = input[start].split(' ').map(v => parseInt(v))
@@ -148,11 +149,22 @@ for (let i = 0; i < T; i++) {
             candidates.push(candidate)
         }
 
-        const ds = dijkstra(s, routes)
-        const dg = dijkstra(g, routes)
-        const dh = dijkstra(h, routes)
+        const ds = dijkstra(n, s, routes)
+        const dg = dijkstra(n, g, routes)
+        const dh = dijkstra(n, h, routes)
 
-        start += 2 + k + m
+        let answer = []
+        candidates.forEach((candidate) => {
+            const first = ds[g] + dg[h] + dh[candidate]
+            const second = ds[h] + dh[g] + dg[candidate]
+
+            const smallerDistanceValue = Math.min(first, second)
+            if (smallerDistanceValue != Infinity && smallerDistanceValue === ds[candidate]) {
+                answer.push(candidate)
+            }
+        })
+
+        start += 2 + t + m
+        console.log(answer.sort((a, b) => a - b).join(' '))
     }
-
 }
