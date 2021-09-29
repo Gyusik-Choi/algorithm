@@ -40,10 +40,10 @@ distance[1] = 0
 
 ```python
 for i in range(1):
-  for j in range(4):
-    start = distance[j][0]
-    end = distance[j][1]
-    value = distance[j][2]
+  for j in range(3):
+    start = routes[j][0]
+    end = routes[j][1]
+    value = routes[j][2]
     
     if distance[start] != INF and distance[end] > distance[start] + value:
       distance[end] = distance[start] + value
