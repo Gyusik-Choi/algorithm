@@ -1,28 +1,28 @@
 const MinHeap = function() {
     this.arr = [null]
 
-    this.insert = function(item) {
+    MinHeap.prototype.insert = function(item) {
         this.arr.push(item)
-
+    
         let idx = this.arr.length - 1
         while (idx > 1) {
-            if (this.arr[Math.floor(idx / 2)] > this.arr[idx]) {
+            if (this.arr[Math.floor(idx / 2)][0] > this.arr[idx][0]) {
                 let temp = this.arr[idx]
                 this.arr[idx] = this.arr[Math.floor(idx / 2)]
                 this.arr[Math.floor(idx / 2)] = temp
-
+    
                 idx = Math.floor(idx / 2)
             } else {
                 break
             }
         }
     }
-
-    this.remove = function() {
+    
+    MinHeap.prototype.remove = function() {
         if (this.arr.length < 2) {
             return
         }
-
+    
         if (this.arr.length < 3) {
             const item = this.arr.pop()
             return item
@@ -31,32 +31,32 @@ const MinHeap = function() {
         let temp = this.arr[this.arr.length - 1]
         this.arr[this.arr.length - 1] = this.arr[1]
         this.arr[1] = temp
-
+    
         const item = this.arr.pop()
         this.minHeapify(1)
         return item
     }
-
-    this.minHeapify = function(idx) {
+    
+    MinHeap.prototype.minHeapify = function(idx) {
         let parentIdx = idx
-        let leftChildIdx = idx * 2
-        let rightChildIdx = idx * 2 + 1
-
-        if (parentIdx * 2 < this.arr.length && this.arr[parentIdx] > this.arr[leftChildIdx]) {
-            parentIdx = leftChildIdx
-        } 
-
-        if (parentIdx * 2 + 1 < this.arr.length && this.arr[parentIdx] > this.arr[rightChildIdx]) {
-            parentIdx = rightChildIdx
-        }
-
-        if (parentIdx != idx) {
-            let temp = this.arr[parentIdx]
-            this.arr[parentIdx] = this.arr[idx]
-            this.arr[idx] = temp
-
-            this.minHeapify(parentIdx)
-        }
+            let leftChildIdx = idx * 2
+            let rightChildIdx = idx * 2 + 1
+    
+            if (parentIdx * 2 < this.arr.length && this.arr[parentIdx][0] > this.arr[leftChildIdx][0]) {
+                parentIdx = leftChildIdx
+            } 
+    
+            if (parentIdx * 2 + 1 < this.arr.length && this.arr[parentIdx][0] > this.arr[rightChildIdx][0]) {
+                parentIdx = rightChildIdx
+            }
+    
+            if (parentIdx != idx) {
+                let temp = this.arr[parentIdx]
+                this.arr[parentIdx] = this.arr[idx]
+                this.arr[idx] = temp
+    
+                return this.minHeapify(parentIdx)
+            }
     }
 }
 
@@ -103,9 +103,9 @@ for (let i = 0; i < T; i++) {
         const start = vertex[0]
         const price = vertex[1]
         const time = vertex[2]
-
-        if (start === N) {
-            break
+        
+        if (dp[start][price] < time) {
+            continue
         }
 
         arr[start].forEach((item) => {
@@ -118,24 +118,20 @@ for (let i = 0; i < T; i++) {
 
             if (nextPrice > M) {
                 return
-                // continue
-                // forEach는 continue 안 된다
             }
 
-            if (dp[e][nextPrice] < nextTime) {
+            if (dp[e][nextPrice] <= nextTime) {
                 return
-                // continue
-                // forEach는 continue 안 된다
             }
 
-            if (dp[e][nextPrice] > nextTime) {
-                for (let k = nextPrice; k <= M; k++) {
-                    if (dp[e][k] > nextTime) {
-                        dp[e][k] = nextTime
-                    }
+            for (let k = nextPrice; k <= M; k++) {
+                if (dp[e][k] > nextTime) {
+                    dp[e][k] = nextTime
+                } else {
+                    break
                 }
-                mh.insert([e, nextPrice, nextTime])
             }
+            mh.insert([e, nextPrice, nextTime])
         })
     }
     
@@ -146,7 +142,10 @@ for (let i = 0; i < T; i++) {
     }
     idx += 1 + K
 }
-// 총 지원비용 안에서 최단 시간 구하기
 
 // 참고
 // https://maivve.tistory.com/226
+// https://kibbomi.tistory.com/178
+// https://www.acmicpc.net/source/26477152
+// https://www.acmicpc.net/board/view/63079
+// https://www.acmicpc.net/source/25869168
