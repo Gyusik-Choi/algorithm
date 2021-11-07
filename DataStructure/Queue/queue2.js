@@ -23,7 +23,7 @@ Queue.prototype.enQueue = function(item) {
         this.head = new Node(item)
         this.tail = this.head
     } else {
-        let tail = Pthis.tail
+        let tail = this.tail
         this.tail = new Node(item, tail)
         tail.next = this.tail
     }
@@ -35,16 +35,13 @@ Queue.prototype.deQueue = function() {
         console.log("queue is empty")
         return
     } else {
-        let popNode = ''
-        // 이 코드로 큐에 숫자가 1개만 있을 때를 다루려고 했으나 여러개 있어도 맨앞과 맨뒤의 숫자가 같으면 걸릴 수 있으므로 좋지 않은 코드라고 생각해서 수정했다
+        const popNode = this.head.value
         // length 프로퍼티를 추가해서 보다 명료하게 숫자가 1개만 있는 경우를 나타내도록 했다
-        // if (this.head.val === this.tail.val) {
+        // if (this.head === this.tail) {
         if (this.length === 1) {
-            popNode = this.head
             this.head = this.head.next
             this.tail = this.head
         } else {
-            popNode = this.head
             this.head = this.head.next
             this.head.prev = null
         }
