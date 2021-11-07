@@ -29,7 +29,7 @@ Queue.prototype.enQueue = function(value) {
 }
 
 Queue.prototype.deQueue = function() {
-  if (!this.isEmpty()) {
+  if (this.isEmpty() === false) {
     const popNumber = this.head.value
     if (this.head === this.tail) {
       this.head = new Node(null)
@@ -63,9 +63,9 @@ const isZero = function() {
   return false
 }
 
-const bfs = function(z, y, x) {
+const bfs = function(candidates) {
   let q = new Queue()
-  q.enQueue([z, y, x])
+  candidates.forEach((candidate) => q.enQueue(candidate))
 
   const zDirection = [-1, 1, 0, 0, 0, 0]
   const yDirection = [0, 0, -1, 0, 1, 0]
@@ -105,20 +105,27 @@ for (let i = 0; i < H; i++) {
       oneBox.push(box) 
   }
 
-  idx += 3
+  idx += N
   fullBoxes.push(oneBox)
 }
 
-let maxDays = 0
+let maxDays = 1
+let bfsCandidates = []
 for (let i = 0; i < H; i++) {
   for (let j = 0; j < N; j++) {
       for (let k = 0; k < M; k++) {
           if (fullBoxes[i][j][k] === 1) {
-              bfs(i, j, k)
+              bfsCandidates.push([i, j, k])
           }
       }
   }
 }
 
-console.log(isZero() ? -1 : maxDays - 1)
-
+// dfs가 아니라 bfs다
+// 1인 숫자가 나올때마다 bfs를 바로 실행시키면 너비 우선 탐색인 bfs가 제대로 동작하지 못한다
+// 1인 숫자들을 모아서 한번에 bfs를 실행해야 먼저 들어간 1인 숫자들이 하나씩 큐에서 나오면서 bfs를 제대로 실행시킬 수 있다
+// 이 문제에서 오답이 나왔던 이유 중 하나가 위의 bfsCandidates.push([i, j, k]) 코드 부분을 bfs(i, j, k)로 수행했기 때문이다
+// 현재는 위와 같이 수정하여 1인 정보들을 모아서 bfs를 실행할때 인자로 넣어준다
+bfs(bfsCandidates)
+const result = isZero()
+console.log(result === true ? -1 : maxDays - 1)
