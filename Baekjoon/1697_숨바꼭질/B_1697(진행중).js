@@ -1,3 +1,8 @@
+// 추가할 사항
+// 방문체크 배열을 통해 중복된 요소가 큐에 들어가는 것을 막아주기
+// https://chanhuiseok.github.io/posts/baek-14/
+// https://hsp1116.tistory.com/20
+
 const Node = function(value, next = null) {
   this.value = value
   this.next = next
