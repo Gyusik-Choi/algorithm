@@ -45,13 +45,21 @@ Queue.prototype.deQueue = function() {
   }
 }
 
-const bfs = function(n, k) {
+const bfs = function(n, sister) {
   const q = new Queue()
-  q.enQueue([n, k, 0])
+  q.enQueue([n, 0])
+  let visited = new Array(100001).fill(false)
+  visited[n] = true
 
   while (q) {
-    const [soobin, sister, seconds] = q.deQueue()
+    // let [soobin, seconds] = q.deQueue()
+    // 위의 경우 for문 바깥에 soobin이 있기 때문에 for문을 돌때마다 값이 누적돼서 변경이 되므로 for문 안에서 soobin을 선언했다
+    const item = q.deQueue()
+    
     for (let i = 0; i < 3; i++) {
+      let soobin = item[0]
+      let seconds = item[1]
+    
       if (soobin - 1 === sister || soobin + 1 === sister || soobin * 2 === sister) {
         return seconds + 1
       }
@@ -60,11 +68,16 @@ const bfs = function(n, k) {
       // seconds += 1
 
       if (i === 0) {
-        q.enQueue([soobin - 1, sister, seconds + 1])
+        soobin -= 1
       } else if (i === 1) {
-        q.enQueue([soobin + 1, sister, seconds + 1])
+        soobin += 1
       } else {
-        q.enQueue([soobin * 2, sister, seconds + 1])
+        soobin *= 2
+      }
+
+      if (0 <= soobin && soobin <= 100000 && visited[soobin] === false) {
+        visited[soobin] = true
+        q.enQueue([soobin, seconds + 1])
       }
     }
   }
