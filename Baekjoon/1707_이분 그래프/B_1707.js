@@ -20,7 +20,7 @@ for (let i = 0; i < K; i++) {
     }
 
     Queue.prototype.enQueue = function(value) {
-        if (this.isEmpty() === true) {
+        if (this.isEmpty()) {
             this.head = new Node(value)
             this.tail = this.head
         } else {
@@ -45,15 +45,16 @@ for (let i = 0; i < K; i++) {
         }
     }
 
-    const bfs = function() {
+    const bfs = function(number) {
         const q = new Queue()
-        q.enQueue(1)
-        bipartiteGraph[1] = 1
+        q.enQueue(number)
+        bipartiteGraph[number] = 1
 
         while (q.isEmpty() === false) {
             const start = q.deQueue()
             
             if (edges[start].length > 0) {
+                // forEach는 루프를 도는 중간에 return으로 빠져나올 수 없다
                 // edges[start].forEach((vertex) => {
                 const go = edges[start]
                 const edgesLength = edges[start].length
@@ -92,6 +93,7 @@ for (let i = 0; i < K; i++) {
     let bipartiteGraph = new Array(V + 1).fill(0)
     let flag = true
 
+    // 모두 연결되어 있지 않을 수 있다
     for (let m = 1; m <= V; m++) {
         if (bipartiteGraph[m] === 0) {
             answer = bfs(m)
