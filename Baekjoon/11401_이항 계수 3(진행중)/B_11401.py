@@ -1,4 +1,33 @@
+def divide_and_conquer(base, exponent):
+    if exponent == 1:
+        return base % 1000000007
+
+    new_base = divide_and_conquer(base, exponent // 2)
+
+    if exponent % 2 == 1:
+        return new_base * new_base * base % 1000000007
+    return new_base * new_base % 1000000007
+
+
+def factorial(num):
+    sums = 1
+
+    while num > 0:
+        sums *= num
+        sums %= 1000000007
+        num -= 1
+
+    return sums
+
+
 N, K = map(int, input().split())
+
+numerator = factorial(N)
+K_sums = factorial(K)
+NK_sums = factorial(N - K)
+denominator = K_sums * NK_sums % 1000000007
+inverse = divide_and_conquer(denominator, 1000000007 - 2)
+print(numerator * inverse % 1000000007)
 
 # 이 문제를 풀기 위해 필요한 수학 개념들
 # 항
