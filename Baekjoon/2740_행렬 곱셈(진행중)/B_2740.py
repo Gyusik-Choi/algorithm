@@ -4,3 +4,15 @@
 # 이름만 들어본 선형대수학이 행렬과 관련있는 분야라는 것도 처음 알게 됐다
 # https://ko.wikipedia.org/wiki/%ED%96%89%EB%A0%AC
 # https://gosamy.tistory.com/3
+
+# 행렬곱셈
+# 행렬 a(2 * 3)와 b(3 * 2)를 곱하면
+# (2 * 2)의 행렬이 된다
+# 행렬 곱셈한 결과는 앞 행렬의 행 크기 * 뒤 행렬의 열 크기가 된다
+# 행렬 곱셈은 특정 조건이 성립해야 가능하다
+# A(a * b) * B(c * d) A와 B 행렬을 곱하려면
+# b와 c가 같아야 가능하다
+
+# https://st-lab.tistory.com/245
+# https://mathbang.net/562
+# https://m.blog.naver.com/junhyuk7272/50128686426
