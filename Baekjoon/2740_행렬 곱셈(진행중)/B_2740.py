@@ -1,3 +1,30 @@
+import sys
+
+
+N, M1 = map(int, sys.stdin.readline().split())
+a = []
+for i in range(N):
+    a.append(list(map(int, sys.stdin.readline().split())))
+
+M2, K = map(int, sys.stdin.readline().split())
+b = []
+for i in range(M2):
+    b.append(list(map(int, sys.stdin.readline().split())))
+
+answer = [[0] * K for _ in range(N)]
+for i in range(N):
+    for j in range(K):
+        for k in range(M1):
+            answer[i][j] += a[i][k] * b[k][j]
+
+for i in range(N):
+    print(*answer[i])
+# for i in range(N):
+#     for j in range(K):
+#         sys.stdout.write(str(answer[i][j]) + " ")
+#     sys.stdout.write("\n")
+
+
 # 행렬
 # 고등학생 이후로 거의 본적이 없던 행렬을 오랫만에 다시 만나게 됐다
 # 문제를 풀기에 앞서 행렬에 대해서 다시 학습해보려 한다
