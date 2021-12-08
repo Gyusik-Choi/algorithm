@@ -9,6 +9,7 @@ for (let i = 1; i <= n; i++) {
     triangle.push(nums)
 }
 
+// 추가적으로 dp 배열을 만들지 않고 triangle 배열에 더해나간다
 for (let i = 1; i < n; i++) {
     const leng = triangle[i].length
     for (let j = 0; j < leng; j++) {
