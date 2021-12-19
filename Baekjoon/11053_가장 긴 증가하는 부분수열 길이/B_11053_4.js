@@ -2,7 +2,9 @@ const binarySearch = function(start, end, num) {
     const mid = Math.floor((start + end) / 2)
 
     // 탈출 조건이 핵심
-    if (start === mid) {
+    // if (start === mid) {
+    // 위의 조건은 num이 가장 작을 경우를 고려하지 못한다
+    if (start === end) {
         return end
     }
 
@@ -36,12 +38,3 @@ for (let i = 1; i < N; i++) {
 }
 
 console.log(dp.length)
-
-// 10 20 30 25 50 40
-
-// 25일때
-
-// 10 20 30
-// mid 1 => 20 < 25
-// binarySearch()
-// mid 0
