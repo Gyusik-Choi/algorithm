@@ -30,4 +30,4 @@ DP로 분류된 문제인데 어떻게 DP를 접목해야할지 잘 캐치하지
 
 <br>
 
-[참고][https://sihyungyou.github.io/baekjoon-2565/]
+[참고](https://sihyungyou.github.io/baekjoon-2565/)
