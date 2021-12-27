@@ -12,29 +12,15 @@ const [N, K] = input[0].split(' ').map(v => Number(v))
 let packages = []
 
 for (let i = 1; i <= N; i++) {
-    const package = input[i].split(' ').map(v => Number(v))
-    packages.push(package)
-}
+    const [weight, value] = packages[i - 1]
 
-let dp = new Array(N + 1).fill(0).map(v => new Array(K + 1).fill(0))
-for (let j = 1; j <= K; j++) {
-    if () {
-        dp[1][j] = packages[0][1]
-    } else {
-        dp[1][j] = dp[1][j - 1]
-    }
-}
-
-if (N > 1) {
-    for (let i = 2; i <= N; i++) {
-        for (let j = 1; j <= K; j++) {
-            if () {
-                dp[i][j] = dp[i - 1][j - packages[i - 1][0]] + packages[i - 1][1]
-            } else {
-                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])
-            }
+    for (let j = 1; j <= K; j++) {
+        if (weight <= j) {
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - weight] + value)
+        } else {
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])
         }
     }
 }
 
-console.log(dp)
+console.log(dp[N][K])
