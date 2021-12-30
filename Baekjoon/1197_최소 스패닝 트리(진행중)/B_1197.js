@@ -84,14 +84,16 @@ while (minHeap.arr.length > 1) {
     if (!mst[start]) {
         mst[start] = true
         answer += value
-
-        edges[start].forEach((edge) => {
-            const [end, val] = edge
-            if (!mst[end] && key[end] > val) {
-                key[end] = val
-                minHeap.heapPush([val, end])
-            }
-        })
+        
+        if (edges[start].length > 0) {
+            edges[start].forEach((edge) => {
+                const [end, val] = edge
+                if (!mst[end] && key[end] > val) {
+                    key[end] = val
+                    minHeap.heapPush([val, end])
+                }
+            })
+        }
     }
 }
 
