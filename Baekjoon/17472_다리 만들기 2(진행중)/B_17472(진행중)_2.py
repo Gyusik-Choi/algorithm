@@ -1,3 +1,5 @@
+# 계속 디버깅 중인데 해결이 잘 되질 않는다...
+# 그렇지만 해결을 하고 싶고, 해결하기 위해 더 파볼 계획이다
 from collections import deque
 import heapq
 
