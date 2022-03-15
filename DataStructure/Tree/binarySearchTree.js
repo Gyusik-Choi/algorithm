@@ -12,6 +12,7 @@ const BinarySearchTree = function() {
     this.postOrderArr = [];
 }
 
+// 탐색
 BinarySearchTree.prototype.search = function(value) {
     if (this.head.value === value) {
         return true;
@@ -33,6 +34,7 @@ BinarySearchTree.prototype._search = function(cur, value) {
     }
 }
 
+// 추가
 BinarySearchTree.prototype.add = function(value) {
     if (this.head.value === null) {
         this.head.value = value;
@@ -57,6 +59,7 @@ BinarySearchTree.prototype._add = function(cur, value) {
     }
 }
 
+// 삭제
 BinarySearchTree.prototype.remove = function(value) {
     if (this.head.value === value) {
         if (this.head.left === null && this.head.right === null) {
@@ -113,6 +116,7 @@ BinarySearchTree.prototype._remove = function(parent, cur, value) {
     }
 }
 
+// 오른쪽 자식 트리 중 가장 왼쪽 노드 탐색
 BinarySearchTree.prototype.findMostLeftNodeFromRightChild = function(cur) {
     if (cur.left !== null) {
         return this.findMostLeftNodeFromRightChild(cur.left);
@@ -120,6 +124,7 @@ BinarySearchTree.prototype.findMostLeftNodeFromRightChild = function(cur) {
     return cur;
 }
 
+// 전위순회
 BinarySearchTree.prototype.preOrder = function() {
     if (this.head.value === null) {
         return false;
@@ -139,6 +144,7 @@ BinarySearchTree.prototype._preOrder = function(cur) {
     }
 }
 
+// 중위순회
 BinarySearchTree.prototype.inOrder = function() {
     if (this.head.value === null) {
         return false;
@@ -158,6 +164,7 @@ BinarySearchTree.prototype._inOrder = function(cur) {
     }
 }
 
+// 후위순회
 BinarySearchTree.prototype.postOrder = function() {
     if (this.head.value === null) {
         return false;
@@ -196,3 +203,5 @@ bst.add(19);
 bst.remove(15);
 bst.postOrder();
 console.log(bst.postOrderArr);
+
+// https://github.com/Gyusik-Choi/Algorithm/blob/master/DataStructure/Tree/binary_search_tree.py
