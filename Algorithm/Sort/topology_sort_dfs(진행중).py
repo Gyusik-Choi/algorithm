@@ -16,13 +16,14 @@ for _ in range(e):
 
 visited = [0] * (v + 1)
 stack = []
+
 for i in range(1, v + 1):
     if not visited[i]:
         visited[i] = 1
         dfs(i)
 
-for i in range(len(stack) - 1, -1, -1):
-    print(stack[i], end=" ")
+while stack:
+    print(stack.pop(), end=" ")
 print()
 
 # 7 8
