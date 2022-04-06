@@ -1,9 +1,7 @@
 def solution(s):
-    if len(s) == 1:
-        return 1
-
     arr_s = list(s)
-    min_length = float('inf')
+    # 글자수 보다 커질 수 없음
+    min_length = len(s)
     start = 1
 
     while start <= len(s) // 2:
