@@ -1,3 +1,6 @@
+from collections import deque
+
+
 def change_direction(current_direction, direction):
     if direction == 'L':
         return (current_direction - 1) % 4
@@ -14,11 +17,14 @@ def start_game(b):
 
     b[y_cur][x_cur] = 0
 
+    deq = deque()
+    deq.append([y_cur, x_cur])
+
     while True:
         cnt += 1
 
-        y_move = y_cur + y_axis[current]
-        x_move = x_cur + x_axis[current]
+        y_move = deq[-1][0] + y_axis[current]
+        x_move = deq[-1][1] + x_axis[current]
 
         # 벽에 부딪힘
         if 0 > y_move or y_move >= N or 0 > x_move or x_move >= N:
@@ -31,16 +37,14 @@ def start_game(b):
         if 0 <= y_move < N and 0 <= x_move < N:
             # 사과 없음
             if b[y_move][x_move] == 0:
-                b[y_cur][x_cur] = 0
+                y_past, x_past = deq.popleft()
+                b[y_past][x_past] = 0
+            deq.append([y_move, x_move])
             b[y_move][x_move] = 1
 
         # https://blockdmask.tistory.com/536
         if isinstance(direction_change_info[cnt], str):
             current = change_direction(current, direction_change_info[cnt])
-
-        # 현재 위치 수정
-        y_cur = y_move
-        x_cur = x_move
 
 
 N = int(input())
