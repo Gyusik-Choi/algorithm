@@ -7,7 +7,7 @@ def find_next_t_counter_clockwise(wall, last_idx):
     while idx < len(wall):
         i = (last_idx - idx) % len(wall)
 
-        if wall[i][1] == 0:
+        if wall[i][0] == 1 and wall[i][1] == 0:
             return i
 
         idx += 1
@@ -19,7 +19,7 @@ def find_next_t_clockwise(wall, last_idx):
     while idx < len(wall):
         i = (last_idx + idx) % len(wall)
 
-        if wall[i][1] == 0:
+        if wall[i][0] == 1 and wall[i][1] == 0:
             return i
 
         idx += 1
@@ -104,15 +104,36 @@ def solution(n, weak, dist):
         counter_clockwise_cnt = counter_clockwise(wall, w, dist)
         answer.append(counter_clockwise_cnt)
 
-    min_cnt = float('inf')
+    min_cnt = 201
     for a in answer:
         if a > 0:
             min_cnt = min(min_cnt, a)
 
-    if min_cnt == float('inf'):
+    if min_cnt == 201:
         return -1
     return min_cnt
 
 
 print(solution(12, [1, 5, 6, 10], [1, 2, 3, 4]))
 print(solution(12, [1, 3, 4, 9, 10], [3, 5, 7]))
+
+# print(solution(200, [0, 10, 50, 80, 120, 160], [1, 10, 5, 40, 30]))
+# => 3
+# print(solution(50, [1], [6]))
+# => 1
+# print(solution(30, [0, 3, 11, 21], [10, 4]))
+# => 2
+# print(solution(200, [0, 100], [1, 1]))
+# => 2
+# print(solution(12, [10, 0], [1, 2]))
+# => 1
+# print(solution(19, [0, 10], [9]))
+# => 1
+# print(solution(200, [1, 3, 5, 7, 9, 11], [1, 1, 1, 1, 1]))
+# => -1
+# print(solution(12, [4], [1, 2]))
+# => 1
+# print(solution(30, [0, 3, 11, 21], [10, 4]))
+# => 2
+
+# 테스트케이스 14번만 통과하지 못하고 있다
