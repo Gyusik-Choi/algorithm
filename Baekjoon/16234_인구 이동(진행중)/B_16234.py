@@ -9,8 +9,8 @@ def get_avg(can_move):
     for i, row in enumerate(can_move):
         for j, row_item in enumerate(row):
             if can_move[i][j]:
-                number_of_people += 1
                 sums += countries[i][j]
+                number_of_people += 1
 
     if not number_of_people:
         return 0
@@ -53,9 +53,11 @@ def bfs(start):
 
             if 0 <= y_idx < N and 0 <= x_idx < N:
                 if not visited[y_idx][x_idx]:
-                    if L <= countries[y][x] - countries[y_idx][x_idx] <= R:
+                    if L <= abs(countries[y][x] - countries[y_idx][x_idx]) <= R:
                         can_move_cnt += 1
                         deq.append([y_idx, x_idx, 1])
+                    else:
+                        deq.append([y_idx, x_idx, 0])
 
         if can_move_cnt > 0:
             can_move[y][x] = True
