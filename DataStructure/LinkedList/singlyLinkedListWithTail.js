@@ -39,7 +39,7 @@ SinglyLinkedList.prototype.remove = function() {
         } else {
             let cur = this.head
 
-            // doubleLinkedList 였다면 tail에서 prev를 끝어주고 prev에서 next를 null로 바꾸면 되지만
+            // doubleLinkedList 였다면 tail에서 prev를 끊어주고 prev에서 next를 null로 바꾸면 되지만
             // singlyLinkedList는 맨 마지막 node의 바로 앞 node를 찾아서 next를 null로 해야하므로
             // head에서 부터 순차적으로 가야한다
             while (cur.next.next !== null) {
