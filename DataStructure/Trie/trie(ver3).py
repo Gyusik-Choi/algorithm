@@ -66,6 +66,7 @@ trie.insert('BCD')
 trie.insert('ACD')
 trie.insert('ADG')
 # starts_with 함수는 BAC 를 찾을 수 없다
+# 이게 trie 자료구조 자체의 특성상 어쩔 수 없는 부분일 수 있으나
 # 추후에 start_with 외에 특정 단어로 시작하는 경우 외에
 # 특정 단어가 들어간 단어들을 찾는 함수를 작성해보고 싶다
 trie.insert('BAC')
