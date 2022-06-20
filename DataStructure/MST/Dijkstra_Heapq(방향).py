@@ -29,6 +29,7 @@ heap = []
 heapq.heappush(heap, (0, 0))
 
 while heap:
+    print(heap)
     # 가중치 가장 작은 노드 찾기
     start_value, start = heapq.heappop(heap)
     if selected[start]:

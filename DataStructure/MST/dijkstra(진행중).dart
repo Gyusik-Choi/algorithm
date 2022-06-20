@@ -1,5 +1,3 @@
-import 'dart:math';
-
 // 최소힙으로 구현
 class Heap {
   List<List<int>> arr = [[0]];
@@ -73,8 +71,8 @@ List<int> dijksra(int n, Map<int, List<List<int>>> nodes) {
 
 
   List<int> distances = [];
+  int maxNum = 10000;
   for (int i = 0; i < n; i++) {
-    int maxNum = 10000;
     distances.add(maxNum);
   }
 
@@ -84,8 +82,8 @@ List<int> dijksra(int n, Map<int, List<List<int>>> nodes) {
   minHeap.heapPush([0, 0]);
 
   while (minHeap.arr.length > 1) {
+    print(minHeap.arr);
     List<int> popedNum = minHeap.heapPop();
-    int distance = popedNum[0];
     int start = popedNum[1];
 
     if (selected[start]) {
@@ -94,15 +92,17 @@ List<int> dijksra(int n, Map<int, List<List<int>>> nodes) {
 
     selected[start] = true;
 
-    for (int i = 0; i < nodes[start]!.length; i++) {
-      List<int> endNode = nodes[start]![i];
-      int end = endNode[0];
-      int value = endNode[1];
+    if (nodes[start] != null) {
+      for (int i = 0; i < nodes[start]!.length; i++) {
+        List<int> endNode = nodes[start]![i];
+        int end = endNode[0];
+        int value = endNode[1];
 
-      if (!selected[end]) {
-        if (distances[end] > distances[start] + value) {
-          distances[end] = distances[start] + value;
-          minHeap.heapPush([distances[end], end]);
+        if (!selected[end]) {
+          if (distances[end] > distances[start] + value) {
+            distances[end] = distances[start] + value;
+            minHeap.heapPush([distances[end], end]);
+          }
         }
       }
     }
@@ -117,16 +117,28 @@ void main() {
 
   Map<int, List<List<int>>> nodes = Map();
   
-  List<List<int>> endAndDistances = [[0, 1, 3], [0, 2, 5], [1, 2, 2], [1, 3, 6], [2, 1, 1], [2, 3, 4], [2, 4, 6], [3, 4, 2], [3, 5, 3], [4, 0, 3], [4, 5, 6]];
+  List<List<int>> endAndDistances = [
+    [0, 1, 3], 
+    [0, 2, 5], 
+    [1, 2, 2], 
+    [1, 3, 6], 
+    [2, 1, 1], 
+    [2, 3, 4], 
+    [2, 4, 6], 
+    [3, 4, 2], 
+    [3, 5, 3], 
+    [4, 0, 3], 
+    [4, 5, 6],
+  ];
 
   for (int i = 0; i < endAndDistances.length; i++) {
     List<int> endAndDistance = endAndDistances[i];
     int key = endAndDistance[0];
 
     if (!nodes.containsKey(key)) {
-      nodes[key] = [endAndDistance];
+      nodes[key] = [[endAndDistance[1], endAndDistance[2]]];
     } else {
-      nodes[key]!.add(endAndDistance);
+      nodes[key]!.add([endAndDistance[1], endAndDistance[2]]);
     }
   }
 
