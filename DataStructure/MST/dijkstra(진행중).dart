@@ -33,8 +33,10 @@ class Heap {
     arr[arr.length - 1] = arr[1];
     arr[1] = temp;
 
+    // 제거를 한 후 heapify 를 호출해야 함
+    List<int> popedNum = arr.removeLast();
     heapify(1);
-    return arr.removeLast();
+    return popedNum;
   }
 
   void heapify(int idx) {
@@ -82,7 +84,6 @@ List<int> dijksra(int n, Map<int, List<List<int>>> nodes) {
   minHeap.heapPush([0, 0]);
 
   while (minHeap.arr.length > 1) {
-    print(minHeap.arr);
     List<int> popedNum = minHeap.heapPop();
     int start = popedNum[1];
 
