@@ -24,6 +24,12 @@ x, y, z를 각각 구하면 겹치는 경우가 발생하는 부분은 어떻게
 
 <br>
 
+크루스칼 알고리즘 뿐만 아니라 프림 알고리즘으로도 풀이 가능한 문제다 (해당 문제가 구글링이나 백준 질문에서도 크루스칼 알고리즘이 많이 소개돼서 프림 알고리즘으로는 안되는 것인가 의문이 들었는데 이에 대한 [질문](https://www.acmicpc.net/board/view/32626)이 있었다.
+
+<br>
+
 참고
 
  https://chanhuiseok.github.io/posts/baek-34/
+
+https://www.acmicpc.net/board/view/32626
