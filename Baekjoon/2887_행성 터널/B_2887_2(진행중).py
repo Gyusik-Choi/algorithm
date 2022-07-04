@@ -52,12 +52,18 @@ planets_z.sort()
 planets_dict = {i: [] for i in range(N)}
 
 for i in range(N - 1):
-    planets_dict[planets_x[i][1]].append([planets_x[i + 1][1], planets_x[i + 1][0] - planets_x[i][0]])
-    planets_dict[planets_y[i][1]].append([planets_y[i + 1][1], planets_y[i + 1][0] - planets_y[i][0]])
-    planets_dict[planets_z[i][1]].append([planets_z[i + 1][1], planets_z[i + 1][0] - planets_z[i][0]])
-    planets_dict[planets_x[i + 1][1]].append([planets_x[i][1], planets_x[i + 1][0] - planets_x[i][0]])
-    planets_dict[planets_y[i + 1][1]].append([planets_y[i][1], planets_y[i + 1][0] - planets_y[i][0]])
-    planets_dict[planets_z[i + 1][1]].append([planets_z[i][1], planets_z[i + 1][0] - planets_z[i][0]])
-
+    min_val = min(planets_x[i + 1][0] - planets_x[i][0], planets_y[i + 1][0] - planets_y[i][0], planets_z[i + 1][0] - planets_z[i][0])
+    planets_dict[planets_x[i][1]].append([planets_x[i + 1][1], min_val])
+    planets_dict[planets_y[i][1]].append([planets_y[i + 1][1], min_val])
+    planets_dict[planets_z[i][1]].append([planets_z[i + 1][1], min_val])
+    planets_dict[planets_x[i + 1][1]].append([planets_x[i][1], min_val])
+    planets_dict[planets_y[i + 1][1]].append([planets_y[i][1], min_val])
+    planets_dict[planets_z[i + 1][1]].append([planets_z[i][1], min_val])
+print(planets_dict)
 print(mst_prim())
 
+# {0: [[1, 10], [1, 0], [3, 1], [1, 3]], 1: [[0, 10], [0, 0], [3, 1], [2, 10], [0, 3], [4, 5]], 2: [[3, 11], [1, 10], [3, 4], [4, 3]], 3: [[2, 11], [0, 1], [1, 1], [4, 0], [2, 4], [4, 20]], 4: [[3, 0], [2, 3], [1, 5], [3, 20]]}
+# {0: [[1, 0], [1, 0], [3, 1], [1, 0]], 1: [[0, 0], [0, 0], [3, 1], [2, 1], [0, 0], [4, 3]], 2: [[3, 0], [1, 1], [3, 0], [4, 3]], 3: [[2, 0], [0, 1], [1, 1], [4, 0], [2, 0], [4, 3]], 4: [[3, 0], [2, 3], [1, 3], [3, 3]]}
+
+# [[(0, 1), (0, 1), (1, 3), (0, 1)], [(0, 0), (0, 0), (1, 3), (4, 2), (0, 0), (1, 4)], [(3, 3), (4, 1), (3, 3), (3, 4)], [(3, 2), (1, 0), (1, 1), (0, 4), (3, 2), (0, 4)], [(0, 3), (1, 1), (3, 2), (0, 3)]]
+# https://2hs-rti.tistory.com/entry/백준-2887번-행성-터널-파이썬
