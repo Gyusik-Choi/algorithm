@@ -1,36 +1,22 @@
+# 위상정렬에서 dfs 접근 방식은
+# 진입 차수를 활용하는 bfs 와 다르다
+
 import sys
 
 
-def dfs_recursion(i, visited):
-    visited.append(str(i))
-    for question in questions[i]:
-        if level[question] - 1 == 0 and question not in visited:
-            level[question] -= 1
-            dfs_recursion(question, visited)
-
-    return visited
+def dfs_recursion():
+    pass
 
 
 def topology_sort():
-    visited = []
-    for i in range(1, N + 1):
-        if not level[i]:
-            if i not in visited:
-                visited += dfs_recursion(i, [])
-
-    return ' '.join(visited)
+    pass
 
 
 N, M = map(int, sys.stdin.readline().split())
 questions = {i: [] for i in range(1, N + 1)}
-level = [0] * (N + 1)
 for _ in range(M):
     A, B = map(int, sys.stdin.readline().split())
     questions[A].append(B)
-    level[B] += 1
-
-for key in questions.keys():
-    questions[key].sort()
 
 print(topology_sort())
 
@@ -55,3 +41,6 @@ print(topology_sort())
 # 6 1
 # 1 3
 # => 5 2 4 6 1 3
+
+# https://reakwon.tistory.com/140
+# https://sorjfkrh5078.tistory.com/36
