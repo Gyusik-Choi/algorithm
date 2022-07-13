@@ -1,19 +1,22 @@
+import copy
 import sys
 from collections import deque
 
 
 def bfs(q):
-    max_time = 0
+    work_time_original = copy.deepcopy(work_time)
+
     while q:
-        work, time = q.popleft()
-        max_time = max(max_time, time)
+        work = q.popleft()
 
         for next_work in work_schedule[work]:
             work_level[next_work] -= 1
-            if not work_level[next_work]:
-                q.append([next_work, max_time + work_time[next_work]])
+            work_time[next_work] = max(work_time[next_work], work_time[work] + work_time_original[next_work])
 
-    return max_time
+            if not work_level[next_work]:
+                q.append(next_work)
+
+    return max(work_time)
 
 
 def topology_sort():
@@ -21,7 +24,7 @@ def topology_sort():
 
     for k in range(1, N + 1):
         if not work_level[k]:
-            deq.append([k, work_time[k]])
+            deq.append(k)
 
     return bfs(deq)
 
@@ -54,3 +57,6 @@ print(topology_sort())
 # 1 1 1
 # 1 2 3 4
 # => 10
+
+# https://gmlwjd9405.github.io/2018/08/27/algorithm-topological-sort.html
+# https://steady-coding.tistory.com/182
