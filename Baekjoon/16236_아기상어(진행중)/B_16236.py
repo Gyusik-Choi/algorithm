@@ -1,109 +1,75 @@
+import sys
 from collections import deque
 
 
-def after_bfs():
-    global total_distance, fish, shark_size, shark_y, shark_x
+def bfs(s_y, s_x):
+    q = deque([(s_y, s_x, 0)])
 
-    if min_y != max_y and min_x != max_x:
-        total_distance += distance[min_y][min_x]
-        fish += 1
+    dy = [-1, 0, 1, 0]
+    dx = [0, 1, 0, -1]
 
-        if fish == shark_size:
-            fish = 0
-            shark_size += 1
+    dist_list = []
+    visited = [[False] * n for _ in range(n)]
+    visited[s_y][s_x] = True
+    min_dist = int(1e9)
 
-        sea[min_y][min_x] = 0
-        shark_y = min_y
-        shark_x = min_x
-        return True
-
-    return False
-
-
-def bfs(y, x):
-    global min_distance, min_y, min_x
-
-    distance[y][x] = 0
-
-    deq = deque()
-    deq.append([y, x])
-
-    y_direction = [-1, 0, 1, 0]
-    x_direction = [0, 1, 0, -1]
-
-    while deq:
-        y_idx, x_idx = deq.popleft()
-
+    while q:
+        y, x, dist = q.popleft()
         for k in range(4):
-            y_axis = y_idx + y_direction[k]
-            x_axis = x_idx + x_direction[k]
+            y_idx = dy[k] + y
+            x_idx = dx[k] + x
+            if 0 <= y_idx < n and 0 <= x_idx < n and not visited[y_idx][x_idx]:
+                if board[y_idx][x_idx] <= shark_size:
+                    visited[y_idx][x_idx] = True
+                    if 0 < board[y_idx][x_idx] < shark_size:
+                        min_dist = dist
+                        dist_list.append((dist+1, y_idx, x_idx))
+                    if dist + 1 <= min_dist:
+                        q.append((y_idx, x_idx, dist+1))
 
-            if 0 <= y_axis < N and 0 <= x_axis < N:
-                if distance[y_axis][x_axis] == -1 and sea[y_axis][x_axis] <= shark_size:
-                    distance[y_axis][x_axis] = distance[y_idx][x_idx] + 1
-
-                    if sea[y_axis][x_axis] != 0 and sea[y_axis][x_axis] < shark_size:
-                        if min_distance > distance[y_axis][x_axis]:
-                            min_distance = distance[y_axis][x_axis]
-                            min_y = y_axis
-                            min_x = x_axis
-                        elif min_distance == distance[y_axis][x_axis]:
-                            if min_y > y_axis:
-                                min_y = y_axis
-                                min_x = x_axis
-                            elif min_y == y_axis:
-                                if min_y > y_axis:
-                                    min_y = y_axis
-                                    min_x = x_axis
-
-                    deq.append([y_axis, x_axis])
+    if dist_list:
+        dist_list.sort()
+        return dist_list[0]
+    else:
+        return False
 
 
-def initialize():
-    global min_distance, min_y, min_x
-
-    min_y = N
-    min_x = N
-    min_distance = max_distance
-
-    for n in range(N):
-        for m in range(N):
-            distance[n][m] = -1
-
-
-def find_shark():
-    global shark_y, shark_x
-
-    for i in range(N):
-        for j in range(N):
-            if sea[i][j] == 9:
-                shark_y = i
-                shark_x = j
-                sea[i][j] = 0
-
-
-N = int(input())
-sea = [list(map(int, input().split())) for _ in range(N)]
-distance = [[-1] * N for _ in range(N)]
-
-shark_y = N
-shark_x = N
-min_y = N
-min_x = N
-max_y = N
-max_x = N
+n = int(sys.stdin.readline())
+board = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+shark_y = 0
+shark_x = 0
 shark_size = 2
-min_distance = 41
-max_distance = 41
-total_distance = 0
-fish = 0
+eat_cnt = 0
+fish_cnt = 0
+fish_pos = []
+time = 0
 
-find_shark()
+for i in range(n):
+    for j in range(n):
+        if 0 < board[i][j] <= 6:
+            fish_cnt += 1
+            fish_pos.append((i, j))
+        elif board[i][j] == 9:
+            shark_y, shark_x = i, j
 
-while True:
-    initialize()
-    bfs(shark_y, shark_x)
-    if not after_bfs():
+board[shark_y][shark_x] = 0
+
+while fish_cnt:
+    result = bfs(shark_y, shark_x)
+    if not result:
         break
 
-print(total_distance)
+    shark_y, shark_x = result[1], result[2]
+    time += result[0]
+    eat_cnt += 1
+    fish_cnt -= 1
+
+    if shark_size == eat_cnt:
+        shark_size += 1
+        eat_cnt = 0
+    board[shark_y][shark_x] = 0
+
+print(time)
+
+# 참고
+# https://11001.tistory.com/96
