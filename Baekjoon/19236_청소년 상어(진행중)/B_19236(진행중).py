@@ -23,85 +23,81 @@ def is_fish_possible_to_move(visited, fish_way, y_idx, x_idx):
     return False
 
 
-def find_fish_to_move(visited):
-    global current_fish_num
-
+def find_fish_to_move(visited, current_fish_num):
     for m in range(4):
         for n in range(4):
             if visited[m][n] == current_fish_num:
                 return [m, n]
 
-    if current_fish_num != 16:
+    if current_fish_num < 16:
         current_fish_num += 1
-        return find_fish_to_move(visited)
+        return find_fish_to_move(visited, current_fish_num)
 
 
-def fish_move(visited, visited_sea_way):
-    global current_fish_num
+def fish_move(visited, visited_way):
+    current_fish_num = 1
 
     while current_fish_num <= 16:
-        fish_y, fish_x = find_fish_to_move(visited)
+        find_fish_to_move_result = find_fish_to_move(visited, current_fish_num)
+        if find_fish_to_move_result is None:
+            break
 
-        fish_way = visited_sea_way[fish_y][fish_x]
+        fish_y, fish_x = find_fish_to_move_result
+
+        fish_way = visited_way[fish_y][fish_x]
         fish_way -= 1
 
         y_idx = fish_y + dy[fish_way]
         x_idx = fish_x + dx[fish_way]
 
         # 공간의 경계를 넘는지 혹은 상어가 있는지
-        if 0 <= y_idx < 4 and 0 <= x_idx < 4 and visited[y_idx][x_idx] > 0:
-            switch_fish(visited, visited_sea_way, fish_y, fish_x, y_idx, x_idx)
+        if 0 <= y_idx < 4 and 0 <= x_idx < 4 and visited[y_idx][x_idx] != -1:
+            switch_fish(visited, visited_way, fish_y, fish_x, y_idx, x_idx)
         else:
             while True:
-                result = is_fish_possible_to_move(visited, (fish_way + 1) % 8, fish_y, fish_x)
+                result = is_fish_possible_to_move(visited, (fish_way + 1) % 8, y_idx, x_idx)
                 if not result:
                     break
 
-                switch_fish(visited, visited_sea_way, fish_y, fish_x, result[0], result[1])
+                switch_fish(visited, visited_way, fish_y, fish_x, result[0], result[1])
                 break
 
         current_fish_num += 1
-    current_fish_num = 1
-
-    return [visited, visited_sea_way]
 
 
-def get_possible_shark_move(s_y, s_x, way, possible_list):
-    y = s_y + dy[way]
-    x = s_x + dx[way]
+def get_possible_shark_move(s_y, s_x, s, s_way, shark_way, possible_list):
+    y = s_y + dy[shark_way]
+    x = s_x + dx[shark_way]
 
-    if 0 <= y < 4 and 0 <= x < 4:
+    if 0 <= y < 4 and 0 <= x < 4 and 0 < s[y][x]:
         possible_list.append([y, x])
-        get_possible_shark_move(y, x, way, possible_list)
+        get_possible_shark_move(y, x,  s, s_way, shark_way, possible_list)
 
     return possible_list
 
 
-def back_tracking_shark(s_y, s_x, visited_sea, visited_sea_way, num):
+def back_tracking_shark(s_y, s_x, s, s_way, num):
     global max_num
 
-    v_sea, v_sea_way = fish_move(visited_sea, visited_sea_way)
-    copied_visited_sea, copied_visited_sea_way = copy.deepcopy(v_sea), copy.deepcopy(v_sea_way)
-    print(copied_visited_sea)
+    copied_sea, copied_sea_way = copy.deepcopy(s), copy.deepcopy(s_way)
+    fish_move(copied_sea, copied_sea_way)
     shark_way = sea_way[s_y][s_x]
     shark_way -= 1
-    possible_shark_move = get_possible_shark_move(s_y, s_x, shark_way, [])
+    possible_shark_move = get_possible_shark_move(s_y, s_x, copied_sea, copied_sea_way, shark_way, [])
 
     for k in range(len(possible_shark_move)):
         # 상어가 떠난 자리는 빈칸 0
-        copied_visited_sea[s_y][s_x] = 0
+        copied_sea[s_y][s_x] = 0
         # 상어가 이동할 수 있는 y, x 좌표
         y, x = possible_shark_move[k]
-        # 탐색 후 원래 물고기 값으로 돌리기 위한 변수
-        original_visited_value = visited_sea[y][x]
+        # 원래 물고기 값
+        original_visited_value = copied_sea[y][x]
         # 상어 이동
-        copied_visited_sea[y][x] = -1
+        copied_sea[y][x] = -1
         # 물고기 번호 합 최대값 갱신 가능할 경우 갱신
-        max_fish_cnt = max(max_num, num + original_visited_value)
+        max_num = max(max_num, num + original_visited_value)
         # 이어서 탐색
-        back_tracking_shark(y, x, copied_visited_sea, copied_visited_sea_way, num + original_visited_value)
-        # 상어 이동 취소 (원래 물고기 값)
-        copied_visited_sea[y][x] = original_visited_value
+        back_tracking_shark(y, x, copied_sea, copied_sea_way, num + original_visited_value)
 
 
 fish_info = [list(map(int, input().split())) for _ in range(4)]
@@ -120,23 +116,16 @@ for i in range(4):
         sea_way[i][j - cnt] = fish_direction
         cnt += 1
 
-answer = 0
-current_fish_num = 1
-
-if fish_info[0][0] == 1:
-    current_fish_num = 2
-
 # 0, 0 의 물고기
 # 상어는 -1, 빈칸은 0
-shark_y = 0
-shark_x = 0
-sea[0][0] = -1
 max_num = 0
 max_num += sea[0][0]
 
-copied_sea = copy.deepcopy(sea)
-copied_sea_way = copy.deepcopy(sea_way)
-back_tracking_shark(0, 0, copied_sea, copied_sea_way, 0)
+shark_y = 0
+shark_x = 0
+sea[0][0] = -1
+
+back_tracking_shark(0, 0, sea, sea_way, 0)
 
 print(max_num)
 
