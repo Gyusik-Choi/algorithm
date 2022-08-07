@@ -1,18 +1,23 @@
 import copy
 
 
-def switch_fish(visited, visited_sea_way, fish_y, fish_x, target_fish_y, target_fish_x):
-    visited[fish_y][fish_x], visited[target_fish_y][target_fish_x] = visited[target_fish_y][target_fish_x], visited[fish_y][fish_x]
-    visited_sea_way[fish_y][fish_x], visited_sea_way[target_fish_y][target_fish_x] = visited_sea_way[target_fish_y][target_fish_x], visited_sea_way[fish_y][fish_x]
+def switch_fish(v, v_sea_way, fish_y, fish_x, target_fish_y, target_fish_x):
+    y = fish_y
+    x = fish_x
+    target_y = target_fish_y
+    target_x = target_fish_x
+
+    v[y][x], v[target_y][target_x] = v[target_fish_y][target_x], v[y][x]
+    v_sea_way[y][x], v_sea_way[target_y][target_x] = v_sea_way[target_y][target_x], v_sea_way[y][x]
 
 
 def is_fish_possible_to_move(visited, fish_way, y_idx, x_idx):
-    # 1번은 이미 함수 호출 전에 검사했음
+    # 1번은 이미 함수 호출 전에 검사함
     for _ in range(7):
         y = y_idx + dy[fish_way]
         x = x_idx + dx[fish_way]
 
-        # 빈칸도 이동가능
+        # 빈칸도 이동 가능
         if 0 <= y < 4 and 0 <= x < 4 and visited[y][x] >= 0:
             return [y, x]
 
@@ -78,7 +83,7 @@ def get_possible_shark_move(s_y, s_x, s, shark_way):
             s_x = x
         else:
             break
-    # print(possible_shark_move_list)
+
     return possible_shark_move_list
 
 
