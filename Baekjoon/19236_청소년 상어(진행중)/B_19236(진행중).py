@@ -1,13 +1,29 @@
 import copy
 
 
+def get_possible_shark_move(s_y, s_x, s, shark_way):
+    possible_shark_move_list = []
+
+    for _ in range(3):
+        y = s_y + dy[shark_way]
+        x = s_x + dx[shark_way]
+
+        if 0 <= y < 4 and 0 <= x < 4 and s[y][x] > 0:
+            possible_shark_move_list.append([y, x])
+
+        s_y = y
+        s_x = x
+
+    return possible_shark_move_list
+
+
 def switch_fish(v, v_sea_way, fish_y, fish_x, target_fish_y, target_fish_x):
     y = fish_y
     x = fish_x
     target_y = target_fish_y
     target_x = target_fish_x
 
-    v[y][x], v[target_y][target_x] = v[target_fish_y][target_x], v[y][x]
+    v[y][x], v[target_y][target_x] = v[target_y][target_x], v[y][x]
     v_sea_way[y][x], v_sea_way[target_y][target_x] = v_sea_way[target_y][target_x], v_sea_way[y][x]
 
 
@@ -54,37 +70,17 @@ def fish_move(visited, visited_way):
         x_idx = fish_x + dx[fish_way]
 
         # 공간의 경계를 넘는지 혹은 상어가 있는지
-        if 0 <= y_idx < 4 and 0 <= x_idx < 4 and visited[y_idx][x_idx] != -1:
+        if 0 <= y_idx < 4 and 0 <= x_idx < 4 and visited[y_idx][x_idx] >= 0:
             switch_fish(visited, visited_way, fish_y, fish_x, y_idx, x_idx)
         else:
-            while True:
-                result = is_fish_possible_to_move(visited, (fish_way + 1) % 8, y_idx, x_idx)
-                if not result:
-                    break
-
-                switch_fish(visited, visited_way, fish_y, fish_x, result[0], result[1])
+            result = is_fish_possible_to_move(visited, (fish_way + 1) % 8, fish_y, fish_x)
+            if not result:
                 break
+
+            switch_fish(visited, visited_way, fish_y, fish_x, result[0], result[1])
 
         current_fish_num += 1
     current_fish_num = 1
-
-
-def get_possible_shark_move(s_y, s_x, s, shark_way):
-    possible_shark_move_list = []
-
-    for _ in range(4):
-        y = s_y + dy[shark_way]
-        x = s_x + dx[shark_way]
-
-        if 0 <= y < 4 and 0 <= x < 4:
-            if s[y][x] > 0:
-                possible_shark_move_list.append([y, x])
-            s_y = y
-            s_x = x
-        else:
-            break
-
-    return possible_shark_move_list
 
 
 def back_tracking_shark(s_y, s_x, s, s_way, num):
@@ -108,6 +104,8 @@ def back_tracking_shark(s_y, s_x, s, s_way, num):
     for k in range(len(possible_shark_move)):
         # 상어가 떠나면서 빈칸 0
         copied_sea[s_y][s_x] = 0
+        copied_sea_way[s_y][s_x] = 0
+
         # 상어가 이동할 수 있는 y, x 좌표
         y, x = possible_shark_move[k]
         # 이어서 탐색
