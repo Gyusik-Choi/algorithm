@@ -17,14 +17,14 @@ def get_possible_shark_move(s_y, s_x, s, shark_way):
     return possible_shark_move_list
 
 
-def switch_fish(v, v_sea_way, fish_y, fish_x, target_fish_y, target_fish_x):
+def switch_fish(v, v_sea_way, fish_y, fish_x, target_fish_y, target_fish_x, changed_fish_way):
     y = fish_y
     x = fish_x
     target_y = target_fish_y
     target_x = target_fish_x
 
     v[y][x], v[target_y][target_x] = v[target_y][target_x], v[y][x]
-    v_sea_way[y][x], v_sea_way[target_y][target_x] = v_sea_way[target_y][target_x], v_sea_way[y][x]
+    v_sea_way[y][x], v_sea_way[target_y][target_x] = v_sea_way[target_y][target_x], changed_fish_way
 
 
 def is_fish_possible_to_move(visited, fish_way, y_idx, x_idx):
@@ -35,7 +35,7 @@ def is_fish_possible_to_move(visited, fish_way, y_idx, x_idx):
 
         # 빈칸도 이동 가능
         if 0 <= y < 4 and 0 <= x < 4 and visited[y][x] >= 0:
-            return [y, x]
+            return [y, x, fish_way]
 
         fish_way = (fish_way + 1) % 8
 
@@ -64,20 +64,20 @@ def fish_move(visited, visited_way):
             break
 
         fish_y, fish_x = find_fish_to_move_result
-        fish_way = visited_way[fish_y][fish_x] - 1
+        fish_way = visited_way[fish_y][fish_x]
 
         y_idx = fish_y + dy[fish_way]
         x_idx = fish_x + dx[fish_way]
 
         # 공간의 경계를 넘는지 혹은 상어가 있는지
         if 0 <= y_idx < 4 and 0 <= x_idx < 4 and visited[y_idx][x_idx] >= 0:
-            switch_fish(visited, visited_way, fish_y, fish_x, y_idx, x_idx)
+            switch_fish(visited, visited_way, fish_y, fish_x, y_idx, x_idx, fish_way)
         else:
             result = is_fish_possible_to_move(visited, (fish_way + 1) % 8, fish_y, fish_x)
             if not result:
                 break
 
-            switch_fish(visited, visited_way, fish_y, fish_x, result[0], result[1])
+            switch_fish(visited, visited_way, fish_y, fish_x, result[0], result[1], result[2])
 
         current_fish_num += 1
     current_fish_num = 1
@@ -97,7 +97,7 @@ def back_tracking_shark(s_y, s_x, s, s_way, num):
     # 물고기 이동
     fish_move(copied_sea, copied_sea_way)
 
-    shark_way = copied_sea_way[s_y][s_x] - 1
+    shark_way = copied_sea_way[s_y][s_x]
 
     possible_shark_move = get_possible_shark_move(s_y, s_x, copied_sea, shark_way)
 
@@ -125,7 +125,7 @@ for i in range(4):
         fish_num = fish_info[i][j]
         fish_direction = fish_info[i][j + 1]
         sea[i][j - cnt] = fish_num
-        sea_way[i][j - cnt] = fish_direction
+        sea_way[i][j - cnt] = fish_direction - 1
         cnt += 1
 
 max_num = 0
