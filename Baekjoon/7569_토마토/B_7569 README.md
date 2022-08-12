@@ -2,7 +2,7 @@
 
 ## 7569
 
-[7576번 문제][https://www.acmicpc.net/problem/7576]와 거의 동일한 문제다.
+[7576번 문제](https://www.acmicpc.net/problem/7576)와 거의 동일한 문제다.
 
 차이라면 2차원 배열에서 3차원 배열로 바뀌었다는 점이다.
 
