@@ -8,3 +8,7 @@ for s in S:
         max_num *= s
 
 print(max_num)
+
+# 반례
+# 123
+# => 9
