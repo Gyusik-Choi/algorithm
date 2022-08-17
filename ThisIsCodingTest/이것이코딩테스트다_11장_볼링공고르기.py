@@ -10,8 +10,6 @@ N, M = map(int, input().split())
 nums = list(map(int, input().split()))
 nums.sort()
 
-total = get_number_of_combination(N)
-
 current_num = nums[0]
 duplicate_cnt = []
 temp_count = 1
@@ -24,8 +22,7 @@ for j in range(1, N):
         current_num = nums[j]
         temp_count = 1
 
-# 마지막에 더해지기만 하고
-# duplicate_count 에 넣지 못한 경우에 넣어준다
+# 마지막에 duplicate_count 에 넣지 못한 경우
 if temp_count > 1:
     duplicate_cnt.append(temp_count)
 
