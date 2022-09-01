@@ -1,13 +1,13 @@
 import sys
 
 
-def get_sequence(num, idx):
-    if idx == M:
+def get_sequence(idx, depth):
+    if depth == M:
         sys.stdout.write(' '.join(answer) + "\n")
     else:
-        for i in range(num, N + 1):
+        for i in range(idx, N + 1):
             answer.append(str(i))
-            get_sequence(i + 1, idx + 1)
+            get_sequence(i + 1, depth + 1)
             answer.pop()
 
 
