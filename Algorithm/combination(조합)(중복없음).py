@@ -1,13 +1,13 @@
 import sys
 
 
-def combinations(num, idx):
-    if idx == M:
+def combinations(num, cnt):
+    if cnt == M:
         sys.stdout.write(' '.join(answer) + "\n")
     else:
         for i in range(num, N):
             answer.append(str(i))
-            combinations(i + 1, idx + 1)
+            combinations(i + 1, cnt + 1)
             answer.pop()
 
 
