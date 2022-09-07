@@ -15,5 +15,6 @@ N, M = map(int, sys.stdin.readline().split())
 answer = []
 combinations(0, 0)
 
-# (중복없는) 조합
+# (중복 없는) 조합
 # 백준 15650 참고
+# https://st-lab.tistory.com/115
