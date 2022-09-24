@@ -1,6 +1,3 @@
-# 모든 칸을 돌면서
-# 4 방향의 인접한 국경 검사
-# 연합 여러개 어떻게 처리? => 하나의 bfs 사이클 안에서 처리
 from collections import deque
 
 
@@ -73,3 +70,10 @@ def check_move():
 N, L, R = map(int, input().split())
 populations = [list(map(int, input().split())) for _ in range(N)]
 print(check_move())
+
+# 모든 칸을 돌면서
+# 4 방향의 인접한 국경 검사
+# 연합 여러개 어떻게 처리? => 하나의 bfs 사이클 안에서 처리
+
+# 참고
+# https://www.acmicpc.net/source/40681971
