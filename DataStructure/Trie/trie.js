@@ -11,13 +11,13 @@ const Trie = function() {
 }
 
 Trie.prototype.search = function(word) {
-    const head = this.head;
+    let head = this.head;
 
     for (let i = 0; i < word.length; i++) {
         const char = word[i];
 
         if (head.children.hasOwnProperty(char)) {
-            let = head.children[char];
+            head = head.children[char];
         } else {
             return false;
         }

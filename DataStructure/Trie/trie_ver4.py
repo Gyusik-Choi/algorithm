@@ -45,14 +45,24 @@ class Trie:
 
     def starts_with_prefix(self, prefix):
         cur = self.head
+        words = []
 
         for idx, char in enumerate(prefix):
             if char in cur.children:
                 cur = cur.children[char]
+
+                # 이 부분이 있어야 loop 를 도는 중간에
+                # cur.data 가 있을 경우 words 에 추가할 수 있다
+                # 예를 들어, 'A', 'ABC', 'ABD' 3개 단어를
+                # Trie 에 넣을 경우
+                # 'A' 로 시작하는 단어를 찾을 때
+                # 아래의 코드가 없으면 'A' 를 찾지 못한다
+                if cur.data:
+                    words.append(cur.data)
             else:
                 return []
 
-        words = self.find_words(cur, [])
+        self.find_words(cur, words)
         return words
 
     def find_words(self, cur, words):
@@ -92,13 +102,14 @@ class TrieVer4Test(unittest.TestCase):
 
     def test_starts_with_prefix(self):
         t = Trie()
+        t.insert('A')
         t.insert('ABC')
         t.insert('BCD')
         t.insert('ACD')
         t.insert('ADG')
         t.insert('ABD')
         result = t.starts_with_prefix('A')
-        self.assertEqual(result, ['ABC', 'ABD', 'ACD', 'ADG'])
+        self.assertEqual(result, ['A', 'ABC', 'ABD', 'ACD', 'ADG'])
 
     def test_starts_with_prefix2(self):
         t = Trie()
