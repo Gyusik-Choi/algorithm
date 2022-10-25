@@ -60,7 +60,7 @@ print(segment_tree)
 # 또한 반대의 경우도 나올 수 있다
 # arr 6번 부터 8번 까지의 값에서 이를 볼 수 있다
 # start 6, end 8, left 4, right 8 인 경우로
-# end 와 right 가 같을 지라도 start <= left 하다
+# end 와 right 가 같을 지라도 left <= start 하다
 # arr 5번 인덱스 값은
 # start 5, end 5, left 4, right 8 의 경우로
 # left < start, end < right 하다
