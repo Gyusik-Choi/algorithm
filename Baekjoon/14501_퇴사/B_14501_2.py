@@ -22,3 +22,8 @@ for i in range(N):
         answer = max(answer, dp[i])
 
 print(answer)
+
+# 반례
+# 1
+# 1 10
+# => 10
