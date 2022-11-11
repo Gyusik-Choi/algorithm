@@ -10,8 +10,9 @@
 
 <참고>
 
-```
 https://blex.me/@mildsalmon/chap-17-최단경로-q38-정확한-순위
+
 https://velog.io/@embeddedjune/알고리즘-이것이-코딩-테스트다-최단거리-Q38-정확한-순위
-```
+
+
 
