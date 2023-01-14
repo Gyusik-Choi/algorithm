@@ -69,6 +69,15 @@ class Trie {
     for (const [key, value] of Object.entries(node.children)) {
       if (value.data) {
         words.push(value.data);
+
+        // https://ipex.tistory.com/130
+        // ABC 이후에 ABCD 도 탐색하려면
+        // value 의 children 존재 여부를 검사해서
+        // 존재하면 _findWordsStartWithPrefix 를 value 에 대해서 수행해야 한다
+        if (Object.keys(value.children).length > 0) {
+          this.#_findWordsStartWithPrefix(value, words);
+        }
+
         continue;
       }
         
