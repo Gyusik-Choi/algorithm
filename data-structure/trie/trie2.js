@@ -72,6 +72,10 @@ class Trie {
     for (const [key, value] of Object.entries(cur.children)) {
       if (value.data) {
         words.push(value.data);
+
+        if (Object.keys(value.children).length > 0) {
+          this.findWords(value, words);
+        }
       } else {
         this.findWords(value, words);
       }
@@ -86,6 +90,6 @@ trie.insert('A');
 trie.insert('ABC');
 trie.insert('ABD');
 trie.insert('BCD');
-console.log(trie.head);
-trie.search('ABC');
+trie.insert('ABCD');
+console.log(trie.search('ABC'));
 console.log(trie.startsWithPrefix('A'));

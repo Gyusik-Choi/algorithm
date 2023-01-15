@@ -74,13 +74,19 @@ Trie.prototype.startsWith = function(prefix) {
 }
 
 Trie.prototype.dfs = function(obj, foundWords) {
-    if (obj.word) {
-        foundWords.push(obj.word)
-        return foundWords;
-    }
-
     const words = obj.children;
+
     for (const [key, value] of Object.entries(words)) {
+        if (value.word) {
+            foundWords.push(value.word);
+
+            if (Object.keys(value.children).length > 0) {
+                this.dfs(value, foundWords);
+            }
+
+            continue;
+        }
+
         this.dfs(value, foundWords);
     }
 
@@ -91,5 +97,6 @@ const trie = new Trie();
 trie.insert('ABC');
 trie.insert('ABD');
 trie.insert('BCD');
+trie.insert('ABCD');
 trie.search('ABC');
 console.log(trie.startsWith('A'));
