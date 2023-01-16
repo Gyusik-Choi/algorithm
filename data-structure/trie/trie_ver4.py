@@ -69,8 +69,7 @@ class Trie:
         for word_key, word_value in cur.children.items():
             if word_value.data:
                 words.append(word_value.data)
-            else:
-                self.find_words(word_value, words)
+            self.find_words(word_value, words)
 
         return words
 
@@ -104,12 +103,13 @@ class TrieVer4Test(unittest.TestCase):
         t = Trie()
         t.insert('A')
         t.insert('ABC')
+        t.insert('ABCD')
         t.insert('BCD')
         t.insert('ACD')
         t.insert('ADG')
         t.insert('ABD')
         result = t.starts_with_prefix('A')
-        self.assertEqual(result, ['A', 'ABC', 'ABD', 'ACD', 'ADG'])
+        self.assertEqual(result, ['A', 'ABC', 'ABCD', 'ABD', 'ACD', 'ADG'])
 
     def test_starts_with_prefix2(self):
         t = Trie()

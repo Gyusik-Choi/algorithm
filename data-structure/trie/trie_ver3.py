@@ -52,11 +52,11 @@ class Trie:
         return words_starts_with_prefix
 
     def dfs(self, node, words):
-        if node.data:
-            words.append(node.data)
-        else:
-            for node_key, node_value in node.children.items():
-                self.dfs(node_value, words)
+        for node_key, node_value in node.children.items():
+            if node_value.data:
+                words.append(node_value.data)
+            self.dfs(node_value, words)
+
         return words
 
 
@@ -70,5 +70,7 @@ trie.insert('ADG')
 # 추후에 start_with 외에 특정 단어로 시작하는 경우 외에
 # 특정 단어가 들어간 단어들을 찾는 함수를 작성해보고 싶다
 trie.insert('BAC')
+trie.insert('ABCD')
+trie.insert('ABCDE')
 print(trie.starts_with('A'))
 print(trie.starts_with('AB'))
