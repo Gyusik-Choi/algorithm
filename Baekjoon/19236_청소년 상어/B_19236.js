@@ -8,7 +8,7 @@ const move = (info, sums) => {
   const curShark = getSharkIdx(copiedFishInfo);
 
   // 상어가 이동할 수 있는 위치
-  const moveSharkIdxes = getPossibleMoveSharkIdxes(curShark);
+  const moveSharkIdxes = getPossibleMoveSharkIdxes(copiedFishInfo, curShark);
 
   if (moveSharkIdxes.length === 0) {
     maxSums = Math.max(maxSums, sums);
@@ -17,9 +17,21 @@ const move = (info, sums) => {
 
   // 상어 이동 (완전 탐색)
   for (const futureShark of moveSharkIdxes) {
+    // 상어가 이동할 위치의 물고기 번호
+    // 상어가 이동을 마치고
+    // 다른 위치로 이동하기 전에
+    // 기존에 상어가 이동한 위치의 번호를
+    // 이 물고기 번호로 다시 바꿔주기 위한 변수
+    const originalFishNumber = copiedFishInfo[futureShark[0]][futureShark[1]][0];
+
     const fishValue = moveShark(copiedFishInfo, curShark, futureShark);
 
     move(copiedFishInfo, sums + fishValue);
+
+    // 상어가 이동을 마치고 기존과 다른 위치로 이동할 것이라
+    // 기존에 상어가 이동했던 곳을
+    // 물고기 번호로 다시 바꿔준다
+    copiedFishInfo[futureShark[0]][futureShark[1]][0] = originalFishNumber;
   }
 }
 
@@ -131,13 +143,13 @@ const getSharkIdx = (copiedInfo) => {
   }
 }
 
-const getPossibleMoveSharkIdxes = (shark) => {
+const getPossibleMoveSharkIdxes = (copiedInfo, shark) => {
   const possibleMoveSharkIdxes = [];
   
   // 값을 누적해서 구하므로 바꿔줘야 한다
   let [y, x] = shark;
 
-  const sharkDirection = fishInfo[y][x][1];
+  const sharkDirection = copiedInfo[y][x][1];
 
   const yValue = [-1, -1, 0, 1, 1, 1, 0, -1];
   const xValue = [0, -1, -1, -1, 0, 1, 1, 1];
@@ -152,11 +164,11 @@ const getPossibleMoveSharkIdxes = (shark) => {
     }
 
     // 빈칸이라면
-    if (fishInfo[y][x][0] === 0) {
+    if (copiedInfo[y][x][0] === 0) {
       continue;
     }
 
-    if (0 < fishInfo[y][x][0] && fishInfo[y][x][0] <= 16) {
+    if (0 < copiedInfo[y][x][0] && copiedInfo[y][x][0] <= 16) {
       possibleMoveSharkIdxes.push([y, x]);
     }
   }
@@ -181,15 +193,15 @@ const moveShark = (copiedInfo, cur, future) => {
 }
 
 
-// const fs = require('fs');
-// const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+const fs = require('fs');
+const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
 
-const input = [
-  '7 6 2 3 15 6 9 8',
-  '3 1 1 8 14 7 10 1',
-  '6 1 13 6 4 3 11 4',
-  '16 1 8 7 5 2 12 2',
-];
+// const input = [
+//   '7 6 2 3 15 6 9 8',
+//   '3 1 1 8 14 7 10 1',
+//   '6 1 13 6 4 3 11 4',
+//   '16 1 8 7 5 2 12 2',
+// ];
 // => 33
 
 // const input = [
@@ -199,6 +211,22 @@ const input = [
 //   '11 8 2 4 13 5 9 4',
 // ];
 // => 43
+
+// const input = [
+//   '12 6 14 5 4 5 6 7',
+//   '15 1 11 7 3 7 7 5',
+//   '10 3 8 3 16 6 1 1',
+//   '5 8 2 7 13 6 9 2',
+// ];
+// => 76
+
+// const input = [
+//   '2 6 10 8 6 7 9 4',
+//   '1 7 16 6 4 2 5 8',
+//   '3 7 8 6 7 6 14 8',
+//   '12 7 15 4 11 3 13 3',
+// ];
+// => 39
 
 const fishInfo = [];
 
