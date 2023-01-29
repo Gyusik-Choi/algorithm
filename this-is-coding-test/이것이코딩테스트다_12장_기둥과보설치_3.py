@@ -41,8 +41,9 @@ def is_possible(build_history):
 
 
 def solution(n, build_frame):
-    wall = [[-1] * (n + 1) for _ in range(n + 1)]
-
+    # wall = [[-1] * (n + 1) for _ in range(n + 1)]
+    # wall 을 사용할 필요 없이
+    # build_history 만으로 풀이 가능
     build_history = []
 
     for idx, frame in enumerate(build_frame):
@@ -63,5 +64,6 @@ def solution(n, build_frame):
 
 
 print(solution(5, [[1,0,0,1],[1,1,1,1],[2,1,0,1],[2,2,1,1],[5,0,0,1],[5,1,0,1],[4,2,1,1],[3,2,1,1]]))
+# [[1,0,0],[1,1,1],[2,1,0],[2,2,1],[3,2,1],[4,2,1],[5,0,0],[5,1,0]]
 print(solution(5, [[0,0,0,1],[2,0,0,1],[4,0,0,1],[0,1,1,1],[1,1,1,1],[2,1,1,1],[3,1,1,1],[2,0,0,0],[1,1,1,0],[2,2,0,1]]))
-
+# [[0,0,0],[0,1,1],[1,1,1],[2,1,1],[3,1,1],[4,0,0]]
