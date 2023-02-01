@@ -50,4 +50,4 @@ void main() {
 }
 
 // 참고
-// https://www.dalecoding.com/algorithms/merge--sort
+// https://www.dalecoding.com/algorithms/merge-sort
