@@ -1,91 +1,101 @@
 class Node {
-  constructor(char, data = null) {
-    this.char = char;
+  constructor(data = null) {
     this.data = data;
+    this.len = 0;
     this.children = {};
   }
 }
 
 class Trie {
   constructor() {
-    this.head = new Node(null);
+    this.head = new Node();
   }
 
   insert(word) {
     let node = this.head;
-    
+    node.len += 1;
+
     for (const w of word) {
       if (!node.children.hasOwnProperty(w)) {
-        node.children[w] = new Node(w);
+        node.children[w] = new Node();
       }
 
       node = node.children[w];
+      node.len += 1;
     }
 
     node.data = word;
   }
 
-  search(word) {
+  startWithPrefix(prefix) {
     let node = this.head;
-
-    for (const w of word) {
-      if (!node.children.hasOwnProperty(w)) {
-        return false;
+    
+    for (const p of prefix) {
+      if (p === "?") {
+        break;
       }
 
-      node = node.children[w];
-    }
-
-    if (!node.data) {
-      return false;
-    }
-
-    return true;
-  }
-
-  startsWithPrefix(prefix) {
-    let node = this.head;
-
-    for (const p of prefix) {
       if (!node.children.hasOwnProperty(p)) {
-        return [];
+        return 0;
       }
 
       node = node.children[p];
     }
 
-    const words = [];
-
-    if (node.data) {
-      words.push(node.data);
-    }
-
-    return this.#_findWordsStartWithPrefix(node, words);
-  }
-
-  #_findWordsStartWithPrefix(n, words) {
-    const node = n;
-
-    for (const [key, value] of Object.entries(node.children)) {
-      if (value.data) {
-        words.push(value.data);
-        continue;
-      }
-        
-      this.#_findWordsStartWithPrefix(value, words);
-    }
-
-    return words;
+    return node.len;
   }
 }
 
-const trie = new Trie();
-trie.insert('A');
-trie.insert('ABC');
-trie.insert('ABD');
-trie.insert('BCD');
-trie.insert('CDE');
-trie.insert('ABCD');
-console.log(trie.head);
-console.log(trie.search('ABC'));
-console.log(trie.startsWithPrefix('A'));
+const reverseWord = (word) => {
+  let reversedWord = '';
+
+  for (const w of word) {
+    reversedWord = w + reversedWord;
+  }
+
+  return reverseWord;
+}
+
+const solution = (words, queries) => {
+  const tries = {};
+  const reversedTries = {};
+
+  // const trie = new Trie();
+  // const reversedTrie = new Trie();
+
+  words.forEach(word => {
+    const wordLength = word.length;
+
+    if (!tries.hasOwnProperty(wordLength.toString())) {
+      tries[wordLength] = new Trie();
+    }
+
+    tries[wordLength].insert(word)
+
+    const reversedWord = word.split('').reverse().join('');
+
+    if (!reversedTries.hasOwnProperty(wordLength.toString())) {
+      reversedTries[wordLength] = new Trie();
+    }
+
+    reversedTries[wordLength].insert(reversedWord);
+  });
+
+  return queries.map(query => {
+    const queryLength = query.length;
+
+    if (query[0] === "?") {
+      if (!reversedTries.hasOwnProperty(queryLength)) {
+        return 0;
+      }
+
+      return reversedTries[queryLength].startWithPrefix(query.split('').reverse().join(''));
+    }
+    
+    if (!tries.hasOwnProperty(queryLength)) {
+      return 0;
+    }
+
+    return tries[queryLength].startWithPrefix(query);
+  });
+}
