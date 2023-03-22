@@ -22,7 +22,7 @@ class DisjointSet:
         # 이번 풀이는 아래의 방법 활용
         # 값이 작은 쪽을 부모로 설정
 
-        if px >= py:
+        if py >= px:
             self.p[py] = px
         else:
             self.p[px] = py
