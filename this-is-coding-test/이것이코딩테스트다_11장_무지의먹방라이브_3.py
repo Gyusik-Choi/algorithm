@@ -39,7 +39,7 @@ def solution(food_times, k):
     resorted_food_times = sorted(list(sorted_food_times), key=lambda x: x[1])
     # k 가 몇 인지 중요 하지만 단순히 k 값의 인덱스 구하면 안 된다
     # 이미 다 먹은 음식의 갯수는 제외 하고 인덱스 구해야 한다
-    # food_length 가 k 보다 클 수 있어서 k % food_length 로 인덱스 구한다
+    # k 가 food_length 보다 클 수 있어서 k % food_length 로 인덱스 구한다
     # 그렇게 구한 값에서 1 인덱스 값이 해당 음식의 인덱스 값이다
     # 여기서 1을 더해야 몇 번째 음식에 해당 되는지 알 수 있음
     return resorted_food_times[k % food_length][1] + 1
