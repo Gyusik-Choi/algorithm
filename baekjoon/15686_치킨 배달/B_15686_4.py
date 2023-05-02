@@ -42,6 +42,10 @@ for i, store_combination in enumerate(chicken_store_combinations):
 
         temp_min_distance += temp_dist
 
+        # 이미 min_distance 보다 크다면 종료 하고 다음 조합을 검사
+        if temp_min_distance > min_distance:
+            break
+
     min_distance = min(min_distance, temp_min_distance)
 
 print(min_distance)
