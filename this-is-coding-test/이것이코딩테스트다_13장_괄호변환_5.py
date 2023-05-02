@@ -67,6 +67,6 @@ def solution(p):
     return empty_string
 
 
-# print(solution("(()())()"))
-# print(solution(")("))
+print(solution("(()())()"))
+print(solution(")("))
 print(solution("()))((()"))
