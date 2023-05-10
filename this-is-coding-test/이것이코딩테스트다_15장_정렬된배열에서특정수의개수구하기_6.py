@@ -1,10 +1,10 @@
-# numbers[mid] >= x 일때 low = mid + 1 인지
-# number[mid] > x 일때 low = mid + 1 인지에 따라서
+# number[mid] >= x 일때 high = mid 인지
+# numbers[mid] > x 일때 high = mid 인지에 따라서
 # 결과 값이 다르다
 #
-# numbers[mid] >= x 일때 low = mid + 1 이면
+# numbers[mid] >= x 일때 high = mid 이면
 # 찾는 대상의 시작 인덱스 구한다
-# number[mid] > x 일때 low = mid + 1 이면
+# number[mid] > x 일때 high = mid 이면
 # 찾는 대상 보다 큰 숫자를 찾게 되므로 바로 다음 인덱스 구한다
 #
 # 참고
