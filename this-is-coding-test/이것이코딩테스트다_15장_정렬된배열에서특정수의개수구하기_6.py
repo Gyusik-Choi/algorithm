@@ -80,7 +80,7 @@ class BinarySearchTest(unittest.TestCase):
         arr = [1, 1, 2, 2, 2, 2, 3, 3]
         num = 3
         idx = binary_search_right(arr, num)
-        self.assertEqual(idx, 2)
+        self.assertEqual(idx, 8)
 
 
 if __name__ == '__main__':
