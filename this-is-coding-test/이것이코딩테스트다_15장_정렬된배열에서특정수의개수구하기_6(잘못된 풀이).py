@@ -45,3 +45,12 @@ if not cnt:
     print(-1)
 else:
     print(cnt)
+
+# 반례
+# 8 3
+# 1 1 2 2 2 2 3 3
+# => 2가 나와야 하는데 1이 나온다
+# 원인은 bisect 모듈과 다르게
+# high 의 길이를 len(numbers) - 1 로 잡았다
+# bisect 모듈로 풀이를 하게 되면
+# bisect 모듈의 디폴트 high 값은 len(numbers) 가 된다
