@@ -10,6 +10,10 @@
 
 <br>
 
+[백준 15483번 최소편집](https://www.acmicpc.net/problem/15483) 문제가 이 문제와 동일(지문이 똑같은건 아니지만 문제에서 요구하는 내용이 같다)하다.
+
+<br>
+
 <참고>
 
 https://hsp1116.tistory.com/41
