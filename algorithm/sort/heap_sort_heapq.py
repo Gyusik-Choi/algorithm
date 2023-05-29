@@ -1,14 +1,22 @@
+from unittest import TestCase
 import heapq
 
-heap = []
 
-arr = [5, 2, 1, 3, 4]
-for a in arr:
-    heapq.heappush(heap, a)
+def heap_sort(arr):
+    heap = []
+    for idx, num in enumerate(arr):
+        heapq.heappush(heap, num)
 
-sorted_arr = []
-while heap:
-    num = heapq.heappop(heap)
-    sorted_arr.append(num)
+    sorted_arr = []
+    while heap:
+        num = heapq.heappop(heap)
+        sorted_arr.append(num)
 
-print(sorted_arr)
+    return sorted_arr
+
+
+class HeapSortTest(TestCase):
+    def test_heap_sort(self):
+        arr = [5, 4, 3, 2, 1]
+        answer = heap_sort(arr)
+        self.assertEqual(answer, sorted(arr))
