@@ -1,7 +1,7 @@
 import heapq
 
 
-def dijkstra_prim(n, go_idx, go_dist, space_dic):
+def dijkstra(n, go_idx, go_dist, space_dic):
     inf = float('inf')
     distance = [inf] * (n * n)
     visited = [False] * (n * n)
@@ -58,4 +58,4 @@ for _ in range(T):
     N = int(input())
     space_info = [list(map(int, input().split())) for _ in range(N)]
     space_dict = get_space_dict(space_info, N)
-    print(dijkstra_prim(N, 0, space_info[0][0], space_dict))
+    print(dijkstra(N, 0, space_info[0][0], space_dict))
