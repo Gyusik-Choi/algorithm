@@ -1,3 +1,6 @@
+from unittest import TestCase
+
+
 class DisjointSet:
     def __init__(self, n):
         self.p = [0] * (n + 1)
@@ -32,22 +35,26 @@ class DisjointSet:
 
     def __str__(self):
         disjoint_p = "["
+
         for i in range(len(self.p)):
             disjoint_p += str(self.p[i]) + ", "
+
         disjoint_p = disjoint_p.rstrip(", ")
         disjoint_p += "]"
+
         return disjoint_p
 
 
-disjoint = DisjointSet(8)
-disjoint.union(1, 3)
-disjoint.union(2, 3)
-disjoint.union(5, 6)
-disjoint.union(6, 8)
-disjoint.union(1, 5)
-disjoint.union(6, 7)
-print(disjoint)
-print(disjoint.rank)
+class DisjointSetTest(TestCase):
+    def test_union(self):
+        disjoint = DisjointSet(8)
+        disjoint.union(1, 3)
+        disjoint.union(2, 3)
+        disjoint.union(5, 6)
+        disjoint.union(6, 8)
+        disjoint.union(1, 5)
+        disjoint.union(6, 7)
+        self.assertEqual([0, 2, 2, 1, 4, 2, 2, 2, 5], disjoint.p)
 
 # 참고
 # https://ratsgo.github.io/data%20structure&algorithm/2017/11/12/disjointset/
