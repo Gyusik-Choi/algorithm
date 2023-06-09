@@ -5,6 +5,12 @@ import heapq
 def find_fish(space, shark) -> list:
     heap = []
 
+    # 불필요한 추가 탐색을 막기 위한 변수
+    # 최단 거리 물고기를 찾아야 해서
+    # 아래 while 문 에서
+    # min_dist 를 갱신 하고 min_dist 보다 먼 거리가 나오면 탐색 종료
+    min_dist = len(space) * len(space)
+
     deq = deque()
     # 이동 거리, y, x
     deq.append([0, shark[0], shark[1]])
@@ -17,6 +23,9 @@ def find_fish(space, shark) -> list:
 
     while deq:
         dist, y, x = deq.popleft()
+
+        if min_dist < dist:
+            break
 
         for i in range(4):
             y_idx, x_idx = y + y_value[i], x + x_value[i]
@@ -36,6 +45,7 @@ def find_fish(space, shark) -> list:
                 deq.append([dist + 1, y_idx, x_idx])
 
                 if space[y_idx][x_idx] < shark_size:
+                    min_dist = dist + 1
                     heapq.heappush(heap, [dist + 1, y_idx, x_idx])
 
     if not heap:
@@ -68,13 +78,17 @@ shark_cnt = 0
 answer = 0
 
 while True:
+    # 상어 위치
     cur_shark = find_shark(sea)
+    # 물고기 위치
     time, new_shark_y, new_shark_x = find_fish(sea, cur_shark)
 
     if not time:
         break
 
+    # 기존 상어 위치 빈칸
     leave_shark(sea, cur_shark)
+    # 상어 이동
     move_shark_to_fish(sea, [new_shark_y, new_shark_x])
     answer += time
     shark_cnt += 1
