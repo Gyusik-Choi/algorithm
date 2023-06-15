@@ -1,4 +1,4 @@
-# Leet Code
+# LeetCode
 
 ## 819. Most Common Word
 

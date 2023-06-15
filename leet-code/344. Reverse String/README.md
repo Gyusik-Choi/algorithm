@@ -1,4 +1,4 @@
-# Leet Code
+# LeetCode
 
 ## 344. Reverse String
 

@@ -1,4 +1,4 @@
-# Leet Code
+# LeetCode
 
 ## 49. Group Anagrams
 

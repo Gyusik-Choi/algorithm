@@ -1,4 +1,4 @@
-#  Leet Code
+#  LeetCode
 
 ## 937. Reorder Data in Log Files
 
