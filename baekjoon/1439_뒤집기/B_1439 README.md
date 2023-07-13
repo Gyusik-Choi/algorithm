@@ -37,3 +37,10 @@ enumerate 를 사용하려면 range 와 달리 시작 인덱스를 지정할 수
 prev 를 첫번째 원소 값으로 바꿔주고 첫번째 원소가 0이면 cnt_zero 를 1 더하고 1 이면 cnt_one 을 1 더한다. 그 다음 원소도 마찬가지로 prev 와 비교해서 같으면 continue 로 넘어가고 다른 경우 0인지 1인지 비교하여 prev 값을 교체하고 cnt_zero 나 cnt_one 을 더해준다.
 
 for loop 를 마치고 cnt_zero, cnt_one 중 작은 값을 출력한다.
+
+<br>
+
+<참고>
+
+이것이 코딩테스트다
+
