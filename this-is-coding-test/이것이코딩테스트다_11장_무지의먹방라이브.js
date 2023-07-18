@@ -107,7 +107,7 @@ console.log(solution([3, 1, 2], 5));
 console.log(solution([2, 3, 1, 5, 4], 3));
 // 4
 console.log(solution([1, 2, 3, 4], 4));
-// 1
+// 2
 console.log(solution([1, 1, 1, 1, 1, 1], 1));
 // 2
 console.log(solution([1, 100], 10));
