@@ -28,3 +28,31 @@ previous_time 변수는 이전에 먹은 음식의 시간을 알기 위해 둔�
 
 k에서 food_length를 나눈 나머지가 재정렬한 배열의 인덱스가 되고 이 인덱스의 첫번째 값은 음식의 시간이고 두번째 값이 인덱스라 두번째 값을 리턴한다. k에서 food_length를 나눈 나머지를 구하는 이유는 k가 food_length보다 크거나 같을 수 있어서다. k가 food_length와 같으면 배열의 인덱스를 하나 초과하게 된다. k가 food_length보다 크면 한 음식을 순서대로 다 먹을 수 있다는 의미라 몇번이나 순서대로 음식을 다 먹는 것과 관계없이 답을 구하기 위해 k에서 food_length를 나눈 나머지 값을 구한다.
 
+<br>
+
+### Java 풀이
+
+효율성 테스트 통과를 위해 주의 해야할 부분들이 있다.
+
+먼저 food_times 의 총합을 stream 대신 for 문으로 구해야 한다. k 가 food_times 의 전체 합 보다 크거나 같은 경우 더 이상 먹을 음식이 없어서 바로 -1을 리턴한다. food_times 의 전체 합을 구할때 stream 으로는 효율성 테스트를 통과하지 못했다. stream 대신 for 문을 사용해서 통과할 수 있었다.
+
+그리고 int 가 아닌 long 타입을 사용해야할 변수들이 있다. food_times 의 길이와 원소를 고려했을때 food_times 의 총합이나 food_times 의 전체 길이를 long 타입으로 선언해야 한다.
+
+<br>
+
+java 에서 long 타입의 범위는 -2^63 (-9223372036854775808) 부터 2^63 -1 (9223372036854775807) 까지다. 반면에 int 타입의 범위는 -2^31 (-2147483648) 부터 2^31 - 1 (2147483647) 까지다.
+
+<참고>
+
+https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html#MAX_VALUE
+
+https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html#MIN_VALUE
+
+https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MAX_VALUE
+
+https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html#MIN_VALUE
+
+https://linuxism.ustd.ip.or.kr/1523
+
+
+
