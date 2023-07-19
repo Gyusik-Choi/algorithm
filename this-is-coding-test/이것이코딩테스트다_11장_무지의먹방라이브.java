@@ -35,20 +35,15 @@ class Solution {
 
         // int 가 아닌 long 타입
         long foodLength = foodTimes.length;
-        // int 가 아닌 long 타입
-        long accValue = 0;
+        int lastTime = 0;
         int idx = 0;
-        // int 가 아닌 long 타입
-        long lastTime = 0;
 
-        while (k >= (long)(foods[idx].time - accValue) * foodLength) {
-            k -= (long)(foods[idx].time - accValue) * foodLength;
+        while (k >= (long)(foods[idx].time - lastTime) * foodLength) {
+            k -= (long)(foods[idx].time - lastTime) * foodLength;
 
             int sameCnt = getSameCnt(foods, foods[idx].time, idx);
 
             foodLength -= sameCnt;
-
-            accValue += (foods[idx].time - accValue);
 
             lastTime = foods[idx].time;
 
@@ -58,8 +53,7 @@ class Solution {
         // 인덱스 정렬
         Arrays.sort(foods, (a, b) -> a.idx - b.idx);
 
-        // int 가 아닌 long 타입
-        long finalLastTime = lastTime;
+        int finalLastTime = lastTime;
 
         List<Food> filteredFoods = Arrays
                 .stream(foods)
