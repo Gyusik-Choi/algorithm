@@ -31,12 +31,19 @@ class Solution {
     }
 
     public String[] splitP(String p) {
-        int leftPair = 1;
+        int leftPair = 0;
         int rightPair = 0;
-        String u = p.substring(0, 1);
+        StringBuilder u = new StringBuilder(p.substring(0, 1));
         String v = "";
+        p = p.substring(1);
 
-        for (int i = 1; i < p.length(); i++) {
+        if (u.toString().equals("(")) {
+            leftPair += 1;
+        } else {
+            rightPair += 1;
+        }
+
+        for (int i = 0; i < p.length(); i++) {
             String str = p.substring(i, i + 1);
 
             if (str.equals("(")) {
@@ -45,16 +52,17 @@ class Solution {
                 rightPair += 1;
             }
 
-            u += str;
+            u.append(str);
 
             if (leftPair == rightPair) {
                 if (leftPair != p.length()) {
                     v = p.substring(i + 1);
                 }
+                break;
             }
         }
 
-        return new String[]{u, v};
+        return new String[]{u.toString(), v};
     }
 
     public boolean isRightString(String u) {
@@ -74,26 +82,22 @@ class Solution {
             }
         }
 
-        if (deq.isEmpty()) {
-            return true;
-        }
-
-        return false;
+        return deq.isEmpty();
     }
 
     public String changeDirection(String u) {
-        String newU = "";
+        StringBuilder newU = new StringBuilder();
 
         for (int i = 0; i < u.length(); i++) {
             String str = u.substring(i, i + 1);
 
             if (str.equals("(")) {
-                newU += ")";
+                newU.append(")");
             } else {
-                newU += "(";
+                newU.append("(");
             }
         }
 
-        return newU;
+        return newU.toString();
     }
 }
