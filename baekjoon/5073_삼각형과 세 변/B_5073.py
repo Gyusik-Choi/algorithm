@@ -29,9 +29,7 @@ def check_triangle():
             answer += 'Isosceles\n'
             continue
 
-        if a != b != c:
-            answer += 'Scalene\n'
-            continue
+        answer += 'Scalene\n'
 
     answer = answer.rstrip('\n')
     sys.stdout.write(answer)
