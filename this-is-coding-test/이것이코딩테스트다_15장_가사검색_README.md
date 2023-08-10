@@ -53,6 +53,7 @@ JavaScript 풀이에서는 Object 로 tries, reversedTries 를 선언하고 단�
 처음에 단어 길이별로 Trie 인스턴스를 생성하기 때문에 len 속성의 값만 1씩 늘려주면 되고 답을 구할때도 len 속성의 값만 조회하면 답을 구할 수 있다. query 로 시작하는 단어 갯수를 찾는 startWithPrefix 함수를 호출할때 tries 에서 queryLength 로 조회한 Trie 인스턴스의 메소드를 호출한다.
 
 ```javascript
+// JavaScript 풀이
 tries[queryLength].startWithPrefix(query)
 ```
 
