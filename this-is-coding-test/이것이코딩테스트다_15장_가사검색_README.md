@@ -44,6 +44,26 @@ tries[wordLength].insert(word)
 
 <br>
 
+### Java
+
+#### 첫번째 풀이
+
+JavaScript 풀이에서는 Object 로 tries, reversedTries 를 선언하고 단어의 길이를 key 로 하여 Trie 인스턴스를 생성하는 방법을 사용했다. 단어의 길이로 Trie 인스턴스를 생성한 이후에는 단어를 한 글자씩 loop 를 돌면서 children 속성에 Trie 를 생성하면서 len 값을 1씩 늘려나갔다.
+
+처음에 단어 길이별로 Trie 인스턴스를 생성하기 때문에 len 속성의 값만 1씩 늘려주면 되고 답을 구할때도 len 속성의 값만 조회하면 답을 구할 수 있다. query 로 시작하는 단어 갯수를 찾는 startWithPrefix 함수를 호출할때 tries 에서 queryLength 로 조회한 Trie 인스턴스의 메소드를 호출한다.
+
+```javascript
+tries[queryLength].startWithPrefix(query)
+```
+
+<br>
+
+Java 풀이에서는 JavaScript 풀이와 유사하지만 조금 다른 방식을 사용했다. Java 풀이에서는 처음에 단어 길이로 Trie 인스턴스를 생성하지 않고 전체 첫 head 노드는 하나로 한다. JavaScript 풀이에서는 같은 단어 길이별로 Trie 인스턴스를 생성하는데 Java 풀이에서는 그렇지 않기 때문에 단어의 길이별로 몇 개의 단어가 있는지 별도로 관리해줘야 한다.
+
+HashMap 을 통해 단어의 길이를 key 로 하고 단어의 길이별 단어 수를 value 로 해서 단어의 길이별로 단어의 갯수가 몇 개 인지 세어준다.
+
+<br>
+
 <참고>
 
 https://velog.io/@hope1213/프로그래머스-가사검색-파이썬
