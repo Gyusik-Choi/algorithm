@@ -1,7 +1,7 @@
 T = int(input())
 for _ in range(T):
     n, m = map(int, input().split())
-    gold = [[0] * m for _ in range(n)]
+    gold = []
     number_of_gold = list(map(int, input().split()))
 
     i = 0
