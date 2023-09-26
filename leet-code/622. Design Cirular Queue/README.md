@@ -2,7 +2,9 @@
 
 ### 첫번째 풀이
 
-교재의 풀이 방식을 참고했다.
+[파이썬 알고리즘 인터뷰](https://www.yes24.com/Product/Goods/91084402) 교재의 풀이 방식을 참고했다.
+
+<br>
 
 #### 장점
 
@@ -97,3 +99,14 @@ start 와 end 가 같으면 큐가 비어있다.
 #### is_full
 
 end 가 한칸 이동하면 start 와 같아질 경우 큐가 가득찼다.
+
+<br>
+
+<참고>
+
+[파이썬 알고리즘 인터뷰](https://www.yes24.com/Product/Goods/91084402)
+
+https://lktprogrammer.tistory.com/59
+
+https://eunjinii.tistory.com/59
+
