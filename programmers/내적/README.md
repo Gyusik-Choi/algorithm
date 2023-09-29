@@ -12,3 +12,22 @@ b = [4, 3, 2, 1]
 sum(list(map(lambda x, y: x * y, a, b)))
 ```
 
+<br>
+
+만약에 인자로 2개 이상의 요소가 들어왔을 때 서로 길이가 다르다면 더 짧은 길이만큼만 돌게 된다.
+
+```python
+a = [1, 2, 3, 4]
+b = [1, 2, 3, 4, 5]
+list(map(lambda x, y: x + y, a, b))
+# [2, 4, 6, 8]
+```
+
+
+
+<br>
+
+<참고>
+
+https://docs.python.org/3/library/functions.html#map
+
