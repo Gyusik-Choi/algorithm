@@ -2,25 +2,20 @@ from collections import defaultdict
 
 
 def solution(strings, n):
-    arr = []
-
-    for idx, word in enumerate(strings):
-        arr.append([word[n], idx])
-
     words = defaultdict(list)
 
-    for char, idx in sorted(arr):
-        words[char].append(strings[idx])
+    for word in sorted(strings, key=lambda x: x[n]):
+        words[word[n]].append(word)
 
     answer = []
 
-    for key, value in words.items():
-        value.sort()
-        answer.extend(value)
+    for value in words.values():
+        answer.extend(sorted(value))
 
     return answer
 
 
 print(solution(["sun", "bed", "car"], 1))
 print(solution(["abce", "abcd", "cdx"], 2))
-
+# 참고
+# https://docs.python.org/ko/3/howto/sorting.html
