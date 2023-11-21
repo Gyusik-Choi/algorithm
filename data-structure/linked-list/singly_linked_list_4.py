@@ -32,11 +32,11 @@ class SinglyLinkedList:
             self.head.next = old_head
 
     def add_by_idx(self, idx, val):
-        if self.head.val is None:
-            raise Exception('연결리스트가 비었습니다')
-
         if idx == 0:
             return self.add_front(val)
+
+        if self.head.val is None:
+            raise Exception('인덱스를 확인 해주세요')
 
         cur = self.head
         i = idx
