@@ -86,7 +86,7 @@ class BinarySearchTree:
                 # 오른쪽 자식 노드에서 가장 작은 노드의 val 로 대체 한거라
                 # 오른쪽 자식 노드에서 가장 작은 노드는 트리에 아직 남아있어서
                 # 이를 제거해야 한다)
-                self.__remove_right_smallest_node(self.head, self.head.right_child, right_smallest_node.val)
+                self.__remove(self.head, self.head.right_child, right_smallest_node.val)
             return True
 
         if self.head.val > val:
@@ -127,7 +127,8 @@ class BinarySearchTree:
             else:
                 right_smallest_node = self.__find_smallest_node_from_right_child(cur)
                 cur.val = right_smallest_node.val
-                self.__remove_right_smallest_node(cur, cur.right_child, right_smallest_node.val)
+                # self.__remove_right_smallest_node(cur, cur.right_child, right_smallest_node.val)
+                self.__remove(cur, cur.right_child, cur.val)
             return True
 
         if cur.val > val:
@@ -138,18 +139,6 @@ class BinarySearchTree:
         if cur.right_child is None:
             return cur
         return self.__find_smallest_node_from_right_child(cur.right_child)
-
-    def __remove_right_smallest_node(self, parent: Node, cur: Node, val: int) -> bool:
-        if cur.val == val:
-            if parent.left_child == cur:
-                parent.left_child = None
-            else:
-                parent.right_child = None
-            return True
-
-        if cur.val > val:
-            return self.__remove_right_smallest_node(cur, cur.left_child, val)
-        return self.__remove_right_smallest_node(cur, cur.right_child, val)
 
     # 전위 순회
     def traverse_pre_order(self) -> list:
