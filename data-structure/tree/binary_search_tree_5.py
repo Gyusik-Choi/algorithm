@@ -54,7 +54,13 @@ class BinarySearchTree:
 
         return True
 
-    def remove(self, val: int):
+    # remove 와 __remove 를 하나로 하고 싶었으나 아직 방법을 찾지 못했다
+    # remove 와 __remove 는 유사하지만 차이가 있다
+    # remove 의 경우 루트 노드에 제거하려는 값이 있는 경우라
+    # 상위 노드 없이 루트 노드와 자식 노드 만으로 제거가 가능하다
+    # __remove 의 경우 루트 노드가 아닌 자식 노드에 제거하려는 값이 있는 경우라
+    # 부모 노드가 필요하다
+    def remove(self, val: int) -> bool:
         if self.head.val is None:
             return False
 
@@ -147,7 +153,7 @@ class BinarySearchTree:
 
     # 전위 순회
     def traverse_pre_order(self) -> list:
-        def __traverse(cur: Node, history):
+        def __traverse(cur: Node, history: list[int]) -> list:
             if cur is None:
                 return history
 
@@ -172,7 +178,7 @@ class BinarySearchTree:
         return __traverse(self.head, [])
 
     # 후위 순회
-    def traverse_post_order(self):
+    def traverse_post_order(self) -> list:
         def __traverse(cur: Node, history: list[int]) -> list:
             if cur is None:
                 return history
