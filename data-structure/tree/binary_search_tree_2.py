@@ -1,3 +1,6 @@
+from unittest import TestCase
+
+
 class Node:
     def __init__(self, item, left_child=None, right_child=None):
         self.val = item
@@ -16,8 +19,7 @@ class BinarySearchTree:
     def search(self, item):
         if self.head.val is None:
             return False
-        else:
-            return self.search_node(self.head, item)
+        return self.search_node(self.head, item)
 
     def search_node(self, cur, item):
         if cur.val == item:
@@ -28,15 +30,13 @@ class BinarySearchTree:
             if cur.left_child is not None:
                 return self.search_node(cur.left, item)
             # 왼쪽 자식노드가 없을 경우
-            else:
-                return False
+            return False
         else:
             # 오른쪽 자식노드가 있을 경우
             if cur.right_child is not None:
                 return self.search_node(cur.right, item)
             # 오른쪽 자식노드가 없을 경우
-            else:
-                return False
+            return False
 
     def add(self, item):
         if self.head.val is None:
@@ -47,9 +47,8 @@ class BinarySearchTree:
     def add_node(self, cur, item):
         # 탐색의 효율을 위해서 중복된 노드는 허용하지 않는다
         # 반드시 그래야 하는 것은 아니나 정 필요하면 똑같은 노드를 여러개 만들기 보다는
-        # 해당 노드의 숫자를 세어주는 변수를 이용하는게 낫다는 의견이 있다
+        # 해당 노드의 숫자를 세어주는 변수를 이용 하는게 낫다는 의견이 있다
         if cur.val == item:
-            print("We already have {}".format(item))
             return False
 
         # left
@@ -67,7 +66,6 @@ class BinarySearchTree:
 
     def remove(self, item):
         if self.head.val is None:
-            print("Nothing to remove")
             return False
 
         if self.head.val == item:
@@ -89,17 +87,16 @@ class BinarySearchTree:
             else:
                 self.head.val = self.search_most_left_val_from_right_node(self.head.right).val
                 self.remove_node(self.head, self.head.right_child, self.head.val)
+            return True
 
         else:
             if self.head.val > item:
                 return self.remove_node(self.head, self.head.left_child, item)
-            else:
-                return self.remove_node(self.head, self.head.right_child, item)
+            return self.remove_node(self.head, self.head.right_child, item)
 
     def remove_node(self, parent, cur, item):
         if cur is None:
-            print("Can't find {}".format(item))
-            return
+            return False
 
         if cur.val == item:
             # 자식노드가 하나도 없는 경우
@@ -113,11 +110,17 @@ class BinarySearchTree:
 
             # 왼쪽 자식노드만 있는 경우(오른쪽 자식노드는 없음)
             elif cur.left_child is not None and cur.right_child is None:
-                cur = cur.left_child
+                if parent.left_child == cur:
+                    parent.left_child = cur.left_child
+                else:
+                    parent.right_child = cur.left_child
 
             # 오른쪽 자식노드만 있는 경우(왼쪽 자식노드는 없음)
             elif cur.left_child is None and cur.right_child is not None:
-                cur = cur.right_child
+                if parent.left_child == cur:
+                    parent.left_child = cur.right_child
+                else:
+                    parent.right_child = cur.right_child
 
             # 왼쪽, 오른쪽 자식노드가 모두 있는 경우
             # 해당하는 값을 오른쪽 자식노드에서 가장 왼쪽 자식으로 바꿔준다
@@ -132,13 +135,15 @@ class BinarySearchTree:
             else:
                 self.remove_node(cur, cur.right_child, item)
 
+        return True
+
     def search_most_left_val_from_right_node(self, cur):
         if cur.left_child is None:
             return cur
         else:
             return self.search_most_left_val_from_right_node(cur.left_child)
 
-    # 전위순회(부모노드 -> 왼쪽자식 노드 -> 오른쪽자식 노드)
+    # 전위순회(부모노드 -> 왼쪽 자식노드 -> 오른쪽 자식노드)
     def pre_order(self):
         if self.head.val is None:
             print("Nothing to traverse")
@@ -154,10 +159,9 @@ class BinarySearchTree:
         if cur.right_child:
             self.pre_order_traverse(cur.right_child)
 
-    # 중위순회(왼쪽자식 노드 -> 부모노드 -> 오른쪽자식 노드)
+    # 중위순회(왼쪽 자식노드 -> 부모노드 -> 오른쪽 자식노드)
     def in_order(self):
         if self.head.val is None:
-            print("Nothing to traverse")
             return False
         return self.in_order_traverse(self.head)
 
@@ -170,7 +174,7 @@ class BinarySearchTree:
         if cur.right_child:
             self.in_order_traverse(cur.right_child)
 
-    # 후위순회(왼쪽자식 노드 -> 오른쪽자식 노드 -> 부모노드)
+    # 후위순회(왼쪽 자식노드 -> 오른쪽 자식노드 -> 부모노드)
     def post_order(self):
         if self.head.val is None:
             print("Nothing to traverse")
@@ -187,19 +191,38 @@ class BinarySearchTree:
         self.post_order_list.append(cur.val)
 
 
-bt = BinarySearchTree()
-bt.add(5)
-bt.add(1)
-bt.add(10)
-bt.add(7)
-bt.add(6)
-bt.add(9)
-bt.add(15)
-bt.add(12)
-bt.add(17)
-bt.pre_order()
-bt.remove(10)
-bt.pre_order()
+class BinarySearchTreeTest(TestCase):
+    def setUp(self):
+        self.bst = BinarySearchTree()
+
+    def test_remove1(self):
+        self.bst.add(3)
+        self.bst.add(2)
+        self.bst.add(1)
+
+        self.bst.remove(2)
+        self.assertEqual(self.bst.head.left_child.val, 1)
+
+    def test_remove2(self):
+        self.bst.add(1)
+        self.bst.add(2)
+        self.bst.add(3)
+
+        self.bst.remove(2)
+        self.assertEqual(self.bst.head.right_child.val, 3)
+
+    def test_remove3(self):
+        self.bst.add(4)
+        self.bst.add(2)
+        self.bst.add(1)
+        self.bst.add(3)
+        self.bst.add(6)
+        self.bst.add(5)
+        self.bst.add(7)
+
+        self.bst.remove(2)
+        self.assertEqual(self.bst.head.left_child.val, 3)
+
 
 # 참고
 # https://yaboong.github.io/data-structures/2018/02/12/binary-search-tree/ (중복에 관한 내용)
