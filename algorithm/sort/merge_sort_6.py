@@ -34,19 +34,16 @@ def merge_sort(arr):
             arr[low + t] = temp[t]
             t += 1
 
-    sort(0, len(arr))
+    sort(0, len(arr) - 1)
     return arr
 
 
-# arr = [2, 1, 4, 3]
-# merge_sort(0, len(arr) - 1)
-# print(arr)
+class MergeSortTest(TestCase):
+    def test_merge_sort(self):
+        self.assertEqual(merge_sort([2, 1, 4, 3]), [1, 2, 3, 4])
+
+    def test_merge_sort2(self):
+        self.assertEqual(merge_sort([2, 1, 7, 5, 6, 3, 4]), [1, 2, 3, 4, 5, 6, 7])
 
 # 참고
 # https://www.daleseo.com/sort-merge/
-
-class MergeSortTest(TestCase):
-    def test_merge_sort(self):
-        lst = [2, 1, 4, 3]
-        self.assertEquals(merge_sort(lst), [1, 2, 3, 4])
-
