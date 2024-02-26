@@ -29,9 +29,9 @@ public class Main {
 class Mst {
     public int kruskal(int v, int e, int[][] edges) {
         PriorityQueue<Edge> pq = new PriorityQueue<>();
-        Arrays.stream(edges).forEach((int[] edge) -> {
-            pq.add(new Edge(edge[0], edge[1], edge[2]));
-        });
+        Arrays
+            .stream(edges)
+            .forEach((int[] edge) -> pq.add(new Edge(edge[0], edge[1], edge[2])));
 
         int minLength = 0;
         DisjointSet disjointSet = new DisjointSet(v);
