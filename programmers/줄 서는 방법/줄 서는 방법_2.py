@@ -22,4 +22,9 @@ def solution(n, k):
 # print(solution(5, 34))
 # print(solution(5, 25))
 # print(solution(2, 2))
-print(solution(5, 120))
+# print(solution(5, 120))
+# print(solution(5, 48))
+# print(solution(5, 49))
+
+# 참고
+# https://kangworld.tistory.com/258
