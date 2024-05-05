@@ -34,3 +34,15 @@ mask 는 비트 길이를 고정하기 위해 활용할 수 있다. 특정 숫�
 
 코드와 관련된 보다 자세한 내용은 주석으로 작성했다.
 
+<br>
+
+<참고>
+
+파이썬 알고리즘 인터뷰
+
+https://electbros.com/half-adder-full-adder/
+
+https://lifelectronics.tistory.com/69
+
+https://m.blog.naver.com/limsy0310/221969701897
+
