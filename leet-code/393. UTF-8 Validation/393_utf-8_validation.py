@@ -10,7 +10,7 @@ class Solution:
         # 다음 바이트의 이진수가 10 으로 시작하는지 탐색한다
         idx = 0
         while idx < len(data):
-            if not self.__is_valid_first_byte(data[idx]):
+            if not self.__is_valid_first_utf8_byte(data[idx]):
                 return False
 
             next_length = self.__get_next_byte_length(data[idx])
@@ -44,7 +44,7 @@ class Solution:
     # 아래와 같은 유형은 올 수 없다
     # 11111xxx
     # 10xxxxxx
-    def __is_valid_first_byte(self, num):
+    def __is_valid_first_utf8_byte(self, num):
         if num >> 3 == 0b11111:
             return False
 
