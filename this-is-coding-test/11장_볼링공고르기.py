@@ -1,33 +1,21 @@
-def get_number_of_combination(n):
-    number_of_combinations = 0
-    for i in range(1, n):
-        number_of_combinations += i
-
-    return number_of_combinations
-
-
 N, M = map(int, input().split())
 nums = list(map(int, input().split()))
-nums.sort()
+nums_cnt = [0] * (N + 1)
 
-current_num = nums[0]
-duplicate_cnt = []
-temp_count = 1
-for j in range(1, N):
-    if current_num == nums[j]:
-        temp_count += 1
-    else:
-        if temp_count > 1:
-            duplicate_cnt.append(temp_count)
-        current_num = nums[j]
-        temp_count = 1
+for num in nums:
+    nums_cnt[num] += 1
 
-# 마지막에 duplicate_count 에 넣지 못한 경우
-if temp_count > 1:
-    duplicate_cnt.append(temp_count)
+total = 0
+for cnt in nums_cnt:
+    N -= cnt
+    total += N * cnt
 
-total_number_of_combinations = get_number_of_combination(N)
-for cnt in duplicate_cnt:
-    total_number_of_combinations -= get_number_of_combination(cnt)
+print(total)
 
-print(total_number_of_combinations)
+# 5 3
+# 1 3 2 3 2
+# => 8
+
+# 8 5
+# 1 5 4 3 2 4 5 2
+# => 25
