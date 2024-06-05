@@ -1,33 +1,17 @@
-import heapq
-from collections import Counter
 from typing import List
+from collections import Counter
 from unittest import TestCase
 
 
 class Solution:
     def least_interval(self, tasks: List[str], n: int) -> int:
         counter = Counter(tasks)
-        result = 0
-
-        while True:
-            sub_count = 0
-
-            for task, _ in counter.most_common(n + 1):
-                # n + 1 만큼 counter 에서
-                # 꺼내지 못하면 idle
-                sub_count += 1
-                result += 1
-
-                counter[task] -= 1
-                if not counter[task]:
-                    del counter[task]
-
-            if not list(filter(lambda x: x > 0, counter.values())):
-                break
-
-            result += n + 1 - sub_count
-
-        return result
+        max_task = counter.most_common(1)[0]
+        max_idle = (max_task[1] - 1) * n
+        del counter[max_task[0]]
+        for i in counter.values():
+            max_idle -= min(max_task[1] - 1, i)
+        return len(tasks) + max(max_idle, 0)
 
 
 class SolutionTest(TestCase):
