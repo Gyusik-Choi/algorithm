@@ -16,7 +16,11 @@ dp배열을 구할때 건을 하나 더 담을지 아니면 안 담을지를 비
 
 <br>
 
-참고
+<참고>
 
 https://gsmesie692.tistory.com/113
+
 https://st-lab.tistory.com/141
+
+파이썬 알고리즘 인터뷰
+
