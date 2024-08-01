@@ -12,9 +12,17 @@
 
 <br>
 
+### Java 풀이
+
+(진행중)
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
 https://jaykalia07.medium.com/linked-lists-and-the-runner-technique-8e70e5433389
+
+자바 알고리즘 인터뷰
 
