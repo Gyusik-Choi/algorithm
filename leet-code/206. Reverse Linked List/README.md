@@ -2,7 +2,9 @@
 
 ## 206. Reverse Linked List
 
-### 206_reverse_linked_list.py
+### Python
+
+#### 206_reverse_linked_list.py
 
 while 문을 이용해서 풀이했다. [234번 문제](https://leetcode.com/problems/palindrome-linked-list/) 에서 연결 리스트를 뒤집는데 사용한 방법을 그대로 적용했다.
 
@@ -10,7 +12,7 @@ while 문을 이용해서 풀이했다. [234번 문제](https://leetcode.com/pro
 
 <br>
 
-### 206_reverse_linked_list_2.py
+#### 206_reverse_linked_list_2.py
 
 재귀를 활용했다. 교재의 풀이법을 이해하기가 쉽지 않았다.
 
@@ -18,7 +20,81 @@ while 문을 이용해서 풀이했다. [234번 문제](https://leetcode.com/pro
 
 <br>
 
+### Java
+
+#### ReverseLinkedList206
+
+while 문을 사용해서 반복 구조로 풀이했다.
+
+<br>
+
+#### ReverseLinkedList206_2
+
+재귀 구조로 풀이했다. head 의 마지막 노드까지 재귀호출을 한 후 head 의 첫번째 요소를 재귀호출에서 리턴받은 노드의 맨 마지막에 연결한다.
+
+head 가 아래와 같을때 다음과 같은 형태로 역순 연결리스트를 만들어간다
+
+```
+head 1 -> 2 -> 3 -> 4 -> 5
+```
+
+<br>
+
+```
+head 4 -> 5
+next 5
+prev 4
+
+next 4 <- 5
+```
+
+<br>
+
+```
+// next 를 맨 마지막까지 이동하면서 
+// next 의 참조는 4 <- 5 를 유지할 수 있도록
+// cur 변수에 next 를 할당한 후
+// cur 를 마지막까지 이동해서 3 을 연결하고
+// next 를 반환한다
+head 3 -> 4 -> 5
+next 4 <- 5
+prev 3
+
+next 3 <- 4 <- 5
+```
+
+<br>
+
+```
+head 2 -> 3 -> 4 -> 5
+next 3 <- 4 <- 5
+prev 2
+
+next 2 <- 3 <- 4 <- 5
+```
+
+<br>
+
+```
+head 1 -> 2 -> 3 -> 4 -> 5
+next 2 -> 3 <- 4 <- 5
+prev 1
+
+next 1 <- 2 <- 3 <- 4 <- 5
+```
+
+<br>
+
+#### ReverseLinkedList206_3
+
+교재의 풀이를 참고했다. ReverseLinkedList206_2 의 풀이와 달리 맨 마지막까지 재귀호출로 호출 스택을 쌓지 않는다.
+
+노드의 다음 요소를 재귀호출하면 해당 호출스택에서 역순으로 노드를 뒤집은 후 리턴으로 해당 호출스택은 종료하고 다음 재귀호출로 넘어간다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
+자바 알고리즘 인터뷰
