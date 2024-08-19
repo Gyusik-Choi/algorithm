@@ -28,7 +28,11 @@ ListNode 가 null 이거나 ListNode 의 next 가 null 일 때까지 현재 노�
 
 #### OddEvenLinkedList328_2
 
-처음에는 교재의 풀이와 다르게 접근(OddEvenLinkedList328_Circular_Reference)했는데 순환 참조가 발생했다. odd 와 even 을 나눠서 while 문을 진행했는데 odd 가 바뀌면서 head 도 바뀌고 head 의 다음 노드를 참조하던 even 도 영향을 주는데 이를 간과했다.
+처음에는 교재의 풀이와 다르게 접근(OddEvenLinkedList328_Circular_Reference)했는데 순환 참조가 발생했다. 
+
+![circular](circular.jpg)
+
+odd 와 even 을 나눠서 while 문을 진행했는데 odd 가 바뀌면서 head 도 바뀌고 head 의 다음 노드를 참조하던 even 도 영향을 주는데 이를 간과했다.
 
 교재의 풀이를 참고하여 while 문을 한번만 돌면서 순환 참조를 해결했다.
 
