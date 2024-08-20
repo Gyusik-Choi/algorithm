@@ -2,6 +2,8 @@
 
 ## 92. Reverse Linked List II
 
+### Python
+
 root 노드를 생성해서 root.next 가 head 를 바라보도록 생성하고 추후에 root.next 를 리턴해서 root 를 제외한 head 부분만 포함된다.
 
 그냥 head 를 리턴하는 것도 가능하지 않을까 싶었지만 첫번째 노드가 뒤집는 범위에 포함되면 head 가 전체 노드 중 마지막 노드를 가리키게 돼서 제대로된 값을 리턴할 수 없다.
@@ -12,7 +14,25 @@ temp 에는 start.next 를 대입하고 start.next 에는 end.next 를 대입하
 
 <br>
 
+### Java
+
+#### ReverseLinkedListII92
+
+(작성중)
+
+<br>
+
+#### ReverseLinkedListII92_2
+
+(작성중)
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
+
+
 
