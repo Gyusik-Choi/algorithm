@@ -17,6 +17,7 @@ public class ReverseLinkedListII92 {
             node = node.next;
         }
         ListNode rightNode = node.next;
+        // 다음 노드와의 연결을 끊는다
         node.next = null;
 
         ListNode reversedNode = reverse(leftNode.next);
