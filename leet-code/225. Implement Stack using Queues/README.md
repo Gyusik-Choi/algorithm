@@ -2,7 +2,7 @@
 
 ## 225. Implement Stack Using Queues
 
-파이썬 알고리즘 인터뷰 교재에 수록된 문제다. 
+### Python
 
 큐로 스택을 구현해야 한다. 큐는 덱을 이용했다. 교재에서는 push 메소드로 넣은 아이템이 큐의 맨 앞에 갈 수 있도록 큐의 길이 - 1 만큼 큐의 앞의 요소들을 빼서 뒤로 넣었다.
 
@@ -24,6 +24,24 @@
 # 5를 제거해서 리턴한다
 [1, 2, 3, 4]
 ```
+
+<br>
+
+### Java
+
+#### ImplementStackUsingQueues225
+
+Queue 인터페이스의 구현체인 LinkedList 의 연산을 활용했다. 큐 연산으로 스택을 구현하는 문제라 더하고 빼는 연산에 add, remove 메소드를 활용했다. 
+
+poll 은 remove 와 유사한 메소드인데 poll 은 비었을 때 에러를 발생하지 않고 null 을 반환한다. NullPointerException 이 발생할 수 있어서 사용하지 않았다.
+
+peek 은 element 와 유사한 메소드인데 peek 도 poll 과 같은 이유로 사용하지 않았다.
+
+<br>
+
+#### ImplementStackUsingQueues225_2
+
+연결 리스트를 사용해서 직접 구현했다. 연결 리스트의 맨 끝에 노드를 삽입하고, 맨 끝의 노드를 제거한다.
 
 <br>
 
