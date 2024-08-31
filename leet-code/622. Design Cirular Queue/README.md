@@ -1,6 +1,10 @@
 
 
-### 첫번째 풀이
+# LeetCode
+
+## [622. Design Circular Queue](https://leetcode.com/problems/design-circular-queue/)
+
+### Python
 
 [파이썬 알고리즘 인터뷰](https://www.yes24.com/Product/Goods/91084402) 교재의 풀이 방식을 참고했다.
 
@@ -99,6 +103,24 @@ start 와 end 가 같으면 큐가 비어있다.
 #### is_full
 
 end 가 한칸 이동하면 start 와 같아질 경우 큐가 가득찼다.
+
+<br>
+
+### Java
+
+### DesignCircularQueue622
+
+직접 풀이했다.
+
+<br>
+
+### DesignCircularQueue622_2
+
+교재의 풀이를 참고했다. 
+
+length 변수를 별도로 두어서 현재 배열에 몇개의 요소가 들어왔는지 확인한다. length 변수를 별도로 사용하지만 DesignCircularQueue622 풀이보다 훨씬 더 간결하게 구현한다.
+
+rear 를 0이 아닌 -1로 초기값을 설정해서 최초에 원형 큐에 요소를 입력하면 rear 를 0으로 만들어서 front 도 최초로 입력한 값을 바라볼 수 있도록 한다. 만약에 rear 를 0으로 했다면 이때는 예외처리 등의 방법을 통해 front, rear 값을 조정해야 한다.
 
 <br>
 
