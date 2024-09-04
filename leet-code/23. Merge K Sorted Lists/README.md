@@ -2,7 +2,9 @@
 
 ## 23. Merge K Sorted Lists
 
-### 우선순위 큐
+### Python
+
+#### 우선순위 큐
 
 heapq 모듈을 사용해서 우선순위 큐를 활용했다.
 
@@ -20,7 +22,7 @@ ListNode 의 val 이 중복돼서 에러가 발생하는 것을 방지하기 위
 
 <br>
 
-### 연결 리스트
+#### 연결 리스트
 
 head 변수에 ListNode 인스턴스를 할당하고 cur 변수에 head 를 할당했다.
 
@@ -30,7 +32,56 @@ head 의 next 를 리턴하면 빈 값이 있는 연결 리스트 시작 부분�
 
 <br>
 
+### Java
+
+교재의 풀이를 참고했다.
+
+우선순위 큐를 활용하면 보다 쉽게 풀이할 수 있다. 우선순위 큐의 정렬 기준을 Comparator 클래스로 넣어서 정할 수 있다. Comparator 클래스를 정의하는 몇 가지 방법이 있다.
+
+<br>
+
+#### 익명 클래스
+
+```java
+PriorityQueue<ListNode> pq = new PriorityQueue<>(new Comparator<ListNode>() {
+  @Override
+  public int compare(ListNode o1, ListNode o2) {
+    return o1.val - o2.val;
+  }
+});
+```
+
+<br>
+
+#### 람다식
+
+```java
+PriorityQueue<ListNode> pq = new PriorityQueue<>((o1, o2) -> o1.val - o2.val);
+```
+
+<br>
+
+### comparingInt 스태틱 메소드
+
+```java
+PriorityQueue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
+```
+
+<br>
+
+우선순위 큐에 대한 정렬 기준을 설정한 후 lists 를 for 문을 돌면서 하나씩 노드를 우선순위 큐에 넣는다. ListNode 가  null 일 수 있어서 null 이 아닌 경우만 우선순위 큐에 넣는다.
+
+우선순위 큐에서 노드를 꺼내고 head 노드의 next 에 우선순위 큐에서 꺼낸 노드를 연결하고, 꺼낸 노드의 next 가 null 이 아니면 꺼낸 노드의 next 노드를 다시 우선순위 큐에 넣는다.
+
+root, head 두 가지 변수를 사용했는데 root 는 전체 노드에 대한 참조를 유지하기 위한 변수고, head 는 root 와 같은 참조를 보다가 우선순위 큐에서 꺼낸 노드를 연결하기 위해 한칸씩 이동하는 노드다.
+
+모든 노드를 연결하면 root 의 next 노드를 리턴한다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
 
