@@ -2,6 +2,8 @@
 
 ## 17. Letter Combinations of a Phone Number
 
+### Python
+
 조합을 구하는 문제다.
 
 그간 일차원 배열에서 특정 갯수의 조합을 구하는 유형을 주로 접했다. 이번처럼 딕셔너리에서 2차 for 문을 돌면서 조합을 구하는 유형은 많이 접하지 못했다.
@@ -12,9 +14,23 @@
 
 <br>
 
+### Java & Kotlin
+
+전화번호와 문자를 해시맵으로 초기화한 후 재귀적으로 조합을 구한다.
+
+digits 의 앞글자를 하나씩 제거하면서 재귀호출을 한다. digits 의 첫글자를 키로 map 에서 값을 구한후 for 문을 돌면서 for 문의 요소를 조합을 구하는 문자열에 더한다.
+
+digits 가 빈 문자열이면 지금까지 더한 조합을 리스트에 추가한다.
+
+<br>
+
 <참고>
 
 https://www.acmicpc.net/problem/15650
 
 https://st-lab.tistory.com/115
+
+파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
 
