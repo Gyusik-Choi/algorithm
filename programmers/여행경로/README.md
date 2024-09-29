@@ -2,6 +2,8 @@
 
 ## 여행경로
 
+### Python
+
 어려운 문제였다.
 
 그래프 탐색 유형의 문제로 DFS 재귀를 활용해서 풀이했다.
@@ -44,6 +46,14 @@ visit = {
 
 <br>
 
+### Java
+
+[이 문제](https://leetcode.com/problems/reconstruct-itinerary/description/) 와 거의 동일하다.
+
+DFS 를 활용하되 방문 정보를 리스트 대신 다른 방식을 사용했다. 별도의 방문 정보를 담는 자료구조를 사용하지 않고, 여행 경로를 담는 자료구조만으로 풀이했다. 여행 경로를 담는 해시맵을 사용하고 해시맵의 value 를 우선순위 큐를 사용했다. 우선순위 큐를 통해 별도의 오름차순 정렬 없이 풀이할 수 있고, 목적지는 우선순위 큐에서 하나씩 제거하면서 자연스럽게 방문한 목적지는 우선순위 큐에서 제거된다.
+
+<br>
+
 <참고>
 
 https://school.programmers.co.kr/questions/10332
@@ -53,4 +63,6 @@ https://school.programmers.co.kr/questions/33058
 https://ljhyunstory.tistory.com/107
 
 https://ckd2806.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC-python%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%97%AC%ED%96%89%EA%B2%BD%EB%A1%9C-%EC%BD%94%EB%93%9C-%ED%92%80%EC%9D%B4-%EB%81%84%EC%A0%81%EB%81%84%EC%A0%81
+
+자바 알고리즘 인터뷰
 
