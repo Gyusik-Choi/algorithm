@@ -30,11 +30,17 @@
 
 <br>
 
-### Java
+### Java & Kotlin
 
 #### NetworkDelayTime743
 
 Python 의 첫번째 풀이와 동일한 방식으로 풀이했다.
+
+<br>
+
+#### NetworkDelayTime743_2
+
+NetworkDelayTime743 과 동일한 방식으로 풀이했고, 언어를 Java 에서 Kotlin 으로 바꿔서 풀이했다.
 
 <br>
 
