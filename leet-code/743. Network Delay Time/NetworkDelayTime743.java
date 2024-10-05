@@ -8,8 +8,7 @@ public class NetworkDelayTime743 {
             map.get(time[0]).add(new Integer[]{time[1], time[2]});
         }
         int[] distance = dijkstra(map, n, k);
-        if (isNotConnected(distance)) return -1;
-        return getMaxValue(distance);
+        return isNotConnected(distance) ? -1 : getMaxValue(distance);
     }
 
     private int[] dijkstra(Map<Integer, List<Integer[]>> map, int maxNum, int start) {
