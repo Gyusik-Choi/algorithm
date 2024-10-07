@@ -2,6 +2,8 @@
 
 ## 787. Cheapest Flights With K Stops
 
+### Python
+
 다익스트라 알고리즘을 활용하되 약간의 변형을 적용해서 풀이했다.
 
 다익스트라 알고리즘은 그리디 방식으로 풀이하면서 중복을 방지하기 위해 최소 거리를 찾은 정점에 대해서는 다시 탐색하지 않는다.
@@ -44,8 +46,17 @@
 
 <br>
 
+### Java
+
+(작성중) 시간 초과에 걸리지 않도록 최적화하는 부분이 어려웠다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
 [깃헙 이슈](https://github.com/onlybooks/python-algorithm-interview/issues/104)
+
+자바 알고리즘 인터뷰
+
