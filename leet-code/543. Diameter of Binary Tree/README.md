@@ -2,6 +2,8 @@
 
 ## 543. Diameter of Binary Tree
 
+### Python
+
 어려운 문제였다.
 
 한 정점에서 다른 정점으로 가는 최대 거리를 구하는데 루트를 통해서 가야만 하는게 아니다. 정점 간의 최대 거리를 구하는 문제다.
@@ -37,9 +39,21 @@ def dfs(vertex):
 
 <br>
 
+### Java
+
+#### DiameterOfBinaryTree543
+
+(작성중)
+
+<br>
+
 <참고>
 
 https://leetcode.com/problems/diameter-of-binary-tree/description/comments/1566534
 
 https://leetcode.com/problems/diameter-of-binary-tree/description/comments/1575874
+
+파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
 
