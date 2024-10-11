@@ -47,7 +47,7 @@ if root is None:
 
 <br>
 
-### Java
+### Java & Kotlin
 
 #### MaximumDepthOfBinaryTree104
 
@@ -72,6 +72,12 @@ MaximumDepthOfBinaryTree104 와 풀이는 유사하지만 보다 간결하다.
 이 풀이는 깊이를 파라미터로 전달하지 않고 하나의 함수로 풀이한다. 그리고 MaximumDepthOfBinaryTree104 에서는 루트 노드의 깊이를 0으로 했다면 이 풀이는 리프 노드의 깊이를 0으로 한다.
 
 노드가 null 이면 0을 리턴하고, null 이 아니면 왼쪽, 오른쪽 자식노드를 재귀호출한다. 리프노드까지 내려가면 0을 리턴하고 상위 노드부터 1씩 증가된 값을 리턴한다.
+
+<br>
+
+#### MaximumDepthOfBinaryTree104_3
+
+MaximumDepthOfBinaryTree104_2 의 풀이와 동일할 방법으로 풀이했고, 언어를 Java 에서 Kotlin 으로 변경했다.
 
 <br>
 
