@@ -13,8 +13,8 @@ public class DiameterOfBinaryTree543 {
         if (root == null) return 0;
         int left = traverse(root.left);
         int right = traverse(root.right);
-        // 현재 정점까지의 최대 diameter 는 max + 1 + min
-        maxDiameter = Math.max(maxDiameter, Math.max(left, right) + 1 + Math.min(left, right));
+        // 현재 정점까지의 최대 diameter 는 left + right + 1
+        maxDiameter = Math.max(maxDiameter, left+ right + 1);
         // 현재 정점의 최대 깊이는 max + 1
         return Math.max(left, right) + 1;
     }
