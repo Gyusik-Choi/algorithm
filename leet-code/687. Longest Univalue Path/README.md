@@ -2,7 +2,7 @@
 
 ## 687. Longest Univalue Path
 
-
+### Python
 
 재귀호출로 리턴하는 값은 left, right 중에서 더 큰 값이다. 하나의 트리 줄기를 left, right 의 값으로 가져간다. 그 과정에서 동일한 값을 갖는 가장 긴 경로를 찾기 위해 부모 노드와 자식 노드의 val 값을 비교한다.
 
@@ -24,7 +24,17 @@
 
 <br>
 
+### Java
+
+#### LongestUnivaluePath687
+
+(작성중)
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
 
