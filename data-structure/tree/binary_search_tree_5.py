@@ -1,3 +1,12 @@
+# 이 구현은 문제가 있는 부분이 있다
+# remove 에서 삭제하려는 노드에 자식 노드가 모두 존재하면
+# 오른쪽에서 가장 작은 노드로 대체하는데
+# 이때 이 오른쪽에서 가장 작은 노드가 오른쪽 자식 노드가 존재하면
+# 이 자식 노드는 지워지면 안되는데
+# 여기서는 자식노드가 지워진다
+# 이에 대해서는 테스트 코드에서 확인할 수 있다
+# -> test_when_right_smallest_node_has_children_children_must_not_be_removed
+
 from unittest import TestCase
 
 
@@ -315,9 +324,23 @@ class BinarySearchTreeTest(TestCase):
         lst = self.bst.traverse_post_order()
         self.assertEqual(lst, [1, 3, 2, 5, 7, 6, 4])
 
+    # https://st-lab.tistory.com/300
+    def test_when_right_smallest_node_has_children_children_must_not_be_removed(self):
+        self.bst.add(23)
+        self.bst.add(12)
+        self.bst.add(40)
+        self.bst.add(7)
+        self.bst.add(16)
+        self.bst.add(14)
+        self.bst.add(15)
+
+        self.bst.remove(12)
+        with self.assertRaises(AttributeError):
+            val = self.bst.head.left_child.right_child.left_child.value
 
 # 참고
 # https://zeddios.tistory.com/492
 # https://ratsgo.github.io/data%20structure&algorithm/2017/10/22/bst/
 # https://github.com/minsuk-heo/problemsolving/blob/master/data_structure/BinaryTree.py
 # https://hongku.tistory.com/160
+# https://st-lab.tistory.com/300
