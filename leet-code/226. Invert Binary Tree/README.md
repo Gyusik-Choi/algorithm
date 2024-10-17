@@ -62,9 +62,25 @@ BFS 로 풀이했다.
 
 <br>
 
+#### InvertBinaryTree226_5
+
+InvertBinaryTree226 와 동일한 방식으로 풀이했다. 언어를 Java 에서 Kotlin 으로 변경했다.
+
+also 함수를 통해 python 과 유사하게 한줄로 swap 을 할 수 있었다. 아직 also 의 동작방식을 제대로 이해하지 못했다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
 자바 알고리즘 인터뷰
+
+https://medium.com/@limgyumin/%EC%BD%94%ED%8B%80%EB%A6%B0-%EC%9D%98-apply-with-let-also-run-%EC%9D%80-%EC%96%B8%EC%A0%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%EA%B0%80-4a517292df29
+
+https://www.baeldung.com/kotlin/swap-utility
+
+https://medium.com/@vibhanshusharma_93861/one-line-swap-algorithm-in-kotlin-e1cf6cc64708
+
+https://kotlinlang.org/docs/scope-functions.html
 
