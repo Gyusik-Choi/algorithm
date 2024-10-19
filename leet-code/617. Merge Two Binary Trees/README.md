@@ -20,7 +20,7 @@
 
 <br>
 
-### Java
+### Java & Kotlin
 
 어려운 문제였다.
 
