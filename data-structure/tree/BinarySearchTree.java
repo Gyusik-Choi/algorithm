@@ -1,4 +1,6 @@
-// 구현 진행중
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinarySearchTree {
     public Node head;
 
@@ -18,7 +20,6 @@ public class BinarySearchTree {
             head = new Node(value);
             return;
         }
-
         addValue(head, value);
     }
 
@@ -41,10 +42,108 @@ public class BinarySearchTree {
     }
 
     public void remove(int value) {
+        if (head.value == value) {
+            if (head.left == null && head.right == null) {
+                head = null;
+            } else if (head.left == null) {
+                head = head.right;
+            } else if (head.right == null) {
+                head = head.left;
+            } else {
+                Node rightSmallestNode = findSmallestNodeFromRightChild(head.right);
+                head.value = rightSmallestNode.value;
+                removeNode(head, head.right, rightSmallestNode.value);
+            }
+            return;
+        }
 
+        if (head.value > value) {
+            removeNode(head, head.left, value);
+        } else {
+            removeNode(head, head.right, value);
+        }
+    }
+
+    private void removeNode(Node parent, Node cur, int value) {
+        if (cur == null) return;
+
+        if (cur.value == value) {
+            if (cur.left == null && cur.right == null) {
+                if (parent.left == cur) {
+                    parent.left = null;
+                } else {
+                    parent.right = null;
+                }
+            } else if (cur.left == null) {
+                if (parent.left == cur) {
+                    parent.left = cur.right;
+                } else {
+                    parent.right = cur.right;
+                }
+            } else if (cur.right == null) {
+                if (parent.left == cur) {
+                    parent.left = cur.left;
+                } else {
+                    parent.right = cur.left;
+                }
+            } else {
+                Node rightSmallestNode = findSmallestNodeFromRightChild(cur.right);
+                cur.value = rightSmallestNode.value;
+                removeNode(cur, cur.right, rightSmallestNode.value);
+            }
+            return;
+        }
+
+        if (cur.value > value) {
+            removeNode(cur, cur.left, value);
+        } else {
+            removeNode(cur, cur.right, value);
+        }
+    }
+
+    private Node findSmallestNodeFromRightChild(Node cur) {
+        if (cur.left == null) {
+            return cur;
+        }
+        return findSmallestNodeFromRightChild(cur.left);
     }
 
     // 전위, 중위, 후위 순회 메서드 추가
+    public List<Integer> preOrder() {
+        return preOrderTree(new ArrayList<>(), head);
+    }
+
+    private List<Integer> preOrderTree(List<Integer> list, Node node) {
+        if (node == null) return list;
+        list.add(node.value);
+        preOrderTree(list, node.left);
+        preOrderTree(list, node.right);
+        return list;
+    }
+
+    public List<Integer> inOrder() {
+        return inOrderTree(new ArrayList<>(), head);
+    }
+
+    private List<Integer> inOrderTree(List<Integer> list, Node node) {
+        if (node == null) return list;
+        inOrderTree(list, node.left);
+        list.add(node.value);
+        inOrderTree(list, node.right);
+        return list;
+    }
+
+    public List<Integer> postOrder() {
+        return postOrderTree(new ArrayList<>(), head);
+    }
+
+    private List<Integer> postOrderTree(List<Integer> list, Node node) {
+        if (node == null) return list;
+        postOrderTree(list, node.left);
+        postOrderTree(list, node.right);
+        list.add(node.value);
+        return list;
+    }
 
     public static class Node {
         int value;
