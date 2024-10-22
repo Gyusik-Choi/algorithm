@@ -137,7 +137,7 @@ class BinarySearchTree:
 
     # 오른쪽 자식 노드 중 가장 작은 노드
     # 오른쪽 자식 노드부터 탐색을 할 수 있도록 파라미터인 cur 은
-    # 탐색하려는 노드의 오른쪽 자식 노드가 와야 한다
+    # 삭제하려는 노드의 오른쪽 자식 노드가 와야 한다
     # 탐색은 가장 작은 노드를 찾아야 해서 왼쪽 자식 노드를 찾는다
     def __find_smallest_node_from_right_child(self, cur: Node) -> Node:
         if cur.left_child is None:
