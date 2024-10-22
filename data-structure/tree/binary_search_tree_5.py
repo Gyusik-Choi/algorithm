@@ -1,12 +1,3 @@
-# 이 구현은 문제가 있는 부분이 있다
-# remove 에서 삭제하려는 노드에 자식 노드가 모두 존재하면
-# 오른쪽에서 가장 작은 노드로 대체하는데
-# 이때 이 오른쪽에서 가장 작은 노드가 오른쪽 자식 노드가 존재하면
-# 이 자식 노드는 지워지면 안되는데
-# 여기서는 자식노드가 지워진다
-# 이에 대해서는 테스트 코드에서 확인할 수 있다
-# -> test_when_right_smallest_node_has_children_children_must_not_be_removed
-
 from unittest import TestCase
 
 
@@ -134,7 +125,7 @@ class BinarySearchTree:
                     parent.right_child = cur.left_child
             # 4) 자식 노드가 둘 다 있는 경우
             else:
-                right_smallest_node = self.__find_smallest_node_from_right_child(cur)
+                right_smallest_node = self.__find_smallest_node_from_right_child(cur.right_child)
                 cur.val = right_smallest_node.val
                 # self.__remove_right_smallest_node(cur, cur.right_child, right_smallest_node.val)
                 self.__remove(cur, cur.right_child, cur.val)
@@ -144,10 +135,14 @@ class BinarySearchTree:
             return self.__remove(cur, cur.left_child, val)
         return self.__remove(cur, cur.right_child, val)
 
+    # 오른쪽 자식 노드 중 가장 작은 노드
+    # 오른쪽 자식 노드부터 탐색을 할 수 있도록 파라미터인 cur 은
+    # 탐색하려는 노드의 오른쪽 자식 노드가 와야 한다
+    # 탐색은 가장 작은 노드를 찾아야 해서 왼쪽 자식 노드를 찾는다
     def __find_smallest_node_from_right_child(self, cur: Node) -> Node:
-        if cur.right_child is None:
+        if cur.left_child is None:
             return cur
-        return self.__find_smallest_node_from_right_child(cur.right_child)
+        return self.__find_smallest_node_from_right_child(cur.left_child)
 
     # 전위 순회
     def traverse_pre_order(self) -> list:
@@ -288,6 +283,19 @@ class BinarySearchTreeTest(TestCase):
         self.bst.remove(6)
         self.assertEqual(self.bst.head.right_child.val, 7)
 
+    # https://st-lab.tistory.com/300
+    def test_remove8(self):
+        self.bst.add(23)
+        self.bst.add(12)
+        self.bst.add(40)
+        self.bst.add(7)
+        self.bst.add(16)
+        self.bst.add(14)
+        self.bst.add(15)
+
+        self.bst.remove(12)
+        self.assertEqual(self.bst.head.left_child.right_child.left_child.val, 15)
+
     def test_traverse_pre_order(self):
         self.bst.add(4)
         self.bst.add(2)
@@ -323,20 +331,6 @@ class BinarySearchTreeTest(TestCase):
 
         lst = self.bst.traverse_post_order()
         self.assertEqual(lst, [1, 3, 2, 5, 7, 6, 4])
-
-    # https://st-lab.tistory.com/300
-    def test_when_right_smallest_node_has_children_children_must_not_be_removed(self):
-        self.bst.add(23)
-        self.bst.add(12)
-        self.bst.add(40)
-        self.bst.add(7)
-        self.bst.add(16)
-        self.bst.add(14)
-        self.bst.add(15)
-
-        self.bst.remove(12)
-        with self.assertRaises(AttributeError):
-            val = self.bst.head.left_child.right_child.left_child.value
 
 # 참고
 # https://zeddios.tistory.com/492
