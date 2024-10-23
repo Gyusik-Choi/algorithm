@@ -2,46 +2,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinarySearchTree {
-    public Node head;
+    private com.example.BinarySearchTree.Node head;
+
+    public boolean isEmpty() {
+        return head == null;
+    }
 
     public boolean search(int value) {
         return searchTree(head, value);
     }
 
-    private boolean searchTree(Node node, int value) {
+    private boolean searchTree(com.example.BinarySearchTree.Node node, int value) {
         if (node == null) return false;
         if (node.value == value) return true;
         if (node.value > value) return searchTree(node.left, value);
         return searchTree(node.right, value);
     }
 
-    public void add(int value) {
-        if (head == null) {
-            head = new Node(value);
-            return;
+    public boolean add(int value) {
+        if (isEmpty()) {
+            head = new com.example.BinarySearchTree.Node(value);
+            return true;
         }
-        addValue(head, value);
+        return addValue(head, value);
     }
 
-    private void addValue(Node node, int value) {
-        if (node.value == value) return;
+    private boolean addValue(com.example.BinarySearchTree.Node node, int value) {
+        if (node.value == value) return false;
 
         if (node.value > value) {
             if (node.left != null) {
-                addValue(node.left, value);
+                return addValue(node.left, value);
             } else {
-                node.left = new Node(value);
+                node.left = new com.example.BinarySearchTree.Node(value);
             }
         } else {
             if (node.right != null) {
-                addValue(node.right, value);
+                return addValue(node.right, value);
             } else {
-                node.right = new Node(value);
+                node.right = new com.example.BinarySearchTree.Node(value);
             }
         }
+        return true;
     }
 
-    public void remove(int value) {
+    public boolean remove(int value) {
+        if (isEmpty()) return false;
+
         if (head.value == value) {
             if (head.left == null && head.right == null) {
                 head = null;
@@ -50,22 +57,17 @@ public class BinarySearchTree {
             } else if (head.right == null) {
                 head = head.left;
             } else {
-                Node rightSmallestNode = findSmallestNodeFromRightChild(head.right);
+                com.example.BinarySearchTree.Node rightSmallestNode = findSmallestNodeFromRightChild(head.right);
                 head.value = rightSmallestNode.value;
-                removeNode(head, head.right, rightSmallestNode.value);
+                return removeNode(head, head.right, rightSmallestNode.value);
             }
-            return;
+            return true;
         }
-
-        if (head.value > value) {
-            removeNode(head, head.left, value);
-        } else {
-            removeNode(head, head.right, value);
-        }
+        return head.value > value ? removeNode(head, head.left, value) : removeNode(head, head.right, value);
     }
 
-    private void removeNode(Node parent, Node cur, int value) {
-        if (cur == null) return;
+    private boolean removeNode(com.example.BinarySearchTree.Node parent, com.example.BinarySearchTree.Node cur, int value) {
+        if (cur == null) return false;
 
         if (cur.value == value) {
             if (cur.left == null && cur.right == null) {
@@ -87,33 +89,28 @@ public class BinarySearchTree {
                     parent.right = cur.left;
                 }
             } else {
-                Node rightSmallestNode = findSmallestNodeFromRightChild(cur.right);
+                com.example.BinarySearchTree.Node rightSmallestNode = findSmallestNodeFromRightChild(cur.right);
                 cur.value = rightSmallestNode.value;
-                removeNode(cur, cur.right, rightSmallestNode.value);
+                return removeNode(cur, cur.right, rightSmallestNode.value);
             }
-            return;
+            return true;
         }
-
-        if (cur.value > value) {
-            removeNode(cur, cur.left, value);
-        } else {
-            removeNode(cur, cur.right, value);
-        }
+        return cur.value > value ? removeNode(cur, cur.left, value) : removeNode(cur, cur.right, value);
     }
 
-    private Node findSmallestNodeFromRightChild(Node cur) {
+    private com.example.BinarySearchTree.Node findSmallestNodeFromRightChild(com.example.BinarySearchTree.Node cur) {
         if (cur.left == null) {
             return cur;
         }
         return findSmallestNodeFromRightChild(cur.left);
     }
 
-    // 전위, 중위, 후위 순회 메서드 추가
+    // 전위 순회
     public List<Integer> preOrder() {
         return preOrderTree(new ArrayList<>(), head);
     }
 
-    private List<Integer> preOrderTree(List<Integer> list, Node node) {
+    private List<Integer> preOrderTree(List<Integer> list, com.example.BinarySearchTree.Node node) {
         if (node == null) return list;
         list.add(node.value);
         preOrderTree(list, node.left);
@@ -121,11 +118,12 @@ public class BinarySearchTree {
         return list;
     }
 
+    // 중위 순회
     public List<Integer> inOrder() {
         return inOrderTree(new ArrayList<>(), head);
     }
 
-    private List<Integer> inOrderTree(List<Integer> list, Node node) {
+    private List<Integer> inOrderTree(List<Integer> list, com.example.BinarySearchTree.Node node) {
         if (node == null) return list;
         inOrderTree(list, node.left);
         list.add(node.value);
@@ -133,11 +131,12 @@ public class BinarySearchTree {
         return list;
     }
 
+    // 후위 순회
     public List<Integer> postOrder() {
         return postOrderTree(new ArrayList<>(), head);
     }
 
-    private List<Integer> postOrderTree(List<Integer> list, Node node) {
+    private List<Integer> postOrderTree(List<Integer> list, com.example.BinarySearchTree.Node node) {
         if (node == null) return list;
         postOrderTree(list, node.left);
         postOrderTree(list, node.right);
@@ -145,10 +144,10 @@ public class BinarySearchTree {
         return list;
     }
 
-    public static class Node {
+    private static class Node {
         int value;
-        Node left;
-        Node right;
+        com.example.BinarySearchTree.Node left;
+        com.example.BinarySearchTree.Node right;
 
         Node(int value) {
             this.value = value;
