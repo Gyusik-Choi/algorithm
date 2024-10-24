@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinarySearchTree {
-    private com.example.BinarySearchTree.Node head;
+    private Node head;
 
     public boolean isEmpty() {
         return head == null;
@@ -12,7 +12,7 @@ public class BinarySearchTree {
         return searchTree(head, value);
     }
 
-    private boolean searchTree(com.example.BinarySearchTree.Node node, int value) {
+    private boolean searchTree(Node node, int value) {
         if (node == null) return false;
         if (node.value == value) return true;
         if (node.value > value) return searchTree(node.left, value);
@@ -21,26 +21,26 @@ public class BinarySearchTree {
 
     public boolean add(int value) {
         if (isEmpty()) {
-            head = new com.example.BinarySearchTree.Node(value);
+            head = new Node(value);
             return true;
         }
         return addValue(head, value);
     }
 
-    private boolean addValue(com.example.BinarySearchTree.Node node, int value) {
+    private boolean addValue(Node node, int value) {
         if (node.value == value) return false;
 
         if (node.value > value) {
             if (node.left != null) {
                 return addValue(node.left, value);
             } else {
-                node.left = new com.example.BinarySearchTree.Node(value);
+                node.left = new Node(value);
             }
         } else {
             if (node.right != null) {
                 return addValue(node.right, value);
             } else {
-                node.right = new com.example.BinarySearchTree.Node(value);
+                node.right = new Node(value);
             }
         }
         return true;
@@ -57,7 +57,7 @@ public class BinarySearchTree {
             } else if (head.right == null) {
                 head = head.left;
             } else {
-                com.example.BinarySearchTree.Node rightSmallestNode = findSmallestNodeFromRightChild(head.right);
+                Node rightSmallestNode = findSmallestNodeFromRightChild(head.right);
                 head.value = rightSmallestNode.value;
                 return removeNode(head, head.right, rightSmallestNode.value);
             }
@@ -66,7 +66,7 @@ public class BinarySearchTree {
         return head.value > value ? removeNode(head, head.left, value) : removeNode(head, head.right, value);
     }
 
-    private boolean removeNode(com.example.BinarySearchTree.Node parent, com.example.BinarySearchTree.Node cur, int value) {
+    private boolean removeNode(Node parent, Node cur, int value) {
         if (cur == null) return false;
 
         if (cur.value == value) {
@@ -89,7 +89,7 @@ public class BinarySearchTree {
                     parent.right = cur.left;
                 }
             } else {
-                com.example.BinarySearchTree.Node rightSmallestNode = findSmallestNodeFromRightChild(cur.right);
+                Node rightSmallestNode = findSmallestNodeFromRightChild(cur.right);
                 cur.value = rightSmallestNode.value;
                 return removeNode(cur, cur.right, rightSmallestNode.value);
             }
@@ -98,7 +98,7 @@ public class BinarySearchTree {
         return cur.value > value ? removeNode(cur, cur.left, value) : removeNode(cur, cur.right, value);
     }
 
-    private com.example.BinarySearchTree.Node findSmallestNodeFromRightChild(com.example.BinarySearchTree.Node cur) {
+    private Node findSmallestNodeFromRightChild(Node cur) {
         if (cur.left == null) {
             return cur;
         }
@@ -110,7 +110,7 @@ public class BinarySearchTree {
         return preOrderTree(new ArrayList<>(), head);
     }
 
-    private List<Integer> preOrderTree(List<Integer> list, com.example.BinarySearchTree.Node node) {
+    private List<Integer> preOrderTree(List<Integer> list, Node node) {
         if (node == null) return list;
         list.add(node.value);
         preOrderTree(list, node.left);
@@ -123,7 +123,7 @@ public class BinarySearchTree {
         return inOrderTree(new ArrayList<>(), head);
     }
 
-    private List<Integer> inOrderTree(List<Integer> list, com.example.BinarySearchTree.Node node) {
+    private List<Integer> inOrderTree(List<Integer> list, Node node) {
         if (node == null) return list;
         inOrderTree(list, node.left);
         list.add(node.value);
@@ -136,7 +136,7 @@ public class BinarySearchTree {
         return postOrderTree(new ArrayList<>(), head);
     }
 
-    private List<Integer> postOrderTree(List<Integer> list, com.example.BinarySearchTree.Node node) {
+    private List<Integer> postOrderTree(List<Integer> list, Node node) {
         if (node == null) return list;
         postOrderTree(list, node.left);
         postOrderTree(list, node.right);
@@ -146,8 +146,8 @@ public class BinarySearchTree {
 
     private static class Node {
         int value;
-        com.example.BinarySearchTree.Node left;
-        com.example.BinarySearchTree.Node right;
+        Node left;
+        Node right;
 
         Node(int value) {
             this.value = value;
