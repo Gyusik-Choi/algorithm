@@ -6,9 +6,11 @@
 
 <br>
 
-### 첫번째 풀이
+### Python
 
-#### serialize
+#### 첫번째 풀이
+
+##### serialize
 
 BFS 로 탐색한다. 데크에 root 노드를 넣고 데크가 빌 때까지 while 문을 반복한다. 
 
@@ -16,7 +18,7 @@ BFS 로 탐색한다. 데크에 root 노드를 넣고 데크가 빌 때까지 wh
 
 <br>
 
-#### deserialize
+##### deserialize
 
 ```
 Your Codec object will be instantiated and called as such:
@@ -37,7 +39,16 @@ ans = deser.deserialize(ser.serialize(root))
 
 <br>
 
+### Java
+
+#### SerializeAndDeserializeBinaryTree297
+
+(작성중)
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
+자바 알고리즘 인터뷰
