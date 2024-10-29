@@ -4,6 +4,8 @@ import java.util.*;
 
 public class MinimumHeightTrees310 {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        if (n == 1) return List.of(0);
+
         Map<Integer, List<Integer>> map = new HashMap<>();
         for (int[] edge: edges) {
             map.putIfAbsent(edge[0], new ArrayList<>());
