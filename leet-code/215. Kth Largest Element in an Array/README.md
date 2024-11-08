@@ -2,6 +2,8 @@
 
 ## [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
+### Python
+
 힙을 활용하는 문제다. heapq 모듈을 사용해서 풀이했다.
 
 <br>
@@ -23,7 +25,23 @@ heapify 외에 nlargest 를 이용해서 한줄에 풀이할 수도 있다.
 
 <br>
 
+### Java
+
+#### KthLargestElementInAnArray215
+
+자바의 내장 PriorityQueue 를 이용해서 풀이했다.
+
+<br>
+
+#### KthLargestElementInAnArray215_2
+
+최대힙을 직접 구현해서 풀이했다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
 
