@@ -11,6 +11,7 @@ public class Programmers42628 {
             String command = o[0];
             int data = Integer.parseInt(o[1]);
 
+            // Insert
             if (command.equals("I")) {
                 map.put(data, map.getOrDefault(data, 0) + 1);
                 maxQueue.add(data);
@@ -18,10 +19,12 @@ public class Programmers42628 {
                 continue;
             }
 
+            // Delete Max
             if (command.equals("D") && data > 0) {
-                while (!maxQueue.isEmpty() && map.get(maxQueue.peek()) == 0) {
+                while (isInvalidQueue(maxQueue, map)) {
                     maxQueue.poll();
                 }
+
                 if (!maxQueue.isEmpty()) {
                     Integer maxValue = maxQueue.poll();
                     map.put(maxValue, map.getOrDefault(maxValue, 0) - 1);
@@ -29,7 +32,8 @@ public class Programmers42628 {
                 continue;
             }
 
-            while (!minQueue.isEmpty() && map.get(minQueue.peek()) == 0) {
+            // Delete Min
+            while (isInvalidQueue(minQueue, map)) {
                 minQueue.poll();
             }
 
@@ -39,18 +43,21 @@ public class Programmers42628 {
             }
         }
 
-        while (!maxQueue.isEmpty() && map.get(maxQueue.peek()) == 0) {
+        // 제거되지 못한 요소들 제거
+        while (isInvalidQueue(maxQueue, map)) {
             maxQueue.poll();
         }
 
-        while (!minQueue.isEmpty() && map.get(minQueue.peek()) == 0) {
+        while (isInvalidQueue(minQueue, map)) {
             minQueue.poll();
         }
 
-        if (maxQueue.isEmpty() || minQueue.isEmpty()) {
-            return new int[]{0, 0};
-        }
+        return maxQueue.isEmpty() || minQueue.isEmpty()
+                ? new int[]{0, 0}
+                : new int[]{maxQueue.peek(), minQueue.peek()};
+    }
 
-        return new int[]{maxQueue.peek(), minQueue.peek()};
+    private boolean isInvalidQueue(Queue<Integer> maxQueue, Map<Integer, Integer> map) {
+        return !maxQueue.isEmpty() && map.get(maxQueue.peek()) == 0;
     }
 }
