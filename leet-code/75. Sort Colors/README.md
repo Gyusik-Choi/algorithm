@@ -2,6 +2,8 @@
 
 ## [75. Sort Colors](https://leetcode.com/problems/sort-colors/)
 
+### Python
+
 정렬 유형의 문제로 네덜란드 국기 문제 [Dutch National Flag Problem](https://en.wikipedia.org/wiki/Dutch_national_flag_problem) 에 해당하는 문제다. 
 
 0, 1, 2 만 리스트에 존재할 수 있는 상황에서 정렬을 구현해야 한다. 물론 병합 정렬, 퀵 정렬, 삽입 정렬 등을 사용하면 0, 1, 2 만 존재할 수 있는 리스트도 정렬할 수 있다. 그런데 네덜란드 국기 문제는 0, 1, 2 만 존재하는 특수한 상황에 맞춰서 고안된 알고리즘이라 흥미로웠다.
@@ -22,7 +24,18 @@ w 인덱스 값이 1이면 r 은 그대로 두고 w 만 한칸 이동한다. 만
 
 <br>
 
+### Java
+
+[위키피디아](https://en.wikipedia.org/wiki/Dutch_national_flag_problem)에 소개된 수도코드를 참고해서 구현했고, 교재의 풀이와도 거의 동일하다.
+
+퀵 정렬에서는 left 변수보다 작은 인덱스에는 pivot 보다 작은 값이 있다는게 보장이 된다. 여기서는 red 미만의 인덱스에는 0만 존재하는 것을 보장하고, blue 를 초과하는 인덱스는 2만 존재하는 것을 보장한다. 특정 변수 값을 인덱스로 해서 이 인덱스 위치를 기준으로 특정 값이 보장되는 방식이 퀵정렬과 네덜란드 국기 문제가 서로 유사하다고 느꼈다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
+자바 알고리즘 인터뷰
+
+https://en.wikipedia.org/wiki/Dutch_national_flag_problem
