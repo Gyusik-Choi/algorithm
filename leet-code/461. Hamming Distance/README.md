@@ -10,6 +10,8 @@
 
 <br>
 
+### Python
+
 XOR 연산을 활용해서 풀이했다. 
 
 XOR 연산은 비트가 서로 다르면 1, 같으면 0이다. XOR 연산을 한 후에 1의 갯수를 세면 된다.
@@ -20,7 +22,17 @@ XOR 연산으로 ^(caret) 연산자를 사용할 수 있고 또 다른 방법으
 
 <br>
 
+### Java
+
+XOR 연산을 활용했다. 두 수의 동일한 자리수의 값이 다르면 XOR 연산으로 1이 된다. 
+
+Java 에는 이진수 1의 bit 갯수를 세어주는 Integer.bitCount 메소드가 있다. 두 수의 XOR 결과를 Integer.bitCount 를 통해 1의 갯수를 세면 정답을 구할 수 있다.
+
+<br>
+
 <참고>
+
+파이썬 알고리즘 인터뷰
 
 https://ko.wikipedia.org/wiki/%ED%95%B4%EB%B0%8D_%EA%B1%B0%EB%A6%AC
 
@@ -29,4 +41,6 @@ https://docs.python.org/3/library/stdtypes.html#str.count
 https://docs.python.org/3/library/operator.html
 
 https://github.com/python/cpython/blob/3.9/Lib/operator.py
+
+자바 알고리즘 인터뷰
 
