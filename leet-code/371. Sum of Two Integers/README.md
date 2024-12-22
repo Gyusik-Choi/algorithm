@@ -10,7 +10,9 @@
 
 <br>
 
-### 첫번째 풀이
+### Python
+
+#### 첫번째 풀이
 
 전가산기의 연산을 직접 구현해서 풀이하는 방식으로 풀이했다.
 
@@ -36,6 +38,14 @@ mask 는 비트 길이를 고정하기 위해 활용할 수 있다. 특정 숫�
 
 <br>
 
+### Java
+
+#### SumOfTwoIntegers371
+
+(작성중)
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
@@ -45,4 +55,10 @@ https://electbros.com/half-adder-full-adder/
 https://lifelectronics.tistory.com/69
 
 https://m.blog.naver.com/limsy0310/221969701897
+
+자바 알고리즘 인터뷰
+
+https://namu.wiki/w/%EA%B0%80%EC%82%B0%EA%B8%B0
+
+https://happy-matricaria.tistory.com/17
 
