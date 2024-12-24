@@ -1,7 +1,6 @@
-package com;
+package com.example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,8 +28,14 @@ public class SumOfTwoIntegers371 {
      *  둘 중 하나라도 충족하면 자리 올림이 발생할 수 있어서 이를 OR 연산으로 볼 수 있다
      */
     public int getSum(int a, int b) {
-        String binaryA = String.format("%32s", Integer.toBinaryString(a)).replace(' ', '0');
-        String binaryB = String.format("%32s", Integer.toBinaryString(b)).replace(' ', '0');
+        // 정수를 이진수 형태의 문자열로 변환하고 길이를 32로 맞춘다
+        // 공백으로 채워진 길이는 0으로 바꾼다
+        String binaryA = String
+                .format("%32s", Integer.toBinaryString(a))
+                .replace(' ', '0');
+        String binaryB = String
+                .format("%32s", Integer.toBinaryString(b))
+                .replace(' ', '0');
         return getBinarySum(binaryA, binaryB);
     }
 
@@ -38,6 +43,7 @@ public class SumOfTwoIntegers371 {
         List<Character> sums = new ArrayList<>();
         int carry = 0;
         for (int i = 31; i > -1; i--) {
+            // 문자를 정수로 변환
             int a = Character.getNumericValue(binA.charAt(i));
             int b = Character.getNumericValue(binB.charAt(i));
 
@@ -49,6 +55,10 @@ public class SumOfTwoIntegers371 {
             carry = c1 | c2;
             sums.add(0, Character.forDigit(sum, 2));
         }
+        // Integer.parseInt 는 2의 보수 음수를 처리하지 못해서
+        // Integer.parseUnsignedInt 를 사용
+        // Integer.parseInt("11111111111111111111111111111111", 2) -> NumberFormatException
+        // Integer.parseUnsignedInt("11111111111111111111111111111111", 2) -> -1
         return Integer.parseUnsignedInt(
                 sums.stream()
                         .map(String::valueOf)

@@ -42,7 +42,9 @@ mask 는 비트 길이를 고정하기 위해 활용할 수 있다. 특정 숫�
 
 #### SumOfTwoIntegers371
 
-(작성중)
+교재의 풀이를 참고했다. 전가산기에서 사용되는 XOR, AND, OR 연산을 직접 구현한다.
+
+전가산기는 XOR, AND 연산으로 구성된 반가산기 2개와 OR 게이트로 구성된다. 전가산기는 입력 값 2개와 캐리를 갖고 합과 캐리를 구한다. XOR 연산의 결과를 캐리와 XOR 연산해서 합을 구하고, AND 연산의 결과와 XOR 연산의 결과를 캐리와 AND 연산한 결과를 OR 연산해서 캐리를 구한다.
 
 <br>
 
@@ -61,4 +63,6 @@ https://m.blog.naver.com/limsy0310/221969701897
 https://namu.wiki/w/%EA%B0%80%EC%82%B0%EA%B8%B0
 
 https://happy-matricaria.tistory.com/17
+
+https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Character.html#getNumericValue(char)
 
