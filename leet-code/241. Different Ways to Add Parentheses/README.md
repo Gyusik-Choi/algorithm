@@ -2,6 +2,8 @@
 
 ## [241. Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/)
 
+### Python
+
 어려운 문제였다. 교재의 풀이를 참고했다.
 
 처음에는 조합을 생각했으나 조합과는 다르게 접근해야 했다. 이 문제와 조합 모두 재귀를 활용하며, 가능한 '경우의 수' 를 따져야 하는 공통점이 있으나 차이가 존재한다.
@@ -30,7 +32,31 @@ expression 이 위와 같을 때 경우의 수가 (2, 3), (4, 5) 를 묶어서 �
 
 <br>
 
+### Java
+
+#### DifferentWaysToAddParentheses241
+
+어려운 문제였다.
+
+교재의 풀이와 다른 점은 교재는 expression 을 통채로 for 문을 돌면서 연산자를 기준으로 앞, 뒤를 구분한다. 반면에 이 풀이는 숫자와 연산자를 구분하고 숫자를 기준으로 재귀호출 한다.
+
+<br>
+
+#### DifferentWaysToAddParentheses241_2
+
+교재의 풀이를 참고했다. DifferentWaysToAddParentheses241 에 메모이제이션 기법을 추가한 풀이다.
+
+재귀호출을 하면서 동일한 연산을 반복적으로 하기 때문에 이를 개선하기 위해 메모이제이션을 사용한다. 별도의 해시맵을 두고 low 부터 high 까지의 숫자를 배열에서 잘라낸 후 문자열로 변환한 값을 해시맵의 키로 한다.
+
+DifferentWaysToAddParentheses241 풀이가 교재와 달라서 해시맵의 키도 교재와 다르다. 교재는 expression 을 범위만큼 잘라서 재귀호출하기 때문에 expression 을 그대로 해시맵의 키로 사용할 수 있으나 DifferentWaysToAddParentheses241 풀이의 경우 numbers 는 그대로 있고 인덱스만 변화하기 때문에 키를 만들기 위해서는 numbers 에서 해당 범위의 숫자들만 따로 잘라내야 한다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
+
+https://www.baeldung.com/java-slicing-arrays
 
