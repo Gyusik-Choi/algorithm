@@ -2,6 +2,8 @@
 
 ## [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 
+### Python
+
 다이나믹 프로그래밍 유형의 문제다. 백준에도 유사한 [문제](https://www.acmicpc.net/problem/1912)가 있다.
 
 교재의 풀이를 참고해서 별도의 dp 배열을 사용하지 않고 풀이할 수 있었다. nums 에 바로 더하는 방식을 통해 공간 복잡도를 줄였다. 
@@ -12,9 +14,35 @@ nums 에 직접 더하기 때문에 nums 의 각 인덱스는 각 인덱스까�
 
 <br>
 
+### Java
+
+#### MaximumSubarray53
+
+교재는 이전합과 현재값의 합이 0 이하인 경우면 이전합과 현재값을 더하지 않고 현재값을 선택한다.
+
+이 풀이는 교재와 달리 이전값과 현재값의 합과 현재값 중에서 더 큰 값을 선택한다. 결국 최대값을 찾는 과정이라 이전값과 현재값을 더했을때 현재값 보다 작다면 더하지 않고 현재값을 선택한다.
+
+<br>
+
+#### MaximumSubarray53_2
+
+교재의 풀이를 참고했으나 MaximumSubarray53 풀이와 마찬가지로 비교 조건은 교재와 달리 이전값과 현재값의 합과 현재값 중 어떤 값이 더 큰지다.
+
+교재에서는 이 풀이를 카데인 알고리즘을 소개하면서 제시한다.
+
+별도의 배열을 사용하지 않고 변수만 이용해서 풀이한다. currentSum 은 이전값과 현재값의 합과 현재값 중 더 큰 값을 선택하고, bestSum 은 자신과currentSum 을 비교해서 더 큰 값을 선택한다.
+
+이때 주의할 점은 배열의 길이가 1일 수 있기 때문에 bestSum 의 초기값은 무조건 처음에 갱신될 수 있도록 문제의 조건에 포함된 최소값 보다 작은 수를 선택한다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
 https://www.acmicpc.net/problem/1912
+
+자바 알고리즘 인터뷰
+
+https://medium.com/@vdongbin/kadanes-algorithm-%EC%B9%B4%EB%8D%B0%EC%9D%B8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-acbc8c279f29
 
