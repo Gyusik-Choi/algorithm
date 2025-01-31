@@ -62,11 +62,23 @@
 
 <br>
 
+### B_1912.java
+
+'자바 알고리즘 인터뷰' 교재에 나온 [문제]() 와 동일한 문제다.
+
+직전 누적합을 현재값과 더했을 때 현재값 보다 크면 더하고, 현재값 보다 작으면 더하지 않고 현재값만 선택하는 방식으로 풀이했다.
+
+<br>
+
 <참고>
 
 https://sihyungyou.github.io/baekjoon-1912
 
 https://mygumi.tistory.com/97
 
+https://leetcode.com/problems/maximum-subarray/description
+
 파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
 
