@@ -1,6 +1,6 @@
 import java.util.regex.Pattern;
 
-public class Solution {
+public class ValidPalindrome125 {
     public boolean isPalindrome(String s) {
         String word = Pattern
                 .compile("[^a-zA-Z0-9]")
