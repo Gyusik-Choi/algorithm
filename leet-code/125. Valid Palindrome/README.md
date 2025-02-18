@@ -24,6 +24,14 @@
 
 <br>
 
+#### ValidPalindrome125_4
+
+이 풀이는 정규표현식을 사용하지 않고 풀이했다. 교재의 풀이를 참고했다.
+
+투포인터를 활용해서 문자열을 문자 단위로 추출하여 해당 문자가 알파벳 혹은 숫자인지 판단한다. 양끝에 포인터를 하나씩 두고 범위를 좁혀가면서 비교한다.
+
+<br>
+
 <참고>
 
 https://docs.python.org/3/library/stdtypes.html?highlight=isalnum#str.isalnum
