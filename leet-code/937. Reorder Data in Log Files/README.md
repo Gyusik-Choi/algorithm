@@ -2,7 +2,7 @@
 
 ## 937. Reorder Data in Log Files
 
-### Python 풀이
+### Python
 
 파이썬 알고리즘 인터뷰 교재에는 로그의 종류가 2가지라는 내용이 없었다. 그래서 교재에서 식별자를 제외한 첫번째 문자열에 isdigit() 함수를 사용해서 해당 로그가 문자로 구성된 로그인지 숫자로 구성된 로그인지 판단하는게 어떻게 가능한지 이해하지 못했었다.
 
@@ -22,7 +22,7 @@ There are two types of logs:
 
 <br>
 
-### Java 풀이
+### Java
 
 로그의 종류를 구분할때 전체 문자열을 볼 필요가 없다. 
 
@@ -36,6 +36,17 @@ stream 사용 여부로 인한 차이는 1ms 정도 (13ms -> 12ms) 였으나, �
 
 <br>
 
+### Kotlin
+
+자바의 ReorderDataInLogFiles937_3 풀이와 동일한 방식으로 풀이했다.
+
+split 메소드에서 limit 을 지정할 때 named parameter 로 limit 을 명시해야 하는 점이 자바와 달랐다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
+
+자바 알고리즘 인터뷰
+
