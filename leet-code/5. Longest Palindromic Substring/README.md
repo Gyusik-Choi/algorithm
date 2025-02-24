@@ -10,7 +10,7 @@
 
 <br>
 
-### Java 풀이
+### Java
 
 #### LongestPalindromeSubstring5 
 
@@ -40,6 +40,12 @@ solution3.longestPalindrome("cb");
 #### LongestPalindromeSubstring5_3
 
 인스턴스 변수가 아닌 함수 지역변수를 사용하도록 변경했다. 지역변수를 사용하기 위해 findPalindrome 함수에서 인스턴스 변수를 직접 수정하던 LongestPalindromeSubstring5_2 의 방법과 달리 left, right 값을 배열로 리턴한다.
+
+<br>
+
+### Kotlin
+
+자바의 LongestPalindromeSubstring5_3 와 동일한 방식으로 풀이했다.
 
 <br>
 
