@@ -14,7 +14,7 @@ for 문을 돌면서 딕셔너리에 각 원소를 키로 원소의 인덱스를
 
 <br>
 
-### Java & Kotlin 풀이
+### Java
 
 #### TwoSum1
 
@@ -44,9 +44,11 @@ for 문을 돌면서 for 문의 요소는 해시맵에 넣지 않고 target 에�
 
 <br>
 
-#### TwoSum1_4
+### Kotlin
 
-TwoSum1_3 의 풀이 방법을 자바에서 코틀린으로 바꿔서 풀이했다. 
+#### TwoSum1
+
+자바의 TwoSum1_3 풀이와 동일한 방식으로 풀이했다. 
 
 <br>
 
