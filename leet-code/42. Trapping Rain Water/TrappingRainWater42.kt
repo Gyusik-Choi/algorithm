@@ -1,6 +1,6 @@
 import kotlin.math.max
 
-class TrappingRainWater42_5 {
+class TrappingRainWater42 {
     fun trap(height: IntArray): Int {
         var sums: Int = 0
         var left: Int = 0
