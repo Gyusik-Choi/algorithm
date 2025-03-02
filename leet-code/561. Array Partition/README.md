@@ -10,6 +10,18 @@
 
 <br>
 
+### Java & Kotlin
+
+#### ArrayPartition561_2
+
+Stream 을 활용해서 풀이했다.
+
+Java 풀이는 배열을 정렬한 뒤 Stream 의 인덱스를 알기 위해 IntStream 을 사용해서 정렬한 배열의 짝수 인덱스에 접근했다.
+
+Kotlin 풀이는 Java 풀이와 달리 정렬을 따로 진행하지 않고 함께 진행할 수 있었다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
