@@ -10,7 +10,7 @@ for 문을 돌면서 최소값을 계속 구하고, 현재 for 문의 요소에�
 
 <br>
 
-### Java 풀이
+### Java
 
 #### BestTimeToBuyAndSellStock121
 
@@ -33,6 +33,20 @@ max 보다 더 큰 값이 나오면 max 를 갱신하고, profit 과 max - min �
 교재의 풀이를 참고했고 이 풀이가 BestTimeToBuyAndSellStock121 보다 훨씬 간결하다.
 
 minPrice 의 최소값을 계속 갱신하면서 profit 도 계속 갱신한다.
+
+<br>
+
+### Kotlin
+
+#### BestTimeToBuyAndSellStock121_2
+
+교재의 풀이를 참고해서 BestTimeToBuyAndSellStock121 보다 간결하게 풀이했다.
+
+BestTimeToBuyAndSellStock121 에서는 kotlin 의 max 함수를 import 하는데, 여기서는 객체의 내장 함수를 사용하기 때문에 별도의 import 를 사용하지 않는다.
+
+coerceAtMost 함수의 경우 해당 함수를 호출한 객체보다 인자로 들어온 객체가 더 작으면 인자로 들어온 객체를 반환하고, 그렇지 않으면 해당 함수를 호출한 객체를 반환한다.
+
+coerceAtLeast 는 coerceAtMost 와 반대다. 
 
 <br>
 
