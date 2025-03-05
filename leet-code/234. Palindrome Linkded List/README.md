@@ -12,7 +12,7 @@
 
 <br>
 
-### Java 풀이
+### Java
 
 #### PalindromeLinkedList234, PalindromeLinkedList234_2
 
@@ -49,6 +49,22 @@ head 의 길이가 홀수인 경우는 짝수인 경우와 달리, 2칸씩 이�
 ```
 
 2칸씩 이동하는 노드가 맨 끝의 1에 오면 while 문을 빠져나오고 1칸씩 이동하는 노드는 3에 위치한다. 3은 팰린드롬 여부를 비교할 필요가 없기 때문에 한칸 더 이동해서 2로 오도록 한다.
+
+<br>
+
+#### PalindromeLinkedList234_5
+
+스택과 런너 기법을 함께 사용한다.
+
+런너 기법으로 slow 를 중앙으로 이동시키면서 스택에 slow 의 val 을 넣는다.
+
+slow 가 중앙에 오고나면 slow 를 이동하면서 slow 의 val 와 스택의 최상단 값을 비교한다.
+
+<br>
+
+#### PalindromeLinkedList234_6
+
+PalindromeLinkedList234_4 와 마찬가지로 런너 기법을 활용하는데 이 풀이는 첫번째 while 문에서 slow 와 fast 가 이동하는 동안 rev 도 만든다.
 
 <br>
 
