@@ -32,6 +32,14 @@ list1 과 list2 를 병합하기 위해 상대 노드의 값보다 작으면서 
 
 <br>
 
+#### MergeTwoSortedLists21_2
+
+MergeTwoSortedLists21_2 와 유사한 방식으로 풀이한다.
+
+MergeTwoSortedLists21_2 와 다른점은 이번 풀이는 list1 에 list2 를 병합하는 방법을 적용한다. list1.val 이 list2.val 보다 큰 경우 list1 과 list2 를 뒤집어서 list1.next 를 찾는 재귀호출을 한다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
