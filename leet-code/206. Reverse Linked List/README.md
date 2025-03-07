@@ -93,6 +93,14 @@ next 1 <- 2 <- 3 <- 4 <- 5
 
 <br>
 
+#### ReverseLinkedList206_4
+
+ReverseLinkedList206 과 거의 유사한 방식으로 풀이했다.
+
+ReverseLinkedList206 과 달리 cur.next 를 prev 에 붙이지 않고, prev.next 를 직전 prev 와 연결한다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
