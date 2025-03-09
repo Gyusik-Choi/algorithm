@@ -5,10 +5,10 @@ class ReverseLinkedList206_2 {
         return reverse(head, null)
     }
 
-    private fun reverse(cur: ListNode?, rev: ListNode?): ListNode? {
-        if (cur == null) return rev
+    private fun reverse(cur: ListNode?, prev: ListNode?): ListNode? {
+        if (cur == null) return prev
         val next = cur.next
-        cur.next = rev
+        cur.next = prev
         return reverse(next, cur)
     }
 }

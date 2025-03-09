@@ -101,6 +101,24 @@ ReverseLinkedList206 과 달리 cur.next 를 prev 에 붙이지 않고, prev.nex
 
 <br>
 
+### Kotlin
+
+#### ReverseLinkedList206
+
+재귀를 활용해서 풀이했다.
+
+cur 를 앞으로 이동하면서 prev 에 직전 cur 를 할당하고, prev.next 가 직전 prev 를 바라보도록 한다.
+
+<br>
+
+#### ReverseLinkedList206_2
+
+ReverseLinkedList206 보다 간결한 풀이다.
+
+cur 를 앞으로 이동한 노드를 next 변수에 할당하고, cur.next 가 prev 를 바라보도록 하면서 cur 를 뒤집는다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
