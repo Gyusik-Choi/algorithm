@@ -63,6 +63,14 @@ SwapNodesInPairs24_2 와 거의 동일한 방식으로 풀이한다.
 
 <br>
 
+### Kotlin
+
+#### SwapNodesInPairs24
+
+재귀를 활용해서 풀이했다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
