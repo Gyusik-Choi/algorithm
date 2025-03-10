@@ -57,6 +57,12 @@ node 변수가 2에 있을 때는 3과 null(4의 next 는 null) 2와 4를 연결
 
 <br>
 
+#### SwapNodesInPairs24_3
+
+SwapNodesInPairs24_2 와 거의 동일한 방식으로 풀이한다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
