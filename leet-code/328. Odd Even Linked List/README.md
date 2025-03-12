@@ -38,6 +38,16 @@ odd 와 even 을 나눠서 while 문을 진행했는데 odd 가 바뀌면서 hea
 
 <br>
 
+#### OddEvenLinkedList328_3
+
+while 문에서 head 의 길이가 홀수, 짝수 여부에 따라 상황이 조금 달라져서 짝수인 경우에 대해 예외 처리를 했다.
+
+head 가 홀수인 경우 while 문 안에서 odd 노드는 맨 마지막까지 이동하고, even 노드는 null 이 된다. 별도의 예외처리 없이 while 문을 빠져나와서 odd.next 에 even 의 시작 노드를 참조하는 evenRef 를 할당하면 된다.
+
+반면에 head 가 짝수인 경우 while 문 안에서 odd 노드는 맨 마지막에서 한칸 앞까지 이동하고, even 노드는 맨 마지막까지 이동한다. 이때 odd.next 가 even 을 참조하지 않으면서 odd, even 노드가 더 이동하지 않도록 예외처리를 한다. even 노드가 null 이 아니면서 even.next 노드가 null 인 상황이면 odd.next 는 even 을 참조하지 않도록 null 을 할당하고 while 문을 break 로 빠져나온다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
