@@ -9,16 +9,4 @@ class SwapNodesInPair24 {
         head.next = swapPairs(head.next)
         return next
     }
-
-    private fun swap(cur: ListNode?): ListNode? {
-        if (cur?.next == null) return cur
-        val next = cur.next
-        cur.next = next.next
-        next.next = cur
-        cur.next = swap(cur.next)
-        return next
-    }
 }
-
-// 1 -> 2 -> 3 -> 4
-// 1 <- 2
