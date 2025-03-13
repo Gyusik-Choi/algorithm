@@ -48,6 +48,20 @@ head 가 홀수인 경우 while 문 안에서 odd 노드는 맨 마지막까지 
 
 <br>
 
+#### OddEvenLinkedList328_4
+
+OddEvenLinkedList328_3 보다 간결하게 풀이했다.
+
+OddEvenLinkedList328_3 에서는 head 의 길이가 짝수인 경우 while 문 안에서 예외처리를 했는데 이 풀이는 while 문 자체의 조건을 통해 별도의 예외처리 없이 풀이했다.
+
+OddEvenLinkedList328_3 에서는 while 문의 조건을 odd 노드에 대해서 걸었다면 이 풀이는 while 문의 조건을 even 노드에 대해서 걸었다. even 이 null 이 아니고 even.next 가 null 이 아닌 조건에서만 while 문을 수행한다.
+
+head 의 길이가 홀수인 경우는 odd 노드는 맨 마지막까지 이동하고, even 노드는 null 이 될 때까지 이동한다. even 이 null 이라 while 문을 빠져나온다.
+
+head 의 길이가 짝수인 경우는 odd 노드는 맨 마지막에서 한칸 앞까지 이동하고, even 노드는 맨 마지막까지 이동한다.  even.next 가 null 이라 while 문을 빠져나온다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
