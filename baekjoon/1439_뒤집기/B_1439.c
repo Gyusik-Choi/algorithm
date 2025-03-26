@@ -6,9 +6,6 @@ int main(void) {
 
 	scanf("%s", str);
 
-	// 1110011
-	// 0과 1의 나온 횟수를 센다
-	// 위는 0 -> 1, 1 -> 2
 	int zero_cnt = 0;
 	int one_cnt = 0;
 
