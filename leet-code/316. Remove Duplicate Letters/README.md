@@ -2,7 +2,7 @@
 
 ## [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)
 
-### Java & Kotlin
+### Java
 
 #### RemoveDuplicateLetters316
 
@@ -18,19 +18,11 @@ stack 에 남은 문자를 while 문을 돌면서 StringBuilder 로 합치고 �
 
 #### RemoveDuplicateLetters316_2
 
-RemoveDuplicateLetters316 을 java 에서 kotlin 으로 변환한 풀이다.
-
-<br>
-
-#### RemoveDuplicateLetters316_3
-
 교재의 풀이를 참고했다. 재귀를 활용한 풀이며 이해하기 어려웠다.
 
 정렬을 지원하는 Set 인터페이스 구현체인 TreeSet 을 사용한다. TreeSet 으로 문자열 s 를 문자 단위로 정렬해서 중복을 제거한 집합으로 구한다.
 
 집합을 for 문을 돌면서 해당 문자가 포함된 위치부터 잘라낸 접미사와 동일하면 해당 문자가 현재 s 에서 가장 앞에 나오는 문자라는 의미다. 해당 문자의 앞 문자들은 필요없다.
-
-<br>
 
 ```
 bbcaac
@@ -41,6 +33,14 @@ bbcaac
 a, b, c 를 for 문을 돌면 a 의 suffix 가 aac 가 되고 정렬해서 Set 으로 만들면 a, c 라서 a, b, c 와 다르다. 그러나 b 의 suffix 가 bbcaac 가 되고 정렬해서 Set 으로 만들면 a, b, c 라서 a, b, c 와 동일하다. 
 
 bbcaac 에서 가장 앞에 나오는 문자는 b 다. suffix 에서 b 를 제거한 문자를 재귀호출한다.
+
+<br>
+
+### Kotlin
+
+#### RemoveDuplicateLetters316
+
+RemoveDuplicateLetters316 을 java 에서 kotlin 으로 변환한 풀이다.
 
 <br>
 
