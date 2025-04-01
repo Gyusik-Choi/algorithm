@@ -44,6 +44,16 @@ RemoveDuplicateLetters316 을 java 에서 kotlin 으로 변환한 풀이다.
 
 <br>
 
+#### RemoveDuplicateLetters316_2
+
+교재의 풀이를 참고했다. 이해하기 어려운 풀이였다.
+
+java 의 RemoveDuplicateLetters316_2 와 동일한 방식으로 풀이했다.
+
+중복을 제거하고 오름차순 정렬한 문자열과 특정 문자를 기준으로 해당 문자열을 중복을 제거해서 오름차순 정렬한 문자열이 동일하면 이 문자 이후의 문자열을 탐색하는 방식이다.
+
+<br>
+
 <참고>
 
 자바 알고리즘 인터뷰
