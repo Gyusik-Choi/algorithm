@@ -108,19 +108,31 @@ end 가 한칸 이동하면 start 와 같아질 경우 큐가 가득찼다.
 
 ### Java
 
-### DesignCircularQueue622
+#### DesignCircularQueue622
 
 직접 풀이했다.
 
 <br>
 
-### DesignCircularQueue622_2
+#### DesignCircularQueue622_2
 
 교재의 풀이를 참고했다. 
 
 length 변수를 별도로 두어서 현재 배열에 몇개의 요소가 들어왔는지 확인한다. length 변수를 별도로 사용하지만 DesignCircularQueue622 풀이보다 훨씬 더 간결하게 구현한다.
 
 rear 를 0이 아닌 -1로 초기값을 설정해서 최초에 원형 큐에 요소를 입력하면 rear 를 0으로 만들어서 front 도 최초로 입력한 값을 바라볼 수 있도록 한다. 만약에 rear 를 0으로 했다면 이때는 예외처리 등의 방법을 통해 front, rear 값을 조정해야 한다.
+
+<br>
+
+#### DesignCircularQueue622_3
+
+큐의 크기를 k 보다 1 크게 설정하고 큐를 최대 k 갯수만큼 채울 수 있도록 한다.
+
+큐에 요소를 넣을 때는 rear 를 한칸 이동한 뒤에 넣고, 큐에 요소를 뺄 때는 현재 front 인덱스 값을 -1로 초기화 하고 front 를 한칸 이동한다.
+
+큐가 비었다면 front 와 rear 가 같은 인덱스고, 큐가 가득찼다면 rear 에서 한칸 이동했을 때 front 와 같아진다.
+
+DesignCircularQueue622_2 와 달리 length 변수를 별도로 사용하지 않지만 큐의 크기를 k 보다 1 크게 사용해서 약간의 공간을 더 사용한다.
 
 <br>
 
@@ -131,4 +143,6 @@ rear 를 0이 아닌 -1로 초기값을 설정해서 최초에 원형 큐에 요
 https://lktprogrammer.tistory.com/59
 
 https://eunjinii.tistory.com/59
+
+자바 알고리즘 인터뷰
 
