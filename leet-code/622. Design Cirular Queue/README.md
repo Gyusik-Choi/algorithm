@@ -136,6 +136,16 @@ DesignCircularQueue622_2 와 달리 length 변수를 별도로 사용하지 않�
 
 <br>
 
+#### DesignCircularQueue622_4
+
+연결리스트를 사용해서 구현했다.
+
+head, tail 변수를 사용해서 tail.next 가 head 를 보도록 했다.
+
+그리고 maxSize 와 size 변수를 두어서 큐에 요소를 더하면 size 를 1 더하고 큐에 요소를 빼면 size 를 1 뺀다. maxSize 가 size 와 같으면 큐가 가득찬 상태고 size 가 0 이면 큐가 빈 상태다.
+
+<br>
+
 <참고>
 
 [파이썬 알고리즘 인터뷰](https://www.yes24.com/Product/Goods/91084402)
@@ -144,5 +154,5 @@ https://lktprogrammer.tistory.com/59
 
 https://eunjinii.tistory.com/59
 
-자바 알고리즘 인터뷰
+[자바 알고리즘 인터뷰](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=324537416)
 
