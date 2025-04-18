@@ -60,6 +60,16 @@ JewelsAndStones771 와 유사한데 해시맵이 아닌 해시셋으로 풀이�
 
 #### JewelsAndStones771_4
 
+stones 의 각 문자별 갯수를 해시맵으로 구한 뒤, jewels 의 각 문자를 해시맵에서 조회하여 동일한 키가 존재하는 경우 값을 누적했다.
+
+문제의 조건으로 jewels 의 모든 문자는 unique 하다고 했기 때문에 동일한 문자를 중복으로 구하지 않는다.
+
+<br>
+
+### Kotlin
+
+#### JewelsAndStones771
+
 JewelsAndStones771_3 를 자바에서 코틀린으로 변경했다. 코틀린에서는 변경이 가능한 해시셋과 변경이 불가능한 해시셋이 따로 있다. 변경이 가능한 해시셋을 사용하기 위해 타입을 MutableSet 으로 선언했다.
 
 <br>
