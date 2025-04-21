@@ -36,6 +36,20 @@ LongestSubstringWithoutRepeatingCharacters3 의 경우 해시맵에 문자가 �
 
 <br>
 
+#### LongestSubstringWithoutRepeatingCharacters3_3
+
+비교를 위해 lengthOfLongestSubstring 와 lengthOfLongestSubstringOld 두개의 함수를 뒀다.
+
+교재의 풀이를 참고하지 않은 lengthOfLongestSubstringOld 를 교재의 풀이를 참고해서 lengthOfLongestSubstring 로 개선했다.
+
+lengthOfLongestSubstringOld 의 경우 해시맵으로 문자별 인덱스 정보를 리스트로 구했다. 가장 앞선 인덱스에 접근하기 위해 리스트의 첫번째 인덱스에 접근했다. 
+
+해시맵에 중복된 문자가 있는 경우 첫번째 인덱스 값을 제거하거나 prev 를 갱신해야 하는데 이를 위한 조건도 까다로웠다. 해시맵에 중복된 문자가 있으면 prev 안에 있으면서 가장 앞선 인덱스에 접근하기 위해 첫번째 인덱스 값은 항상 제거했다. 대신 prev 의 경우 기존 해시맵의 첫번째 인덱스 값이 prev 인덱스 보다 더 크거나 같은 경우만 갱신해야 한다.
+
+이를 개선하기 위해서 해시맵에서 문자별 인덱스 정보를 리스트로 구하지 않고 최신 값만 유지하도록 했다. 이러면서 리스트에 더하거나 빼는 코드도 없어지고, prev 를 갱신하는 로직도 단순해졌다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
