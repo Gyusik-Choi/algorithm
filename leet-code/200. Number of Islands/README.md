@@ -28,7 +28,7 @@ dfs 탐색을 4번의 재귀 호출로 하면서 방향 정보를 담는 리스�
 
 <br>
 
-### Java & Kotlin
+### Java
 
 #### NumberOfIslands200
 
@@ -46,11 +46,31 @@ NumberOfIslands200 풀이와 달리 별도의 방문 배열과 yValue, xValue �
 
 #### NumberOfIslands200_3
 
+NumberOfIslands200 와 달리 방향 정보를 담는 리스트를 인스턴스 변수로 선언해서 사용했다.
+
+NumberOfIslands200 와 달리 별도의 방문 배열을 사용하지 않았다.
+
+NumberOfIslands200 와 달리 방문 처리를 dfs 함수 안에서만 했다.
+
+<br>
+
+### Kotlin
+
+#### NumberOfIslands200
+
 교재의 풀이를 참고했다.
 
 NumberOfIslands200_2 의 풀이를 코틀린으로 변경했다.
 
 NumberOfIslands200_2 와 달리 방문 가능한 정점인지를 판단하는 부분을 if 문이 아닌 when 구문을 적용했고, 중첩 함수를 사용해서 grid 값을 별도의 파라미터로 전달하지 않고 참조할 수 있었다.
+
+<br>
+
+#### NumberOfIslands200_2
+
+NumberOfIslands200_3.java 와 동일한 방식으로 풀이했다.
+
+그렇지만 when 구문을 사용해서 if 문을 사용하지 않고 보다 간결하게 풀이했다.
 
 <br>
 
