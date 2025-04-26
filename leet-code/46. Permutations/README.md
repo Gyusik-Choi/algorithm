@@ -4,13 +4,15 @@
 
 ### Python
 
+#### 46_permutations
+
 순열을 구하는 문제다.
 
 중첩 함수를 이용해서 재귀적으로 구했다.
 
 <br>
 
-### Java & Kotlin
+### Java
 
 #### Permutations46
 
@@ -18,7 +20,9 @@
 
 <br>
 
-#### Permutations46_2
+### Kotlin
+
+#### Permutations46
 
 Permutations46 와 풀이 방법은 같으나 중첩함수를 활용해서 풀이했다.
 
