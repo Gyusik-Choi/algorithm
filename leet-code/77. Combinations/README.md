@@ -46,6 +46,16 @@ Java 의 Combinations77_2 과 동일한 방식을 사용했다. 자바에서 코
 
 <br>
 
+#### Combinations77_2
+
+Combinations77 와 동일한 방식으로 풀이했다. 차이는 정답을 리턴하는 리스트에 조합을 넣을 때 참조에 의한 나머지 조합들의 변경을 방지하기 위해 새 리스트를 생성해서 넣을 때 ArrayList 생성자 대신 toList 메소드를 사용한다.
+
+이 외에는 차이가 없으나 시간이 약 20배 빨라졌다. 612ms 에서 30ms 로 개선됐다.
+
+ArrayList 생성자의 경우 새로운 mutableList 를 생성한다면, toList 의 경우 mutableList 가 아닌 새로운 List 를 생성한다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
