@@ -32,6 +32,8 @@ B, C 두 노드에서 D 로 갈 수 있는데 단방향의 경우 B 를 거쳐�
 
 ### Java
 
+#### ReconstructItinerary332
+
 어려운 문제였다. 교재의 풀이를 참고해서 재귀를 활용했다.
 
 유사한 문제로 [이 문제](https://school.programmers.co.kr/learn/courses/30/lessons/43164?language=java) 가 있다.
@@ -56,7 +58,7 @@ Map<String, Map<String, Boolean>> visit
 
 방문한 곳은 다시 방문하지 않아야 하고, 방문할 곳이 남아있는지도 확인해야 해서 처음에는 방문 정보를 담는 해시맵을 두었으나 이는 문제가 있다. 동일한 ticket 정보가 2개 이상 나올 수 있는데 해시맵으로 방문 정보를 구하려고 하면 키가 동일해서 동일한 ticket 이 아무리 많더라도 하나밖에 담을 수 없다.
 
-visit 해시맵의 값으로 해시맵 대신 리스트를 사용할 수도 있으나 매번 리스트에서 목적지 정보를 ~~O(N) 으로 탐색해야 해서 다른 방법을 사용하고 싶었다.~~ 리스트의 인덱스를 활용하면 O(N) 으로 탐색하지 않고 O(1) 로 탐색 가능하다.
+visit 해시맵의 값으로 해시맵 대신 리스트를 사용할 수도 있으나 매번 리스트에서 목적지 정보를 O(N) 으로 탐색해야 해서 다른 방법을 사용하고 싶었다. 리스트의 인덱스를 활용하면 O(N) 으로 탐색하지 않고 O(1) 로 탐색 가능하다.
 
 <br>
 
@@ -74,6 +76,54 @@ Map<String, PriorityQueue<String>> map
 
 <br>
 
+#### ReconstructItinerary332_2
+
+이 문제를 처음에 잘못 접근했었다. 알파벳 순서대로 방문을 하면 모든 티켓을 사용하지 못하는 경우가 발생할 수 있다. 이 부분을 해결하기 위해 모든 티켓을 사용하지 못하면 기존의 방문을 취소한 뒤에 다음번 알파벳 순서의 목적지를 방문하는 방법을 사용했다. 이 방법의 문제는 티켓의 갯수가 작으면 괜찮지만 티켓의 갯수가 조금만 커져도 시간이 급격하게 늘어난다. 아래의 경우 시간초과가 발생했다.
+
+```java
+List.of(
+    List.of("JFK", "SFO"),
+    List.of("JFK", "ATL"),
+    List.of("SFO", "JFK"),
+    List.of("ATL", "AAA"),
+    List.of("AAA", "ATL"),
+    List.of("ATL", "BBB"),
+    List.of("BBB", "ATL"),
+    List.of("ATL", "CCC"),
+    List.of("CCC", "ATL"),
+    List.of("ATL", "DDD"),
+    List.of("DDD", "ATL"),
+    List.of("ATL", "EEE"),
+    List.of("EEE", "ATL"),
+    List.of("ATL", "FFF"),
+    List.of("FFF", "ATL"),
+    List.of("ATL", "GGG"),
+    List.of("GGG", "ATL"),
+    List.of("ATL", "HHH"),
+    List.of("HHH", "ATL"),
+    List.of("ATL", "III"),
+    List.of("III", "ATL"),
+    List.of("ATL", "JJJ"),
+    List.of("JJJ", "ATL"),
+    List.of("ATL", "KKK"),
+    List.of("KKK", "ATL"),
+    List.of("ATL", "LLL"),
+    List.of("LLL", "ATL"),
+    List.of("ATL", "MMM"),
+    List.of("MMM", "ATL"),
+    List.of("ATL", "NNN"),
+    List.of("NNN", "ATL")
+);
+```
+
+<br>
+
+접근 방법을 바꿔야 해결이 가능했다. 모든 티켓을 사용하지 못했다고해서 기존의 방문을 취소하는게 아니라 남은 티켓을 사용하면 된다. 다만 방문 순서를 조정해야 하기 때문에 더 이상 방문할 곳이 없는 출발지를 리스트의 맨 앞에 쌓아간다. 마지막 방문지부터 차례대로 리스트에 들어가되 매번 맨 첫번째 인덱스에 넣기 때문에 최종적으로는 순차적으로 리스트에 쌓은 것처럼 나타나게 된다.
+
+이 풀이에서는 ReconstructItinerary332 와 달리 도착지 정보를 우선순위 큐가 아닌 리스트에 담았다. 리스트를 오름차순으로 정렬한 뒤에 차례대로 하나씩 꺼낸다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
@@ -81,3 +131,4 @@ Map<String, PriorityQueue<String>> map
 자바 알고리즘 인터뷰
 
 [프로그래머스 여행경로 문제](https://school.programmers.co.kr/learn/courses/30/lessons/43164?language=java)
+
