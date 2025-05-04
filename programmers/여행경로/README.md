@@ -54,6 +54,12 @@ DFS 를 활용하되 방문 정보를 리스트 대신 다른 방식을 사용�
 
 <br>
 
+### Kotlin
+
+Java 풀이와 동일한 방식으로 풀이했다.
+
+<br>
+
 <참고>
 
 https://school.programmers.co.kr/questions/10332
@@ -63,6 +69,8 @@ https://school.programmers.co.kr/questions/33058
 https://ljhyunstory.tistory.com/107
 
 https://ckd2806.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC-python%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%97%AC%ED%96%89%EA%B2%BD%EB%A1%9C-%EC%BD%94%EB%93%9C-%ED%92%80%EC%9D%B4-%EB%81%84%EC%A0%81%EB%81%84%EC%A0%81
+
+파이썬 알고리즘 인터뷰
 
 자바 알고리즘 인터뷰
 
