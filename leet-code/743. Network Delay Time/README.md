@@ -30,7 +30,7 @@
 
 <br>
 
-### Java & Kotlin
+### Java
 
 #### NetworkDelayTime743
 
@@ -40,13 +40,15 @@ Python 의 첫번째 풀이와 동일한 방식으로 풀이했다.
 
 #### NetworkDelayTime743_2
 
-NetworkDelayTime743 과 동일한 방식으로 풀이했고, 언어를 Java 에서 Kotlin 으로 바꿔서 풀이했다.
+교재의 풀이를 참고했으나 LeetCode 실행시 package AbstractMap does not exist 에러가 발생해서 제출할 수 없었다. 교재의 풀이를 그대로 LeetCode 에서 실행해봐도 마찬가지다.
 
 <br>
 
-#### NetworkDelayTime743_3
+### Kotlin
 
-교재의 풀이를 참고했으나 LeetCode 실행시 package AbstractMap does not exist 에러가 발생해서 제출할 수 없었다. 교재의 풀이를 그대로 LeetCode 에서 실행해봐도 마찬가지다.
+#### NetworkDelayTime743
+
+NetworkDelayTime743 과 동일한 방식으로 풀이했고, 언어를 Java 에서 Kotlin 으로 바꿔서 풀이했다.
 
 <br>
 
