@@ -46,7 +46,7 @@
 
 <br>
 
-### Java & Kotlin
+### Java
 
 #### CheapestFlightsWithinKStops787
 
@@ -60,7 +60,9 @@
 
 <br>
 
-#### CheapestFlightsWithinKStops787_2
+### Kotlin
+
+#### CheapestFlightsWithinKStops787
 
 CheapestFlightsWithinKStops787 와 동일한 방법으로 풀이했고, 언어가 Java 에서 Kotlin 으로 바뀌었다.
 
