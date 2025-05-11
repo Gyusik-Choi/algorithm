@@ -37,13 +37,20 @@ public class CheapestFlightsWithinKStops787_2 {
             for (int[] node : map.get(departure.from)) {
                 int arrival = node[0];
                 int price = node[1];
-                // 비용은 고려하지 않는다
+                // stops 를 기준으로 보면
+                // 0 -> 1 -> 2 로 가는 경로를 거치면
+                // 정점 2의 경유 횟수는 2가 된다
+                // 그리고나서
+                // 0 -> 2 로 가는 경로가 있으면
+                // 정점 0의 경유 횟수는 0이라
+                // 정점 0의 경유 횟수에 1을 더한 것보다 정점 2의 경유 횟수가 더 크다
                 if (stops[arrival] == 0 || (stops[arrival] > 0 && stops[arrival] > departure.stop + 1)) {
                     // stops[arrival] = departure.stop + 1;
                     // stops 를 여기서 갱신하면 안 된다
                     // 쉽게 생각하면 보통 다익스트라를 구현할 때 여기서 방문 처리를 하지 않는다
                     // 우선순위 큐에서 꺼내기도 전에 stops 가 갱신되어 버린다
                     // 반례 -> (leetcode 예시 2) 3, [[0, 1, 100], [1, 2, 100], [0, 2, 500]], 0, 2, 1
+                    //
                     pq.add(new Node(arrival, departure.price + price, departure.stop + 1));
                 }
             }
