@@ -39,7 +39,7 @@ def dfs(vertex):
 
 <br>
 
-### Java & Kotlin
+### Java
 
 #### DiameterOfBinaryTree543
 
@@ -55,7 +55,9 @@ def dfs(vertex):
 
 <br>
 
-#### DiameterOfBinaryTree543_2
+### Kotlin
+
+#### DiameterOfBinaryTree543
 
 풀이방법은 DiameterOfBinaryTree543 와 동일하다. 언어를 Java 에서 Kotlin 으로 변경하면서 Kotlin 의 중첩 함수를 통해 보다 간결하게 풀이할 수 있었다.
 
