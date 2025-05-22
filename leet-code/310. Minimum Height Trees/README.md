@@ -48,6 +48,12 @@
 
 <br>
 
+#### MinimumHeightTrees310_3
+
+MinimumHeightTrees310 와 동일한 방식으로 풀이했다. 처음에는 시간초과가 발생해서 교재의 풀이를 통해 개선할 수 있었다. while 문 안에서 매번 map 의 keySet 이나 values 로 for 문을 도는 로직을 걷어내면서 시간초과가 발생하지 않을 수 있었다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
