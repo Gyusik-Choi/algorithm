@@ -39,6 +39,18 @@ heapify 외에 nlargest 를 이용해서 한줄에 풀이할 수도 있다.
 
 <br>
 
+### Kotlin
+
+#### KthLargestElementInAnArray215
+
+Kotlin 은 자체적으로 PriorityQueue 를 제공하지 않아서 Java 의 PriorityQueue 를 import 해서 사용하려 했으나 이상하게도 leetcode 에서 실행하면 컴파일 에러가 발생했다.
+
+import 대신 java.util.PriorityQueue 와 같이 직접 코드 상에서 접근하는 방식으로 해결했다.
+
+또한 Java 에서는 IntStream 으로 할 수 있었던 특정 횟수만큼 반복하는 작업을 Kotlin 에서는 repeat 함수로 대체할 수 있었다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
