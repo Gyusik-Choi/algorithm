@@ -32,7 +32,7 @@ class MaxHeap {
             throw IndexOutOfBoundsException()
         }
         switch(1, elements.size - 1)
-        val maxElement = elements[elements.size - 1]
+        val maxElement = elements.removeLast()
         maxHeapify(1)
         return maxElement
     }
