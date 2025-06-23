@@ -40,7 +40,7 @@ while 문을 돌면서 계속해서 루트 노드부터 탐색한다.
 
 <br>
 
-### InsertionSortList147
+#### InsertionSortList147
 
 정렬된 노드를 가리키는 p, 정렬 해야할 노드를 가리키는 head 로 나눠서 진행한다. 
 
@@ -59,6 +59,14 @@ p 는 맨 앞으로 이동해서 처음부터 다시 head 가 들어갈 위치�
 InsertionSortList147 와 전체적인 풀이 방식은 동일한데 차이는 p 를 무조건 맨 앞으로 보내지 않는 점이다.
 
 p 를 맨 앞으로 보내는 이유는 p 사이에 올 head 의 위치를 찾기 위해서다. 만약에 현재 위치의 p 보다 head 가 더 크다면 p 를 맨 앞으로 보낼 필요가 없다.
+
+<br>
+
+### Kotlin
+
+#### InsertionSortList147
+
+교재의 풀이를 참고했다. Java 의 InsertionSortList147 와 동일한 방식으로 풀이했다.
 
 <br>
 
