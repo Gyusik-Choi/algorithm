@@ -70,6 +70,16 @@ p 를 맨 앞으로 보내는 이유는 p 사이에 올 head 의 위치를 찾�
 
 <br>
 
+#### InsertionSortList147_2
+
+교재의 풀이을 참고했다. InsertionSortList147 를 보다 효율적으로 개선한 풀이다.
+
+InsertionSortList147 에서는 정렬을 하고 매번 p 를 맨 앞인 parent 로 이동하는데 이 풀이에서는 이를 방지했다.
+
+p 가 head 보다 작으면 p 의 앞부분은 이미 p 보다 작은 값으로 정렬이 됐기 때문에 parent 로 이동할 필요가 없다. p 가 head 보다 큰 경우만 head 를 넣을 위치를 찾기 위해 p 를 parent 로 이동시킨다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
