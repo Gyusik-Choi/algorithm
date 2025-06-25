@@ -24,14 +24,3 @@ class InsertionSortList147_2 {
         return parent.next
     }
 }
-
-// 4 2 5 3
-// 2 4 5 3 -> p = parent 로 복귀
-
-// 4 2 5 6
-// 2 4 5 6 -> p = parent 로 복귀 X
-
-// 2 4
-//
-
-// 4 2
