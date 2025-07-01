@@ -66,6 +66,14 @@ int mid = (low + high) >>> 1
 
 <br>
 
+#### BinarySearch704_2
+
+재귀를 활용해서 풀이했다.
+
+left 가 right 보다 작거나 같을 때까지 재귀를 이어나간다. mid 인덱스의 값보다 target 이 크면 left 를 mid + 1 로 재귀호출하고, mid 인덱스의 값보다 target 이 작으면 high 를 mid - 1 로 재귀호출한다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
