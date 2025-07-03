@@ -64,12 +64,27 @@ mid 에서 pivot index 를 더하는건 pivot index 를 기준으로 mid 만큼 
 
 <br>
 
+### Kotlin
+
+#### SearchInRotatedSortedArray33
+
+먼저 피벗을 찾은 다음에 피벗을 기준으로 배열의 왼쪽과 오른쪽 중 어디서 찾을 지를 판단한 뒤에 해당 범위에서 이진 탐색으로 target 을 찾는 방식으로 풀이했다.
+
+피벗을 찾기 위해 python 의 bisect_left 내장 함수의 구현과 유사한 이진 탐색을 사용했다. 배열의 mid 값이 배열의 맨 오른쪽 값보다 작거나 같으면 high 를 mid 로 갱신하고, 그렇지 않은 경우는 low 를 mid + 1 로 갱신하는 과정을 low 가 high 보다 작은 경우 반복한다. 반복이 종료되면 low 가 피벗의 위치가 된다.
+
+피벗을 찾고나면 맨 왼쪽부터 피벗 - 1까지 탐색할지 아니면 피벗부터 맨 오른쪽까지 탐색할지를 결정한다. 피벗이 0(배열이 오름차순으로 쭉 정렬된 경우)이거나 target 이 피벗부터 맨 오른쪽 안에 포함되는 경우 피벗부터 맨 오른쪽까지 탐색하고 그렇지 않은 경우는 맨 왼쪽부터 피벗 - 1까지 탐색한다.
+
+탐색할 범위를 찾고나면 해당 범위는 오름차순으로 정렬된 범위기 때문에 이진 탐색이 가능하다. 이진 탐색으로 target 을 찾는다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
-https://github.com/python/cpython/blob/3.9/Lib/bisect.py
-
 자바 알고리즘 인터뷰
 
 ChatGPT
+
+https://github.com/python/cpython/blob/3.14/Lib/bisect.py
+
