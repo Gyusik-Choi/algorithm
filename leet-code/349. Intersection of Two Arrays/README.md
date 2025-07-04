@@ -64,9 +64,11 @@ nums1 에만 있고 nums2 에는 없는 key 면 value 가 1이다.
 
 <br>
 
-#### IntersectionOfTwoArrays349_3
+### Kotlin
 
-IntersectionOfTwoArrays349_2 와 동일한 방식으로 풀이했다. 언어만 Java 에서 Kotlin 으로 바꿔서 풀이했다.
+#### IntersectionOfTwoArrays349
+
+Java 의 IntersectionOfTwoArrays349_2 와 동일한 방식으로 풀이했다. 언어만 Java 에서 Kotlin 으로 바꿔서 풀이했다.
 
 <br>
 
