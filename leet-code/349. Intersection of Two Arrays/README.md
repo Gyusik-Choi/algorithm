@@ -64,6 +64,20 @@ nums1 에만 있고 nums2 에는 없는 key 면 value 가 1이다.
 
 <br>
 
+#### IntersectionOfTwoArrays349_3
+
+교재를 참고해서 정렬과 투포인터를 활용했다. 
+
+nums1 과 nums2 배열을 정렬한 뒤 nums1, nums2 의 인덱스를 가리키는 i, j 변수를 초기화해서 nums1, nums2 의 마지막 인덱스에 도달할 때까지 반복한다.
+
+nums1 의 값이 nums2 의 값과 동일하면 해당 요소를 해시셋에 넣는다. 중복 요소는 해시셋에서 알아서 걸러진다.
+
+nums1 의 값이 nums2 의 값보다 작으면 nums1 를 한칸 이동해서 더 큰 값을 찾도록 한다.
+
+nums1 의 값이 nums2 의 값보다 크면 nums2 를 한칸 이동해서 더 큰 값을 찾도록 한다.
+
+<br>
+
 ### Kotlin
 
 #### IntersectionOfTwoArrays349
