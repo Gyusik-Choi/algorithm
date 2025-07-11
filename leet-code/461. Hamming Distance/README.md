@@ -30,6 +30,14 @@ Java 에는 이진수 1의 bit 갯수를 세어주는 Integer.bitCount 메소드
 
 <br>
 
+### Kotlin
+
+XOR 연산을 활용했다.
+
+Java 의 Integet.bitCount 메소드처럼 Kotlin 에는 countOneBits 메소드가 있다. countOneBits 메소드는 Int 클래스에서 제공하는 메소드라 xor 연산으로 구한 Int 값을 countOneBits 메소드의 인자로 넣는게 아니라 xor 연산으로 구한 Int 값에서 바로 countOneBits 를 적용할 수 있다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
