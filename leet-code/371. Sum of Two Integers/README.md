@@ -60,6 +60,12 @@ SumOfTwoIntegers371 의 풀이보다 간략하게 풀이한다.
 
 <br>
 
+#### SumOfTwoIntegers371_3
+
+SumOfTwoIntegers371 와 동일한 방식으로 풀이했다. 대신 합을 구하는 부분은 List 대신 StringBuilder 를 사용해서 보다 간결하게 작성했다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
