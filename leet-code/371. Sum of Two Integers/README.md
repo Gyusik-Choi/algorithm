@@ -66,6 +66,18 @@ SumOfTwoIntegers371 와 동일한 방식으로 풀이했다. 대신 합을 구�
 
 <br>
 
+### Kotlin
+
+#### SumOfTwoIntegers371
+
+Java 의 SumOfTwoIntegers371_3 와 동일한 방식으로 풀이했다.
+
+다만 kotlin 에서 10진수를 2진수로 변환할때 주의할 점은 음수 10진수의 경우 바로 toString(radix=2) 를 사용하면 제대로된 결과가 나오지 못한다. 10진수를 toUInt() 를 사용해서 변환한 뒤에 2진수로 변환해야 한다.
+
+아직 toUInt() 를 사용해야 하는 이유에 대해서는 정확하게 이해하지 못했다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
@@ -84,3 +96,4 @@ https://happy-matricaria.tistory.com/17
 
 https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Character.html#getNumericValue(char)
 
+https://www.baeldung.com/kotlin/int-binary-representation
