@@ -3,7 +3,6 @@ package com.example
 class UTF8Validation393 {
     fun validUtf8(data: IntArray): Boolean {
         val binaryList = data.map { it -> convertToBinary(it) }
-        println(binaryList)
         var idx = 0
         while (idx < binaryList.size) {
             val length = getLengthOfOne(binaryList[idx])
