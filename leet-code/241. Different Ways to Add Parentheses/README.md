@@ -52,6 +52,20 @@ DifferentWaysToAddParentheses241 풀이가 교재와 달라서 해시맵의 키�
 
 <br>
 
+### Kotlin
+
+#### DifferentWaysToAddParentheses241
+
+어려운 문제였다. 교재의 풀이를 참고했다.
+
+<br>
+
+#### DifferentWaysToAddParentheses241_2
+
+어려운 문제였다. 교재의 풀이를 참고했다. DifferentWaysToAddParentheses241 풀이에서 메모이제이션 기법을 추가해서 반복적인 계산을 개선했다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
