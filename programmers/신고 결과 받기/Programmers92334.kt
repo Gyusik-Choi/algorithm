@@ -1,6 +1,6 @@
 package com.example
 
-class Programmers92334_3 {
+class Programmers92334 {
     fun solution(id_list: Array<String>, report: Array<String>, k: Int): IntArray {
         val reportMap = mutableMapOf<String, MutableSet<String>>()
         for (r in report) {

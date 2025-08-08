@@ -26,7 +26,9 @@ Programmers92334 와 달리 유저별로 메일을 받은 횟수를 배열로 �
 
 <br>
 
-#### Programmers92334_3
+### Kotlin
+
+#### Programmers92334
 
 자바로 풀이한 Programmers92334_2 를 코틀린으로 언어만 변경해서 풀이했고, 풀이 방식은 Programmers92334_2 와 동일하다.
 
