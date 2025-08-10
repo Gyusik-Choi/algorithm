@@ -39,6 +39,12 @@ k진수를 0으로 분리할 때 주의할 점은 빈 문자열이 포함될 수
 
 <br>
 
+#### Programmers92335_2
+
+Programmers92335 풀이와 동일한 방식으로 풀이하면서 조건에 맞는 숫자인지 판단하는 로직을 for 문이 아닌 stream 을 사용했다.
+
+<br>
+
 ### Kotlin
 
 Programmers92335
