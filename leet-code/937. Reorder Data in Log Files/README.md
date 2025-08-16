@@ -36,6 +36,12 @@ stream 사용 여부로 인한 차이는 1ms 정도 (13ms -> 12ms) 였으나, �
 
 <br>
 
+#### ReorderDataInLogFiles937_5
+
+문자열 정렬에 대해서 어렵게 생각했으나 교재의 풀이를 참고해서 split 을 식별자와 나머지로 구분하는 방법으로 해결할 수 있었다. 식별자 외의 나머지를 하나의 문자열로 설정해서 내장 sort 함수로 비교할 수 있다.
+
+<br>
+
 ### Kotlin
 
 자바의 ReorderDataInLogFiles937_3 풀이와 동일한 방식으로 풀이했다.
