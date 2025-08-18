@@ -43,6 +43,12 @@ solution3.longestPalindrome("cb");
 
 <br>
 
+####LongestPalindromeSubstring5_4
+
+기존의 풀이와 달리 길이 1인 문자열에 대한 예외처리 없이 풀이했다.
+
+<br>
+
 ### Kotlin
 
 자바의 LongestPalindromeSubstring5_3 와 동일한 방식으로 풀이했다.
