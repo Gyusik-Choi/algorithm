@@ -11,9 +11,10 @@ public class TwoSum1 {
             numsWithIdx[i][0] = nums[i];
             numsWithIdx[i][1] = i;
         }
+        Arrays.sort(numsWithIdx, Comparator.comparingInt(o -> o[0]));
+        
         // 정렬 후 two pointer
         int left = 0, right = nums.length - 1;
-        Arrays.sort(numsWithIdx, Comparator.comparingInt(o -> o[0]));
         while (left < right) {
             int sum = numsWithIdx[left][0] + numsWithIdx[right][0];
             if (sum == target) break;
