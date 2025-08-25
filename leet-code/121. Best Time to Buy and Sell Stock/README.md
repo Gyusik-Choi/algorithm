@@ -36,6 +36,12 @@ minPrice 의 최소값을 계속 갱신하면서 profit 도 계속 갱신한다.
 
 <br>
 
+#### BestTimeToBuyAndSellStock121_3
+
+최소값 보다 작은 값이 나오면 최소값을 갱신하고, 최소값 보다 크거나 같은 값이 나오면 최소값과 빼서 최대값과 비교한다.
+
+<br>
+
 ### Kotlin
 
 #### BestTimeToBuyAndSellStock121_2
@@ -53,6 +59,4 @@ coerceAtLeast 는 coerceAtMost 와 반대다.
 파이썬 알고리즘 인터뷰
 
 자바 알고리즘 인터뷰
-
-
 
