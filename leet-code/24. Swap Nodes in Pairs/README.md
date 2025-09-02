@@ -63,6 +63,16 @@ SwapNodesInPairs24_2 와 거의 동일한 방식으로 풀이한다.
 
 <br>
 
+####SwapNodesInPairs24_4
+
+재귀를 활용해서 풀이했다.
+
+노드를 2칸씩 건너뛰면서 재귀호출한다. 재귀호출을 이어가다가 head 가 null 이거나 head.next 가 null 인 경우는 head 를 리턴한다. 
+
+그렇지 않은 경우 재귀호출할 2칸 뒤의 노드를 변수로 선언해서 참조를 구해둔 뒤에 head.next 가 head 를 바라보도록 변경한뒤 head.next 를 구하는 재귀호출을 하면서 인자로 2칸 뒤의 노드를 넣어준다. 재귀호출의 결과로 스왑이 된 노드를 받게된다.
+
+<br>
+
 ### Kotlin
 
 #### SwapNodesInPairs24
