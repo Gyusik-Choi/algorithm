@@ -83,6 +83,16 @@ SwapNodesInPairs24_2 와 거의 동일한 방식으로 풀이한다.
 
 <br>
 
+#### SwapNodesInPairs24_2
+
+반복구조를 활용해서 풀이했다.
+
+교재의 경우 head 를 자신의 next 속성에 연결한 node 변수를 두고 이 node 변수만 2칸씩 이동하는 방식으로 풀이한다. 이 풀이는 교재와 마찬가지로 head 를 자신의 next 속성에 연결하는 변수 root 는 존재한다.
+
+교재와 다른점은 head 를 참조하는 변수 cur 과 root 를 참조하는 prev 변수 2개가 1칸씩 이동하는 방식으로 풀이했다. prev.next 는 cur.next 를 참조하고, cur.next 는 cur.next.next 를 참조하고, cur.next.next 는 cur 를 참조해간다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
