@@ -62,7 +62,22 @@ head 의 길이가 짝수인 경우는 odd 노드는 맨 마지막에서 한칸 
 
 <br>
 
+### Kotlin
+
+####OddEvenLinkedList328
+
+while 문의 조건을 교재의 풀이를 참고해서 개선할 수 있었다. even 이 null 이 아니면서 even.next 도 null 이 아닌 경우에 whille 문을 반복하는게 핵심이다.
+
+이렇게 while 문의 조건을 설정하면 head 의 길이가 홀수, 짝수 여부와 관계없이 만족한다. 
+
+head 의 길이가 짝수고 1 -> 2 -> 3 -> 4 이렇게 구성되어 있다고 하면 odd 와 even 이 각각 1에서 3, 2에서 4로 이동했을 때 even.next 가 null 이라 while 문이 종료된다.
+
+head 의 길이가 홀수고 1 -> 2 -> 3  이렇게 구성되어 있다고 하면 odd 와 even 이 각각 1에서 3, 2에서 null 로 이동했을 때 even 이 null 이라 while 문이 종료된다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
 
+자바 알고리즘 인터뷰
