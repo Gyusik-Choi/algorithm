@@ -52,6 +52,12 @@ start 와 end 가 가리키는 노드는 바뀌지 않는다. start 는 위치�
 
 <br>
 
+#### ReverseLinkedListII92_5
+
+ReverseLinkedListII92_4 와 동일한 방식으로 풀이했다.
+
+<br>
+
 ### Kotlin
 
 #### ReverseLinkedListII92
