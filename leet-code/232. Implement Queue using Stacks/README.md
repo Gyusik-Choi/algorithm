@@ -102,6 +102,26 @@ pop 과 peek 모두 stack1이 빌 때까지 stack1 의 요소를 pop 으로 꺼�
 
 <br>
 
+### Kotlin
+
+#### ImplementQueueUsingStacks232
+
+두 개의 스택을 이용했다. 하나의 스택(stack)에서 요소를 관리하기 위해 다른 하나의 스택(stackHelper)은 연산 중에 잠시 차는 경우를 제외하고 항상 비어있다.
+
+pop 메소드의 경우 stack 에 있는 요소를 모두 꺼내서 stackHelper 에 넣고 이때 stackHelper 에서 요소를 꺼내면 마치 큐에서 첫번째 요소를 얻는것처럼 요소를 얻을 수 있다. 그리고 stackHelper 를 비우기 위해 stack 에 다시 넣는다. 이렇게 되면 가장 첫번째로 스택에 들어온 요소가 제거되고 나머지 요소는 기존 스택의 구조를 그대로 유지한채로 남아있다.
+
+peek 의 경우 pop 과 유사하다. 한 가지 차이는 stack 에 있는 요소를 모두 꺼내서 stackHelper 에 넣고 stackHelper 에서 요소를 꺼내는게 아니라 stackHelper 에서 가장 최상단에 있는 요소를 조회(peek) 만 한다.
+
+<br>
+
+#### ImplementQueueUsingStacks232_2
+
+교재의 풀이를 참고해서 ImplementQueueUsingStacks232 의 풀이를 개선했다.
+
+ImplementQueueUsingStacks232 에서는 pop, peek 메소드를 호출하면 매번 두 개의 스택에 요소가 왔다 갔다 이동하는 작업이 반복된다. ImplementQueueUsingStacks232_2 에서는 이렇게 하지 않는다. input 에 요소를 계속 쌓다가 peek 이나 pop 메소드가 호출되면 ouput 이 비었다면 input 에 있는 요소를 모두 output 으로 옮긴다. 이때부터 output 에 요소가 하나라도 있는동안 peek 이나 pop 이 호출되면 input 에서 output 으로 요소를 옮기는 작업없이 곧장 output 에서 조회할 수 있다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
