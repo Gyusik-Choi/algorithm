@@ -146,6 +146,16 @@ head, tail 변수를 사용해서 tail.next 가 head 를 보도록 했다.
 
 <br>
 
+#### DesignCircularQueue622_5
+
+배열을 사용했다. 
+
+k + 1 크기만큼 배열을 만들고 큐가 다 찼을 때 한 칸은 비어있도록 했다. enQueue 는 end 를 이동하고 deQueue 는 start 를 이동한다.
+
+큐가 다 찼을 때 한 칸을 비운다고 했는데 큐가 다 찼으면 end 가 front 보다 한 칸 앞에 있다. 반면에 큐가 비었다면 start 와 end 가 같다.
+
+<br>
+
 <참고>
 
 [파이썬 알고리즘 인터뷰](https://www.yes24.com/Product/Goods/91084402)
