@@ -18,6 +18,12 @@
 
 <br>
 
+#### Programmers42576_3
+
+Programmers42576_2 와 풀이 방식은 유사하지만 이번 풀이에서는 Arrays.stream 을 활용했다.
+
+<br>
+
 <참고>
 
 자바 알고리즘 인터뷰
