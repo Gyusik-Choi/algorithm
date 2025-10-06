@@ -124,6 +124,14 @@ List.of(
 
 <br>
 
+### Kotlin
+
+#### ReconstructItinerary332
+
+java 의 ReconstructItinerary332_2 풀이에서 언급한 틀린 풀이와 비슷한 방식으로 접근했다가 교재의 풀이를 참고해서 수정했다. 
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
