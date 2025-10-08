@@ -124,6 +124,12 @@ List.of(
 
 <br>
 
+####ReconstructItinerary332_3
+
+교재의 풀이를 참고해서 재귀가 아닌 스택을 이용해서 반복 방식으로  풀이했다.
+
+<br>
+
 ### Kotlin
 
 #### ReconstructItinerary332
