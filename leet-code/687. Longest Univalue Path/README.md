@@ -62,6 +62,42 @@ LongestUnivaluePath687 에서 최대값을 1로 갱신하고 마지막에 1을 �
 
 <br>
 
+#### LongestUnivaluePath687_4
+
+[이 문제](https://leetcode.com/problems/diameter-of-binary-tree/description/)와 유사한 관점으로 path 를 구해야 한다.
+
+<br>
+
+![example](C:\Users\kuidoli\dev\git\algorithm\leet-code\687. Longest Univalue Path\example.png)
+
+```
+[5,4,5,4,4,5,3,4,4,null,null,null,4,null,null,4,null,null,4,null,4,4,null,null,4,4]
+```
+
+해당 입력의 경우 이미지 상의 root(루트 노드).left.left 를 포함해 양쪽 자식 노드가 포함된 path 가 정답이다. 그런데 root.left 와 root.left.right 는 왜 포함될 수 없는지 이해가 잘 되지 않았다.
+
+<br>
+
+```
+Here’s how to think about it:
+
+A path in a binary tree is a sequence of connected nodes where each node appears only once.
+
+So it can go down–up–down only once — meaning it has one “highest” (top) node that connects the left and right branches of same-value nodes.
+
+That top node is the only “center” that can have both left and right arms of same values.
+
+If you tried to make two “tops,” you’d end up branching, which would make it a tree, not a path (and a path can’t branch).
+```
+
+이에 대한 GPT 의 답변이 도움이 됐다.
+
+한번씩만 방문해서 이동할 수 있는게 path 다. 만약에 root.left 가 포함된다면 모든 경로를 한번씩만 방문해서 이동할 수 없다. 맨 왼쪽 리프 노드에서 출발한다고 하면 root.left.left 까지 올라와서 root.left.left.right 경로로 갔다가 root.left 로 가려면 root.left.left 를 거쳐서 가야한다. 이미 방문한 root.left.left 를 또 방문해야만 root.left 를 갈 수 있다.
+
+다른 방식으로 보면 양쪽 자식노드를 갖는 부모 노드가 최대 한개만 존재할 수 있다고 생각할 수 있다.
+
+<br>
+
 ### Kotlin
 
 #### LongestUnivaluePath687
