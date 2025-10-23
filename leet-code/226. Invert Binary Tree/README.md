@@ -62,7 +62,21 @@ BFS 로 풀이했다.
 
 <br>
 
-#### InvertBinaryTree226_5
+####InvertBinaryTree226_5
+
+재귀를 이용해서 풀이했다.
+
+<br>
+
+####InvertBinaryTree226_6
+
+BFS 방식으로 풀이했다.
+
+<br>
+
+### Kotlin
+
+#### InvertBinaryTree226
 
 InvertBinaryTree226 와 동일한 방식으로 풀이했다. 언어를 Java 에서 Kotlin 으로 변경했다.
 
