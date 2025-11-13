@@ -26,6 +26,14 @@
 
 <br>
 
+### Kotlin
+
+#### LargestNumber179
+
+정렬 조건은 python, java 풀이와 동일하게 적용했으나 정렬 함수는 직접 구현하지 않고 내장 함수인 sortedWith 을 사용했다.
+
+<br>
+
 <참고>
 
 파이썬 알고리즘 인터뷰
