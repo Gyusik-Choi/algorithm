@@ -62,6 +62,12 @@ p 를 맨 앞으로 보내는 이유는 p 사이에 올 head 의 위치를 찾�
 
 <br>
 
+####InsertionSortList147_3
+
+어려운 문제였다. 교재의 풀이를 참고해서 풀이했다. 
+
+<br>
+
 ### Kotlin
 
 #### InsertionSortList147
