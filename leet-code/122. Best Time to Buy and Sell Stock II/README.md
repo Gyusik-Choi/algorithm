@@ -34,6 +34,12 @@
 
 <br>
 
+#### BestTimeToBuyAndSellStockII122_2
+
+for 문이 아닌 stream 과 reduce 를 활용해서 풀이했다.
+
+<br>
+
 ### Kotlin
 
 그리디 알고리즘을 활용했다.
