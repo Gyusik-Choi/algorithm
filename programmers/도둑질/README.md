@@ -24,6 +24,12 @@
 
 <br>
 
+#### Programmers42897_3
+
+다이나믹 프로그래밍 유형의 문제다. Programmers42897_2 와 동일한 방식으로 풀이했으나 세부 구현만 살짝 다르다.
+
+<br>
+
 <참고>
 
 https://leetcode.com/problems/house-robber
