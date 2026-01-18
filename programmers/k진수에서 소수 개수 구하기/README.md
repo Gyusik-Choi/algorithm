@@ -47,9 +47,15 @@ Programmers92335 풀이와 동일한 방식으로 풀이하면서 조건에 맞�
 
 ### Kotlin
 
-Programmers92335
+#### Programmers92335
 
 자바로 풀이한 Programmers92335 와 동일하게 풀이했다.
+
+<br>
+
+#### Programmers92335_2
+
+Programmers92335 와 동일한 방식으로 풀이했다. 오버플로우에 주의해서 풀이해야 한다. k진수로 변환하고 "0" 을 기준으로 자른 문자열 숫자를 Int 가 아닌 Long 으로 변환해서 다뤄야 한다.
 
 <br>
 
