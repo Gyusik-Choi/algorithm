@@ -72,6 +72,14 @@ word.replaceAll("[^a-zA-Z]+", " ").toLowerCase().split(" ");
 
 <br>
 
+### Kotlin
+
+#### MostCommonWord819_2
+
+groupingBy 와 eachCount 메소드를 통해 마치 파이썬의 Counter 모듈과 같은 기능을 구현할 수 있었다.
+
+<br>
+
 <참고>
 
 https://docs.python.org/3.8/library/stdtypes.html#str.split
