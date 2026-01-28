@@ -43,7 +43,7 @@ solution3.longestPalindrome("cb");
 
 <br>
 
-####LongestPalindromeSubstring5_4
+#### LongestPalindromeSubstring5_4
 
 기존의 풀이와 달리 길이 1인 문자열에 대한 예외처리 없이 풀이했다.
 
@@ -51,7 +51,19 @@ solution3.longestPalindrome("cb");
 
 ### Kotlin
 
+#### LongestPalindromeSubstring5
+
 자바의 LongestPalindromeSubstring5_3 와 동일한 방식으로 풀이했다.
+
+<br>
+
+#### LongestPalindromeSubstring5_2
+
+재귀를 활용해서 풀이했다. 
+
+자바와 달리 코틀린은 static 을 제공하지 않아서 companion object 등의 대안이 존재하긴 했으나 사용하지 않고 지역 변수만 사용했다.
+
+정적 변수를 사용했다면 재귀 함수 안에서 직접 정적 변수와 비교와 갱신을 할 수 있었겠지만 그럴 수 없어서 각 재귀 함수에서 최대 길이 팰린드롬을 반환했다. 재귀 함수를 호출한 쪽에서 최대 길이 팰린드롬 변수와 비교해서 정답을 구했다.
 
 <br>
 
