@@ -31,14 +31,9 @@ public class DesignCircularQueue622_6 {
             return false;
         }
         // front 와 rear.next 의 참조를 변경해야 한다
-        if (curSize == 1) {
-            front = null;
-            rear = null;
-        } else {
-            Node next = front.next;
-            front = front.next;
-            rear.next = next;
-        }
+        Node next = front.next;
+        front = next;
+        rear.next = next;
         curSize -= 1;
         return true;
     }
