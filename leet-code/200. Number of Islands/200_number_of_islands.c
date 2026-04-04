@@ -1,4 +1,5 @@
-static void dfs_recursion(char** grid, const int gridSize, int* gridColSize, const int i, const int j) {
+static void dfs_recursion(char** grid, const int gridSize, int* gridColSize, const int i, const int j)
+{
     if (0 > i || i >= gridSize || 0 > j || j >= gridColSize[i] || grid[i][j] != '1') {
         return;
     }
