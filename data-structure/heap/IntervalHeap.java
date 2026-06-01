@@ -20,6 +20,8 @@ import java.util.NoSuchElementException;
  * 최대힙 정보를 다루는 1번 인덱스의 경우 기존 최대힙과 마찬가지로
  * 최대힙은 부모 노드가 자식 노드보다 큰게 보장이 되지만
  * 자식 노드간의 크기는 왼쪽, 오른쪽 중 어디가 더 큰지 정해져있지 않다
+ * <br>
+ * <a href="https://blog.naver.com/mario002/221978255957">참고 링크</a>
  */
 public class IntervalHeap {
     private final List<List<Integer>> heap = new ArrayList<>(List.of(List.of(-1, -1)));
