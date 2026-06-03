@@ -60,6 +60,12 @@ Java 의 Programmers42628 와 동일한 방식으로 풀이했다.
 
 <br>
 
+#### Programmers42628_3
+
+인터벌 힙을 구현해서 풀이했다.
+
+<br>
+
 ### Python
 
 #### programmers_42628
@@ -73,4 +79,6 @@ Java 의 Programmers42628 와 동일한 방식으로 풀이했다.
 <참고>
 
 자바 알고리즘 인터뷰
+
+https://blog.naver.com/mario002/221978255957
 
