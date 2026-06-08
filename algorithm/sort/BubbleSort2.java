@@ -9,10 +9,15 @@ public class BubbleSort2 {
     public int[] bubbleSort(int[] arr) {
         int[] copiedArr = Arrays.copyOf(arr, arr.length);
         for (int i = arr.length - 1; i > 0; i--) {
+            boolean switched = false;
             for (int j = 0; j < i; j++) {
                 if (copiedArr[j] > copiedArr[j + 1]) {
                     switchElements(copiedArr, j, j + 1);
+                    switched = true;
                 }
+            }
+            if (!switched) {
+                break;
             }
         }
         return copiedArr;
