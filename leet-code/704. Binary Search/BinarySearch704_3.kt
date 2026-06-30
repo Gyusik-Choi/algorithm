@@ -6,13 +6,10 @@ class BinarySearch704_3 {
         var high = nums.size - 1
         while (low <= high) {
             val mid = low + (high - low) / 2
-            if (nums[mid] == target) {
-                return mid
-            }
-            if (nums[mid] < target) {
-                low = mid + 1
-            } else {
-                high = mid - 1
+            when {
+                nums[mid] < target -> low = mid + 1
+                nums[mid] > target -> high = mid - 1
+                else -> return mid
             }
         }
         return -1
