@@ -64,6 +64,25 @@ mid 에서 pivot index 를 더하는건 pivot index 를 기준으로 mid 만큼 
 
 <br>
 
+#### SearchInRotatedSortedArray33_3
+
+어려운 문제였다. 왜 회전 배열에서 target 을 바로 찾지 않고 최소값을 먼저 찾은 뒤에 target 을 찾는지 이해하는게 중요했다. 
+
+최소값은 mid 와 right 의 (혹은 mid 와 left) 비교에 따라 위치가 고정되지만 target 은 비교에 따라 위치가 고정되지 않는다. Claude Code 는 이에 대해 '단조 패턴' 의 유무라고 표현했다.
+
+<br>
+
+```
+[4, 5, 6, 7, 8, 1, 2, 3] 
+[1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+예를 들어, 위의 두 개 배열에서 target 8을 찾는다고 가정한다. mid 보다 right 가 작아도 target 이 오른쪽에 있을 수 있고, mid 보다 right 가 커도 오른쪽에 있을 수 있다. 그러나 최소값은 mid 보다 right 가 작으면 항상 오른쪽에 있고, mid 보다 right 가 크면 왼쪽에 있다.
+
+즉, 최소값은 mid 와 right 의 비교만으로 구할 수 있으나 target 은 mid 와 right 의 비교만으로 구할 수 없기 때문에 최소값을 구한 뒤에 target 을 구할 수 있다.
+
+<br>
+
 ### Kotlin
 
 #### SearchInRotatedSortedArray33
@@ -87,4 +106,6 @@ mid 에서 pivot index 를 더하는건 pivot index 를 기준으로 mid 만큼 
 ChatGPT
 
 https://github.com/python/cpython/blob/3.14/Lib/bisect.py
+
+Claude Code
 
