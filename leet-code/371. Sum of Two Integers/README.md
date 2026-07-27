@@ -66,6 +66,16 @@ SumOfTwoIntegers371 와 동일한 방식으로 풀이했다. 대신 합을 구�
 
 <br>
 
+####SumOfTwoIntegers371_5
+
+기존 풀이와 달리 carry lookahead 와 ripple carry 를 결합한 형태로 풀이했다.
+
+기존의 ripple carry 방식은 직전의 carry 를 알아야 다음 비트를 계산할 수 있어서 비트가 길어질 수록 이전 비트의 계산을 대기하는 시간이 늘어난다. 
+
+이를 개선하기 위해 carry lookahead adder 방식을 사용하지만 32비트를 ripple carry 없이 하려면 회로가 너무 복잡해지기 때문에 4비트 단위로 나눠서 carry lookahead 와 ripple carry 를 함께 사용한다.
+
+<br>
+
 ### Kotlin
 
 #### SumOfTwoIntegers371
@@ -130,3 +140,6 @@ https://happy-matricaria.tistory.com/17
 https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Character.html#getNumericValue(char)
 
 https://www.baeldung.com/kotlin/int-binary-representation
+
+https://blog.naver.com/lagrange0115/223095207844
+
