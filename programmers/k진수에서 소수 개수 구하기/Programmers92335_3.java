@@ -7,7 +7,8 @@ public class Programmers92335_3 {
     // 3 ≤ k ≤ 10
     public int solution(int n, int k) {
         String kDigit = convertToKDigit(n, k);
-        String[] digits = kDigit.replace("0", " ").split("\\s+");
+//        String[] digits = kDigit.replace("0", " ").split("\\s+");
+        String[] digits = kDigit.split("0+");
         return (int) Arrays.stream(digits)
                 .filter(d -> isPrime(Long.parseLong(d)))
                 .count();
