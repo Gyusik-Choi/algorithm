@@ -26,7 +26,7 @@
 
 <br>
 
-####Programmers92341_2
+#### Programmers92341_2
 
 타입 캐스팅에 유의해야 한다.
 

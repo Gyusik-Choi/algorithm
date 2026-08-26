@@ -2,7 +2,7 @@ package com.example;
 
 import java.util.*;
 
-public class Programmers92341_3 {
+public class Programmers92341_2 {
     // 건건이 구하는게 아닌 누적 시간으로 요금 구해야 한다
     public int[] solution(int[] fees, String[] records) {
         Map<Integer, List<ParkInfo>> map = new HashMap<>();
