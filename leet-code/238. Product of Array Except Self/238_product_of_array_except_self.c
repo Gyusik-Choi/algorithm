@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 
 /**
  * Note: The returned array must be malloced, assume caller calls free().
@@ -7,13 +6,13 @@
 int* productExceptSelf(int* nums, int numsSize, int* returnSize) {
     int to_left[numsSize];
     int to_right[numsSize];
-    memcpy(to_left, nums, sizeof(int) * numsSize);
-    memcpy(to_right, nums, sizeof(int) * numsSize);
+    to_left[0] = nums[0];
+    to_right[numsSize - 1] = nums[numsSize - 1];
     for (int i = 1; i < numsSize; i++) {
-        to_left[i] *= to_left[i - 1];
+        to_left[i] = to_left[i - 1] * nums[i];
     }
     for (int i = numsSize - 2; i >= 0; i--) {
-        to_right[i] *= to_right[i + 1];
+        to_right[i] = to_right[i + 1] * nums[i];
     }
     *returnSize = numsSize;
     int* answer = malloc(sizeof(int) * numsSize);
