@@ -1,0 +1,16 @@
+package com.example;
+
+public class BestTimeToBuyAndSellStock121_5 {
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+        int minPrice = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            if (minPrice >= prices[i]) {
+                minPrice = prices[i];
+            } else {
+                profit = Math.max(profit, prices[i] - minPrice);
+            }
+        }
+        return profit;
+    }
+}
