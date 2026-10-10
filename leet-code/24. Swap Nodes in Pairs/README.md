@@ -63,7 +63,7 @@ SwapNodesInPairs24_2 와 거의 동일한 방식으로 풀이한다.
 
 <br>
 
-####SwapNodesInPairs24_4
+#### SwapNodesInPairs24_4
 
 재귀를 활용해서 풀이했다.
 
@@ -73,7 +73,7 @@ SwapNodesInPairs24_2 와 거의 동일한 방식으로 풀이한다.
 
 <br>
 
-####SwapNodesInPairs24_5
+#### SwapNodesInPairs24_5
 
 반복구조로 풀이했다.
 
