@@ -1,8 +1,8 @@
 package com.example.algorithm;
 
 public class DesignHashMap706_5 {
-    private final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
-    private final float DEFAULT_LOAD_FACTOR = 0.75f;
+    private static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
+    private static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private int capacity;
     private int size;
     private int threshold;
@@ -20,95 +20,35 @@ public class DesignHashMap706_5 {
     }
 
     public void put(int key, int value) {
+        if (put(table, key, value)) {
+            updateSize();
+        }
+    }
+
+    private boolean put(Node[] table, int key, int value) {
         int bucket = getIndex(key);
         if (table[bucket] == null) {
             table[bucket] = new Node(key, value);
-            size++;
-            if (shouldIncrease()) increase();
-        } else {
-            Node cur = table[bucket];
-            while (cur.next != null) {
-                if (cur.key == key) {
-                    cur.value = value;
-                    return;
-                }
-                cur = cur.next;
-            }
+            return true;
+        }
+        Node prev = null;
+        Node cur = table[bucket];
+        while (cur != null) {
             if (cur.key == key) {
                 cur.value = value;
-                return;
+                return false;
             }
-            cur.next = new Node(key, value);
-            size++;
-            if (shouldIncrease()) increase();
+            prev = cur;
+            cur = cur.next;
         }
+        prev.next = new Node(key, value);
+        return true;
     }
 
-    private void put(Node[] table, int key, int value) {
-        int bucket = getIndex(key);
-        if (table[bucket] == null) {
-            table[bucket] = new Node(key, value);
-        } else {
-            Node cur = table[bucket];
-            while (cur.next != null) {
-                if (cur.key == key) {
-                    cur.value = value;
-                    return;
-                }
-                cur = cur.next;
-            }
-            if (cur.key == key) {
-                cur.value = value;
-                return;
-            }
-            cur.next = new Node(key, value);
-        }
-    }
-
-    private int getIndex(int key) {
-        int hash = mixBits(getHashCode(key));
-        return hash & (capacity - 1);
-    }
-
-    private int getHashCode(int key) {
-        return key;
-    }
-
-    private int mixBits(int hash) {
-        return hash ^ (hash >>> 16);
-    }
-
-    public int get(int key) {
-        int index = getIndex(key);
-        Node node = table[index];
-        if (node == null) return -1;
-        while (node != null) {
-            if (node.key == key) return node.value;
-            node = node.next;
-        }
-        return -1;
-    }
-
-    public void remove(int key) {
-        int index = getIndex(key);
-        Node node = table[index];
-        if (node == null) return;
-        if (node.key == key) {
-            table[index] = node.next;
-            size--;
-            return;
-        }
-        Node prev = node;
-        node = node.next;
-        while (node != null) {
-            if (node.key == key) {
-                prev.next = node.next;
-                node.next = null;
-                size--;
-                return;
-            }
-            prev = node;
-            node = node.next;
+    private void updateSize() {
+        size++;
+        if (shouldIncrease()) {
+            increase();
         }
     }
 
@@ -132,6 +72,59 @@ public class DesignHashMap706_5 {
             }
         }
         table = newTable;
+    }
+
+    public int get(int key) {
+        int index = getIndex(key);
+        Node node = table[index];
+        if (node == null) {
+            return -1;
+        }
+        while (node != null) {
+            if (node.key == key) {
+                return node.value;
+            }
+            node = node.next;
+        }
+        return -1;
+    }
+
+    public void remove(int key) {
+        int index = getIndex(key);
+        Node node = table[index];
+        if (node == null) {
+            return;
+        }
+        if (node.key == key) {
+            table[index] = node.next;
+            size--;
+            return;
+        }
+        Node prev = node;
+        node = node.next;
+        while (node != null) {
+            if (node.key == key) {
+                prev.next = node.next;
+                node.next = null;
+                size--;
+                return;
+            }
+            prev = node;
+            node = node.next;
+        }
+    }
+
+    private int getIndex(int key) {
+        int hash = mixBits(getHashCode(key));
+        return hash & (capacity - 1);
+    }
+
+    private int mixBits(int hash) {
+        return hash ^ (hash >>> 16);
+    }
+
+    private int getHashCode(int key) {
+        return key;
     }
 
     static class Node {
